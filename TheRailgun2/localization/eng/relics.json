@@ -1,0 +1,8 @@
+{
+  "THERAILGUN2-COIN_RELIC.title": "Collector's Coin",
+  "THERAILGUN2-COIN_RELIC.description": "If you end your turn with unspent {energyPrefix:energyIcons(1)}, [gold]Channel[/gold] [blue]{Lightning}[/blue] [gold]Lightning[/gold] for each {energyPrefix:energyIcons(1)} unspent, up to {Energy:diff()} times.",
+  "THERAILGUN2-COIN_RELIC.flavor": "A coin from an arcade.",
+  "THERAILGUN2-COIN_RELIC2.title": "Collector's Coin",
+  "THERAILGUN2-COIN_RELIC2.description": "Gain {Energy:energyIcons()} at the start of each turn. If you end your turn with unspent, lose ALL {energyPrefix:energyIcons(1)} and [gold]Channel[/gold] [blue]{Lightning}[/blue] [gold]Lightning[/gold] for each {energyPrefix:energyIcons(1)} lost, up to {Energy:diff()} times.",
+  "THERAILGUN2-COIN_RELIC2.flavor": "A coin from an arcade."
+}

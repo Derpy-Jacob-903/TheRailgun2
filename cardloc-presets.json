@@ -1,0 +1,54 @@
+{
+  "localizationBase": "TheRailgun2/localization/eng",
+  "projectId": "Therailgun2",
+  "presets": [
+    {
+      "id": "card",
+      "markers": [
+        "TheRailgun2Card",
+	"CustomCardModel"
+      ],
+      "fields": [
+        {
+          "name": "title",
+          "file": "cards.json",
+          "optional": false
+        },
+        {
+          "name": "description",
+          "file": "cards.json",
+          "optional": false
+        },
+        {
+          "name": "selectionScreenPrompt",
+          "file": "cards.json",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "power",
+      "markers": [
+        "TheRailgun2Power",
+	"CustomPowerModel"
+      ],
+      "fields": [
+        {
+          "name": "title",
+          "file": "powers.json",
+          "optional": false
+        },
+        {
+          "name": "description",
+          "file": "powers.json",
+          "optional": false
+        },
+        {
+          "name": "smartDescription",
+          "file": "powers.json",
+          "optional": false
+        }
+      ]
+    }
+	]
+}

@@ -1,0 +1,16 @@
+{
+  "THERAILGUN2-THE_RAILGUN2.title": "The Railgun",
+  "THERAILGUN2-THE_RAILGUN2.titleObject": "Mikoto Misaka",
+  "THERAILGUN2-THE_RAILGUN2.pronounSubject": "she",
+  "THERAILGUN2-THE_RAILGUN2.pronounPossessive": "hers",
+  "THERAILGUN2-THE_RAILGUN2.pronounObject": "her",
+  "THERAILGUN2-THE_RAILGUN2.possessiveAdjective": "her",
+  "THERAILGUN2-THE_RAILGUN2.goldMonologue": "[sine]My sisters would be proud of these riches...[/sine]",
+  "THERAILGUN2-THE_RAILGUN2.eventDeathPrevention": "My friends won't make it without me.",
+  "THERAILGUN2-THE_RAILGUN2.description": "The third ranked Esper of Academy City.\nShe's not sure how she got here.",
+  "THERAILGUN2-THE_RAILGUN2.cardsModifierTitle": "Railgun Cards",
+  "THERAILGUN2-THE_RAILGUN2.cardsModifierDescription": "Railgun cards will now appear in rewards and shops.",
+  "THERAILGUN2-THE_RAILGUN2.aromaPrinciple": "[sine][blue]i don't know this character sorry...[/blue][/sine]",
+  "THERAILGUN2-THE_RAILGUN2.banter.alive.endTurnPing": "[sine]...[/sine]",
+  "THERAILGUN2-THE_RAILGUN2.banter.dead.endTurnPing": "..."
+}

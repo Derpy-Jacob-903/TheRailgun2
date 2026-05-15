@@ -1,0 +1,34 @@
+﻿using BaseLib.Abstracts;
+using Godot;
+using TheRailgun2.TheRailgun2Code.Extensions;
+
+namespace TheRailgun2.TheRailgun2Code.Character;
+
+public class TheRailgun2CardPool : CustomCardPoolModel
+{
+    public override string Title => TheRailgun2.CharacterId; //This is not a display name.
+    //public override string EnergyColorName => TheRailgun2.CharacterId;
+
+    /* These HSV values will determine the color of your card back.
+    They are applied as a shader onto an already colored image,
+    so it may take some experimentation to find a color you like.
+    Generally they should be values between 0 and 1. */
+    public override float H => 0.5f; //Hue; changes the color.
+    public override float S => 5f; //Saturation
+    public override float V => 1f; //Brightness
+
+    public override string BigEnergyIconPath => "card_default_gray_orb.png".CharacterUiPath();
+    public override string TextEnergyIconPath => "card_small_orb.png".CharacterUiPath();
+
+    //Alternatively, leave these values at 1 and provide a custom frame image.
+    /*public override Texture2D CustomFrame(CustomCardModel card)
+    {
+        //This will attempt to load TheRailgun2/images/cards/frame.png
+        return PreloadManager.Cache.GetTexture2D("cards/frame.png".ImagePath());
+    }*/
+
+    //Color of small card icons
+    public override Color DeckEntryCardColor => new("00ffaf");
+
+    public override bool IsColorless => false;
+}

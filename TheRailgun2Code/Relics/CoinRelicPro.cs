@@ -1,0 +1,44 @@
+﻿using BaseLib.Utils;
+using MegaCrit.Sts2.Core.Combat;
+using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Players;
+using MegaCrit.Sts2.Core.Entities.Relics;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Orbs;
+using MegaCrit.Sts2.Core.Models.Relics;
+using TheRailgun2.TheRailgun2Code.Relics;
+
+namespace TheRailgun2.TheRailgun2Code.Relics;
+
+public class CoinRelic2() : TheRailgun2Relic
+{
+    public override RelicRarity Rarity =>
+        RelicRarity.Starter;
+
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
+        new DynamicVar("Lightning", 1M),
+        new EnergyVar(1),
+        new EnergyVar("Energy2", 6)
+    ];
+
+    public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
+    {
+        if (Owner.PlayerCombatState != null )
+            for (int i = 0; i < Math.Min(Owner.PlayerCombatState.Energy, DynamicVars["Energy2"].BaseValue) + 1; i++)
+            {
+                await PlayerCmd.LoseEnergy(1, Owner);
+                await OrbCmd.Channel<LightningOrb>(choiceContext, Owner);
+            }
+    }
+    public override Decimal ModifyMaxEnergy(Player player, Decimal amount)
+    {
+        return player != this.Owner ? amount : amount + (Decimal) this.DynamicVars.Energy.IntValue;
+    }
+    public override RelicModel GetUpgradeReplacement()
+    {
+        return ModelDb.Relic<CoinRelic2>();
+    }
+}
