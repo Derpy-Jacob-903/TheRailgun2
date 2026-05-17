@@ -30,7 +30,7 @@ public class CoinRelic() : TheRailgun2Relic
     ];
     public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
     {
-        if (Owner.PlayerCombatState != null)
+        if (Owner.PlayerCombatState != null && side == CombatSide.Player)
             for (int i = 0; i < Math.Min(Owner.PlayerCombatState.Energy, DynamicVars.Energy.BaseValue); i++)
             {
                 await OrbCmd.Channel<LightningOrb>(choiceContext, Owner);
