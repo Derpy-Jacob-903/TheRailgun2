@@ -16,6 +16,7 @@ public class LightningPotion : TheRailgun2Potion
     public override PotionUsage Usage => PotionUsage.CombatOnly;
     public override TargetType TargetType => TargetType.Self;
     public override string CustomPackedOutlinePath => ImageHelper.GetImagePath($"atlases/potion_outline_atlas.sprites/star_potion.tres");
+    public override string CustomPackedImagePath => ImageHelper.GetImagePath($"atlases/potion_atlas.sprites/star_potion.tres");
     protected override async Task OnUse(PlayerChoiceContext choiceContext, Creature target)
     {
         await OrbCmd.Channel<LightningOrb>(choiceContext, Owner);

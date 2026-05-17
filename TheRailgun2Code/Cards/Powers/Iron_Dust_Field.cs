@@ -20,9 +20,9 @@ public class IronDustField() : TheRailgun2Card(1,
         PlayerChoiceContext context,
         CardPlay play)
     {
-        await PowerCmd.Apply<PlatingPower>(context, Owner.Creature, DynamicVars[""].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<PlatingPower>(context, Owner.Creature, DynamicVars["PlatingPower"].BaseValue, Owner.Creature, this);
         if (this.IsUpgraded)
-            await PowerCmd.Apply<ThornsPower>(context, Owner.Creature, DynamicVars[""].BaseValue, Owner.Creature, this);
+            await PowerCmd.Apply<ThornsPower>(context, Owner.Creature, DynamicVars["ThornsPower"].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

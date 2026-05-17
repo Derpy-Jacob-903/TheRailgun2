@@ -1,7 +1,9 @@
 ﻿using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Hooks;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
@@ -19,12 +21,17 @@ public class Thunderjolt() : TheRailgun2Card(-1,
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
+        new DamageVar(3 ,ValueProp.Move),
         new CalculationBaseVar(0M),
         new CalculationExtraVar(1M),
-        new ExtraDamageVar(1M),
-        new CalculatedDamageVar(ValueProp.Move).WithMultiplier((Func<CardModel, Creature, Decimal>) ((card, _) => 3 + card.ResolveEnergyXValue() + 2 * card.CurrentUpgradeLevel)),
         new CalculatedVar("CalculatedHits").WithMultiplier((Func<CardModel, Creature, Decimal>) ((card, _) => card.Owner.PlayerCombatState != null ? card.Owner.PlayerCombatState.OrbQueue.Orbs.Count : 0))
     ];
+
+    private int FakeResolveEnergyXValue()
+    {
+        if (CombatState == null || Owner.PlayerCombatState == null) return 0;
+        return Hook.ModifyXValue(CombatState, this, Owner.PlayerCombatState.Energy);
+    }
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         HoverTipFactory.Static(StaticHoverTip.Channeling)
@@ -32,11 +39,11 @@ public class Thunderjolt() : TheRailgun2Card(-1,
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         if (cardPlay.Target != null)
-            await DamageCmd.Attack(DynamicVars.CalculatedDamage.Calculate(cardPlay.Target))
+            await DamageCmd.Attack(DynamicVars.Damage.BaseValue + ResolveEnergyXValue())
                 .WithHitCount((int)((CalculatedVar)DynamicVars["CalculatedHits"]).Calculate(cardPlay.Target))
                 .FromCard(this).Targeting(cardPlay.Target)
                 .WithHitFx("vfx/vfx_attack_lightning").Execute(choiceContext);
     }
     protected override bool ShouldGlowRedInternal => ((CalculatedVar)DynamicVars["CalculatedHits"]).Calculate(null) == 0;
-    //protected override void OnUpgrade() => this.DynamicVars["BaseDamageIdk"].UpgradeValueBy(2M);
+    protected override void OnUpgrade() => this.DynamicVars.Damage.UpgradeValueBy(2M);
 }

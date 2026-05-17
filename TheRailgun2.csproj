@@ -106,6 +106,8 @@
         <None Include="TheRailgun2Code\Relics\DataDisk.cs" />
         <Compile Remove="TheRailgun2Code\Potions\NeedlePotion.cs" />
         <None Include="TheRailgun2Code\Potions\NeedlePotion.cs" />
+        <Compile Remove="TheRailgun2Code\Cards\Attacks\Discharge.cs" />
+        <None Include="TheRailgun2Code\Cards\Attacks\Discharge.cs" />
     </ItemGroup>
 
     <ItemGroup>

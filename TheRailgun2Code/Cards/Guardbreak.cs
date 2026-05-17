@@ -1,6 +1,13 @@
-﻿namespace TheRailgun2.TheRailgun2Code.Cards;
+﻿using BaseLib.Patches.Content;
+using MegaCrit.Sts2.Core.Entities.Cards;
 
-public class Guardbreak
+namespace TheRailgun2.TheRailgun2Code.Cards;
+
+public class Enums
 {
-    //Guardbreak
+    [CustomEnum] [KeywordProperties(AutoKeywordPosition.After)]
+    public static CardKeyword Conduit;
+    [CustomEnum] [KeywordProperties(AutoKeywordPosition.Before)]
+    public static CardKeyword Guardbreak;
 }
+

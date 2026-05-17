@@ -7,13 +7,13 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
-public class Thundershock() : TheRailgun2Card(1,
+public class Thundershock() : TheRailgun2Card(2,
     CardType.Attack, CardRarity.Common,
     TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(18M, ValueProp.Move)
+        new DamageVar(15M, ValueProp.Move)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

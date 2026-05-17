@@ -9,7 +9,7 @@ namespace TheRailgun2.TheRailgun2Code.Cards;
 
 public class IronDustSword() : TheRailgun2Card(2,
     CardType.Attack, CardRarity.Uncommon,
-    TargetType.AllEnemies)
+    TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [

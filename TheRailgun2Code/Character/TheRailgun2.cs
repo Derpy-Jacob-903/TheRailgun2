@@ -27,12 +27,13 @@ public class TheRailgun2 : PlaceholderCharacterModel
         ModelDb.Card<StrikeRailgun>(),
         ModelDb.Card<StrikeRailgun>(),
         ModelDb.Card<StrikeRailgun>(),
-        ModelDb.Card<Discharge>(),
+        ModelDb.Card<Tap>(),
         ModelDb.Card<DefendRailgun>(),
         ModelDb.Card<DefendRailgun>(),
         ModelDb.Card<DefendRailgun>(),
         ModelDb.Card<DefendRailgun>(),
-        ModelDb.Card<Zip>()
+        ModelDb.Card<Absorb>(),
+        ModelDb.Card<Zap>()
     ];
 
     public override IReadOnlyList<RelicModel> StartingRelics =>

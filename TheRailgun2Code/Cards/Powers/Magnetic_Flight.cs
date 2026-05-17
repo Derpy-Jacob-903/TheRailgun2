@@ -9,7 +9,7 @@ using TheRailgun2.TheRailgun2Code.Powers;
 namespace TheRailgun2.TheRailgun2Code.Cards.Powers;
 
 public class MagneticFlight() : TheRailgun2Card(1,
-    CardType.Power, CardRarity.Uncommon,
+    CardType.Power, CardRarity.Rare,
     TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
