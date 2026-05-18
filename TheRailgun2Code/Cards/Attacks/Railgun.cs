@@ -11,13 +11,13 @@ using TheRailgun2.TheRailgun2Code.Character;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
-public class Railgun() : TheRailgun2Card(1,
+public class Railgun() : TheRailgun2Card(2,
     CardType.Attack, CardRarity.Rare,
     TargetType.AnyEnemy)
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
-        CardKeyword.Retain,
+        CardKeyword.Retain
     ];
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [

@@ -10,7 +10,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
-public class Tap() : TheRailgun2Card(1,
+public class Tap() : TheRailgun2Card(0,
     CardType.Attack, CardRarity.Basic,
     TargetType.AnyEnemy)
 {

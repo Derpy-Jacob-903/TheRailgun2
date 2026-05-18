@@ -32,8 +32,7 @@ public class TheRailgun2 : PlaceholderCharacterModel
         ModelDb.Card<DefendRailgun>(),
         ModelDb.Card<DefendRailgun>(),
         ModelDb.Card<DefendRailgun>(),
-        ModelDb.Card<Absorb>(),
-        ModelDb.Card<Zap>()
+        ModelDb.Card<Absorb>()
     ];
 
     public override IReadOnlyList<RelicModel> StartingRelics =>
