@@ -15,17 +15,18 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
 public class Needle() : TheRailgun2Card(0,
-    CardType.Attack, CardRarity.Common,
+    CardType.Attack, CardRarity.Token,
     TargetType.AnyEnemy)
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
-        CardKeyword.Sly
+        CardKeyword.Sly,
+        CardKeyword.Exhaust
     ];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(5M, ValueProp.Move)
+        new DamageVar(6M, ValueProp.Move)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

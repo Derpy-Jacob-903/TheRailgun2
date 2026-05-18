@@ -10,7 +10,7 @@ using MegaCrit.Sts2.Core.Models.Enchantments;
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
 public class Supercharge() : TheRailgun2Card(3,
-    CardType.Skill, CardRarity.Rare,
+    CardType.Power, CardRarity.Rare,
     TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
@@ -31,8 +31,8 @@ public class Supercharge() : TheRailgun2Card(3,
 
         if (CombatState != null)
         {
-            var card = await CardPileCmd.AddGeneratedCardToCombat(CombatState.CreateCard<Burn>(Owner), PileType.Hand, Owner);
-            CardCmd.Enchant<Steady>(card.cardAdded, 1M);
+            var card = await CardPileCmd.AddGeneratedCardToCombat(CombatState.CreateCard<Wound>(Owner), PileType.Discard, Owner);
+            //CardCmd.Enchant<Steady>(card.cardAdded, 1M);
         }
 
         if (this.IsUpgraded)

@@ -13,8 +13,6 @@ public class Zip() : TheRailgun2Card(1,
     CardType.Skill, CardRarity.Common,
     TargetType.Self)
 {
-    protected override HashSet<CardTag> CanonicalTags => [CardTag.Defend];
-
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new BlockVar(6m, ValueProp.Move),

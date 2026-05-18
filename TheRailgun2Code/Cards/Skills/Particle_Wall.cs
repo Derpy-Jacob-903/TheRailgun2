@@ -2,12 +2,14 @@
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Models.Orbs;
 using MegaCrit.Sts2.Core.ValueProps;
+using TheRailgun2.TheRailgun2Code.Character;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
@@ -19,9 +21,15 @@ public class ParticleWallRailgun() : TheRailgun2Card(0,
     [
         new BlockVar(9m, ValueProp.Move)
     ];
+    
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        HoverTipFactory.FromOrb<LightningOrb>()
+    ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await EchoOrb.RemoveFirstOf<LightningOrb>(choiceContext, Owner);
         await CommonActions.CardBlock(this, DynamicVars.Block, cardPlay);
         await Cmd.Wait(0.25f);
     }

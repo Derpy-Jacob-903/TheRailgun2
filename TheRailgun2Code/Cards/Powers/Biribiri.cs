@@ -7,7 +7,7 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Models.Powers;
 
-namespace TheRailgun2.TheRailgun2Code.Cards.Powers;
+namespace TheRailgun2.TheRailgun2Code.Cards;
 
 public class Biribiri() : TheRailgun2Card(2,
     CardType.Power, CardRarity.Uncommon,

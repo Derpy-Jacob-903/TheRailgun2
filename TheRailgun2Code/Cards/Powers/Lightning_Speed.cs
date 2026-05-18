@@ -10,7 +10,7 @@ namespace TheRailgun2.TheRailgun2Code.Cards.Powers;
 
 public class LightningSpeed() : TheRailgun2Card(1,
     CardType.Power, CardRarity.Uncommon,
-    TargetType.AnyEnemy)
+    TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [

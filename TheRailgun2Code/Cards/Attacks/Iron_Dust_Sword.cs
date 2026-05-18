@@ -21,7 +21,7 @@ public class IronDustSword() : TheRailgun2Card(2,
     {
         if (cardPlay.Target != null)
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-                .FromCard(this).Targeting(cardPlay.Target)
+                .FromCard(this).Targeting(cardPlay.Target).WithHitCount(DynamicVars.Repeat.IntValue)
                 .WithHitFx("vfx/vfx_attack_slash").Execute(choiceContext);
     }
 

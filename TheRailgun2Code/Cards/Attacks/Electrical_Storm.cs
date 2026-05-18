@@ -52,7 +52,7 @@ public class ElectricalStorm() : TheRailgun2Card(-1,
         await PlayerCmd.GainEnergy( ResolveEnergyXValue(), Owner);
     }
     
-    protected override bool ShouldGlowRedInternal => (DynamicVars.CalculatedDamage).Calculate(null) == 0;
+    protected override bool ShouldGlowRedInternal => Owner.PlayerCombatState != null && this.CombatState != null && (DynamicVars.Damage.BaseValue + Hook.ModifyXValue(this.CombatState, this, 0) + Owner.PlayerCombatState.Energy ) == 0;
 
     public override TargetType TargetType => IsUpgraded ? TargetType.AllEnemies : TargetType.AnyEnemy;
 }

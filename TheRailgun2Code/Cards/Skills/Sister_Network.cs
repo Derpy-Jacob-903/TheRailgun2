@@ -14,8 +14,6 @@ public class SisterNetwork() : TheRailgun2Card(0,
     CardType.Skill, CardRarity.Uncommon,
     TargetType.Self)
 {
-    protected override HashSet<CardTag> CanonicalTags => [CardTag.Defend];
-
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new CalculationBaseVar(0M),
@@ -25,7 +23,7 @@ public class SisterNetwork() : TheRailgun2Card(0,
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, Owner);
+        await CardPileCmd.Draw(choiceContext, DynamicVars["CalculatedCards"].BaseValue, Owner);
     }
 
     protected override void OnUpgrade() => this.DynamicVars.CalculationBase.UpgradeValueBy(1M);

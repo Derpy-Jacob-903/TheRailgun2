@@ -26,7 +26,7 @@ public class Spark() : TheRailgun2Card(1,
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         if (CombatState != null)
-            await DamageCmd.Attack(DynamicVars.CalculatedDamage.BaseValue)
+            await DamageCmd.Attack(DynamicVars.CalculatedDamage.Calculate(null))
                 .FromCard(this).TargetingAllOpponents(CombatState)
                 .WithHitFx("vfx/vfx_attack_lightning").Execute(choiceContext);
     }

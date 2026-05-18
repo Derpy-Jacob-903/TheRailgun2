@@ -12,8 +12,8 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
 public class Discharge() : TheRailgun2Card(1,
-    CardType.Attack, CardRarity.Basic,
-    TargetType.AnyEnemy), ITranscendenceCard
+    CardType.Attack, CardRarity.Common,
+    TargetType.AnyEnemy)//, ITranscendenceCard
 {
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>

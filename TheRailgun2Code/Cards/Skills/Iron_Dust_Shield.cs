@@ -13,8 +13,6 @@ public class IronDustShield() : TheRailgun2Card(2,
     CardType.Skill, CardRarity.Uncommon,
     TargetType.Self)
 {
-    protected override HashSet<CardTag> CanonicalTags => [CardTag.Defend];
-
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new BlockVar(10m, ValueProp.Move),

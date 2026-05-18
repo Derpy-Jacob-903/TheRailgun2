@@ -15,7 +15,7 @@ namespace TheRailgun2.TheRailgun2Code.Cards.Powers;
 
 public class LevelSix() : TheRailgun2Card(4,
     CardType.Power, CardRarity.Ancient,
-    TargetType.AnyEnemy), ITomeCard
+    TargetType.Self), ITomeCard
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [

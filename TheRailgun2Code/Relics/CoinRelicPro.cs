@@ -21,7 +21,7 @@ public class CoinRelic2() : TheRailgun2Relic
     [
         new DynamicVar("Lightning", 1M),
         new EnergyVar(1),
-        new EnergyVar("Energy2", 6)
+        new EnergyVar("Energy2", 5)
     ];
 
     public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
@@ -29,7 +29,7 @@ public class CoinRelic2() : TheRailgun2Relic
         if (Owner.PlayerCombatState != null )
             for (int i = 0; i < Math.Min(Owner.PlayerCombatState.Energy, DynamicVars["Energy2"].BaseValue) + 1; i++)
             {
-                await PlayerCmd.LoseEnergy(1, Owner);
+                //await PlayerCmd.LoseEnergy(1, Owner);
                 await OrbCmd.Channel<LightningOrb>(choiceContext, Owner);
             }
     }

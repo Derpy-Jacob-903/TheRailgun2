@@ -14,7 +14,10 @@ public class CircuitBreaker() : TheRailgun2Card(1,
     CardType.Skill, CardRarity.Uncommon,
     TargetType.Self)
 {
-    
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
+        CardKeyword.Exhaust
+    ];
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         var p = Owner.Creature;

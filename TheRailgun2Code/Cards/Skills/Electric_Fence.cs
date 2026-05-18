@@ -12,8 +12,6 @@ public class ElectricFence() : TheRailgun2Card(1,
     CardType.Skill, CardRarity.Uncommon,
     TargetType.Self)
 {
-    protected override HashSet<CardTag> CanonicalTags => [CardTag.Defend];
-
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new BlockVar(7m, ValueProp.Move),

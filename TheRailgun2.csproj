@@ -108,6 +108,8 @@
         <None Include="TheRailgun2Code\Potions\NeedlePotion.cs" />
         <Compile Remove="TheRailgun2Code\Cards\Attacks\Discharge.cs" />
         <None Include="TheRailgun2Code\Cards\Attacks\Discharge.cs" />
+        <Compile Remove="TheRailgun2Code\Cards\Archaic_Tooth_Card.cs" />
+        <None Include="TheRailgun2Code\Cards\Archaic_Tooth_Card.cs" />
     </ItemGroup>
 
     <ItemGroup>

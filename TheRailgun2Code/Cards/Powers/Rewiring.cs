@@ -7,7 +7,7 @@ using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 
-namespace TheRailgun2.TheRailgun2Code.Cards.Powers;
+namespace TheRailgun2.TheRailgun2Code.Cards;
 
 public class Rewiring() : TheRailgun2Card(2,
     CardType.Power, CardRarity.Uncommon,
@@ -30,15 +30,15 @@ public class Rewiring() : TheRailgun2Card(2,
         foreach (var pm in Owner.Creature.Powers.Where(model => model is StrengthPower))
         {
             str_evil += pm.Amount;
-            str_evil -= CurrentUpgradeLevel;
-            await PowerCmd.Remove<StrengthPower>(Owner.Creature);
+            if (play.Target.Side != Owner.Creature.Side) str_evil -= CurrentUpgradeLevel;
         }
+        await PowerCmd.Remove<StrengthPower>(Owner.Creature);
         foreach (var pm in play.Target.Powers.Where(model => model is StrengthPower))
         {
             str_your += pm.Amount;
             str_your += CurrentUpgradeLevel;
-            await PowerCmd.Remove<StrengthPower>(play.Target);
         }
+        await PowerCmd.Remove<StrengthPower>(play.Target);
         await PowerCmd.Apply<StrengthPower>(context, Owner.Creature, str_your, Owner.Creature, this);
         await PowerCmd.Apply<StrengthPower>(context, play.Target, str_evil, Owner.Creature, this);
     }

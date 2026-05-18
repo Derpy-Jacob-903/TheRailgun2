@@ -7,11 +7,11 @@ using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Models.Powers;
 using TheRailgun2.TheRailgun2Code.Powers;
 
-namespace TheRailgun2.TheRailgun2Code.Cards.Powers;
+namespace TheRailgun2.TheRailgun2Code.Cards;
 
 public class Overload() : TheRailgun2Card(3,
     CardType.Power, CardRarity.Rare,
-    TargetType.AnyEnemy)
+    TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [

@@ -14,7 +14,6 @@ public class JudgementOfficer() : TheRailgun2Card(3,
     CardType.Skill, CardRarity.Rare,
     TargetType.Self)
 {
-    protected override HashSet<CardTag> CanonicalTags => [CardTag.Defend];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [

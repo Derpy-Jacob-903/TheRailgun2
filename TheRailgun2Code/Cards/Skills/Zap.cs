@@ -16,8 +16,6 @@ public class ZapRailgun() : TheRailgun2Card(0,
     CardType.Skill, CardRarity.Common,
     TargetType.Self)//, ITranscendenceCard
 {
-    protected override HashSet<CardTag> CanonicalTags => [CardTag.Defend];
-
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new RepeatVar(1),

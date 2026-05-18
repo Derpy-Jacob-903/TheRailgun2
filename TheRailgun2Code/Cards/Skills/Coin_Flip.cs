@@ -13,8 +13,6 @@ public class CoinFlip() : TheRailgun2Card(1,
     CardType.Skill, CardRarity.Common,
     TargetType.Self)
 {
-    protected override HashSet<CardTag> CanonicalTags => [CardTag.Defend];
-
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new CardsVar(1)

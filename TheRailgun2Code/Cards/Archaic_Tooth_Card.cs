@@ -13,7 +13,7 @@ namespace TheRailgun2.TheRailgun2Code.Cards;
 
 public class Fulminate2() : TheRailgun2Card(0,
     CardType.Skill, CardRarity.Ancient,
-    TargetType.Self), ITomeCard
+    TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [

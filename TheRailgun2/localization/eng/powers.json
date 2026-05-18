@@ -30,6 +30,6 @@
   "THERAILGUN2-STRENGTH_DOWN_POWER.description": "",
   "THERAILGUN2-STRENGTH_DOWN_POWER.smartDescription": "",
   "THERAILGUN2-LOCK_ON_POWER.title": "Lock-On",
-  "THERAILGUN2-LOCK_ON_POWER.description": "Receives [blue]50%[/blue] more damage from Orbs for X turns.",
-  "THERAILGUN2-LOCK_ON_POWER.smartDescription": "Receives [blue]50%[/blue] more damage from Orbs for X turns."
+  "THERAILGUN2-LOCK_ON_POWER.description": "Receives [blue]50%[/blue] more damage from [gold]Lightning[/gold] Orbs for X turns.",
+  "THERAILGUN2-LOCK_ON_POWER.smartDescription": "Receives [blue]50%[/blue] more damage from [gold]Lightning[/gold] Orbs for X turns."
 }

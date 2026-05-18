@@ -69,7 +69,7 @@ public static class EchoOrb
         if (orb == null)
             return;
         choiceContext.PushModel(orb);
-        await Evoke2(choiceContext, player, orb, dequeue);
+        await RemoveOrb(choiceContext, player, orb, dequeue);
         choiceContext.PopModel(orb);
     }
     
@@ -113,6 +113,32 @@ public static class EchoOrb
         IEnumerable<Creature> targets = await evokedOrb.Evoke(choiceContext);
         choiceContext.PopModel((AbstractModel) evokedOrb);
         await Hook.AfterOrbEvoked(choiceContext, player.Creature.CombatState, evokedOrb, targets);
+        if (!removed)
+            return;
+        evokedOrb.RemoveInternal();
+    }
+    
+    private static async Task RemoveOrb(
+        PlayerChoiceContext choiceContext,
+        Player player,
+        OrbModel evokedOrb,
+        bool dequeue = true)
+    {
+        if (CombatManager.Instance.IsOverOrEnding || player.PlayerCombatState == null)
+            return;
+        OrbQueue orbQueue = player.PlayerCombatState.OrbQueue;
+        if (player.PlayerCombatState == null || player.Creature.CombatState == null || orbQueue.Orbs.Count <= 0)
+            return;
+        bool removed = false;
+        if (dequeue)
+        {
+            removed = orbQueue.Remove(evokedOrb);
+            NCombatRoom.Instance?.GetCreatureNode(player.Creature)?.OrbManager?.EvokeOrbAnim(evokedOrb);
+        }
+        choiceContext.PushModel((AbstractModel) evokedOrb);
+        //IEnumerable<Creature> targets = await evokedOrb.Evoke(choiceContext);
+        choiceContext.PopModel((AbstractModel) evokedOrb);
+        //await Hook.AfterOrbEvoked(choiceContext, player.Creature.CombatState, evokedOrb, targets);
         if (!removed)
             return;
         evokedOrb.RemoveInternal();

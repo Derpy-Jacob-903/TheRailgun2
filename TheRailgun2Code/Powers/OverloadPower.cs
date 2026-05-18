@@ -9,6 +9,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 
@@ -28,11 +29,11 @@ public class OverloadPower : TheRailgun2Power
 
     public override bool TryModifyEnergyCostInCombat(CardModel card, decimal originalCost, out decimal modifiedCost)
     {
-        if (card.Owner.Creature == this.Owner)
-        {
-            modifiedCost = originalCost - Amount;
-        }
-        return base.TryModifyEnergyCostInCombat(card, originalCost, out modifiedCost);
+        modifiedCost = originalCost;
+        if (card.Owner.Creature != this.Owner)
+            return false;
+        modifiedCost = Math.Min(0, originalCost - Amount);
+        return true;
     }
     public override async Task AfterTurnEndLate(PlayerChoiceContext choiceContext, CombatSide side)
     {

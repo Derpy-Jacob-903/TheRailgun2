@@ -36,4 +36,5 @@ public class CoinRelic() : TheRailgun2Relic
                 await OrbCmd.Channel<LightningOrb>(choiceContext, Owner);
             }
     }
+    public override RelicModel GetUpgradeReplacement() => ModelDb.Relic<CoinRelic2>();
 }

@@ -15,8 +15,6 @@ public class Recharge() : TheRailgun2Card(1,
     CardType.Skill, CardRarity.Uncommon,
     TargetType.Self)
 {
-    protected override HashSet<CardTag> CanonicalTags => [CardTag.Defend];
-
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
         CardKeyword.Exhaust

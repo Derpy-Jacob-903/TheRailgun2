@@ -12,8 +12,6 @@ public class BatteryPack() : TheRailgun2Card(0,
     CardType.Skill, CardRarity.Uncommon,
     TargetType.Self)
 {
-    protected override HashSet<CardTag> CanonicalTags => [CardTag.Defend];
-
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new EnergyVar(1),
