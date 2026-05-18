@@ -23,7 +23,9 @@ public class SisterNetwork() : TheRailgun2Card(0,
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await CardPileCmd.Draw(choiceContext, DynamicVars["CalculatedCards"].BaseValue, Owner);
+        //int draw = CurrentUpgradeLevel + DynamicVars.CalculationBase.IntValue;
+        //draw += Cal
+        await CardPileCmd.Draw(choiceContext, ((CalculatedVar)DynamicVars["CalculatedCards"]).Calculate(null), Owner);
     }
 
     protected override void OnUpgrade() => this.DynamicVars.CalculationBase.UpgradeValueBy(1M);
