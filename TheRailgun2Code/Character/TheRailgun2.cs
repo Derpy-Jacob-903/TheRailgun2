@@ -1,10 +1,10 @@
 ﻿using BaseLib.Abstracts;
+using BaseLib.Utils.NodeFactories;
 using TheRailgun2.TheRailgun2Code.Extensions;
 using Godot;
 using MegaCrit.Sts2.Core.Entities.Characters;
 using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Models.Cards;
-using MegaCrit.Sts2.Core.Models.Relics;
+using MegaCrit.Sts2.Core.Nodes.Combat;
 using TheRailgun2.TheRailgun2Code.Cards;
 using TheRailgun2.TheRailgun2Code.Relics;
 
@@ -52,4 +52,10 @@ public class TheRailgun2 : PlaceholderCharacterModel
     public override string CustomCharacterSelectIconPath => "char_select_char_name.png".CharacterUiPath();
     public override string CustomCharacterSelectLockedIconPath => "char_select_char_name_locked.png".CharacterUiPath();
     public override string CustomMapMarkerPath => "map_marker_char_name.png".CharacterUiPath();
+    
+    public override NCreatureVisuals CreateCustomVisuals()
+    {
+        return NodeFactory<NCreatureVisuals>.CreateFromScene("res://TheRailgun2/images/char/railgun.tscn");
+    }
+
 }

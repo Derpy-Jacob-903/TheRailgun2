@@ -1,0 +1,566 @@
+[gd_scene load_steps=73 format=3 uid="uid://bnx0x2damphks"]
+
+[ext_resource type="Texture2D" uid="uid://dos6cvtcplaem" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis300_00.png" id="1_7udl6"]
+[ext_resource type="Texture2D" uid="uid://cjqfmpa34ooia" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis300_01.png" id="2_77bfj"]
+[ext_resource type="Texture2D" uid="uid://cw2mn5ynlqg4p" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis300_02.png" id="3_nbc8t"]
+[ext_resource type="Texture2D" uid="uid://8but65sx7oqv" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis300_03.png" id="4_7o6qs"]
+[ext_resource type="Texture2D" uid="uid://x562xct1l2au" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis300_04.png" id="5_n1b8j"]
+[ext_resource type="Texture2D" uid="uid://i825lj53asqe" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis300_05.png" id="6_uxt5q"]
+[ext_resource type="Texture2D" uid="uid://ninwdxgryhb4" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis600_00.png" id="7_1isy0"]
+[ext_resource type="Texture2D" uid="uid://cojgeisioaxbc" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis600_01.png" id="8_vq3aa"]
+[ext_resource type="Texture2D" uid="uid://5gfxu3md836l" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis600_02.png" id="9_vj11y"]
+[ext_resource type="Texture2D" uid="uid://c64wukhrokf51" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis600_03.png" id="10_3adpn"]
+[ext_resource type="Texture2D" uid="uid://dq8orcp64440l" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis600_04.png" id="11_8fb2l"]
+[ext_resource type="Texture2D" uid="uid://dm67q34dnyjof" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis600_05.png" id="12_atij8"]
+[ext_resource type="Texture2D" uid="uid://bi3nwbqjq0cd4" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis600_06.png" id="13_jbe5m"]
+[ext_resource type="Texture2D" uid="uid://bshhx2v5coyrk" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis600_07.png" id="14_b1i7o"]
+[ext_resource type="Texture2D" uid="uid://dbga085er3q4w" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis500_00.png" id="15_mt4ii"]
+[ext_resource type="Texture2D" uid="uid://dc0opsj6g5p2i" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis500_01.png" id="16_g7gac"]
+[ext_resource type="Texture2D" uid="uid://x2uumpfsjyth" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis500_02.png" id="17_7iepl"]
+[ext_resource type="Texture2D" uid="uid://cxw1ps1vppmvu" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis000_00.png" id="18_2kk12"]
+[ext_resource type="Texture2D" uid="uid://w3yu52yi87wn" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis000_01.png" id="19_kvure"]
+[ext_resource type="Texture2D" uid="uid://cndapac8n27bm" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis000_02.png" id="20_26h7w"]
+[ext_resource type="Texture2D" uid="uid://dva5ojh6jgioy" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis000_03.png" id="21_kcyer"]
+[ext_resource type="Texture2D" uid="uid://brofi4pc76nuh" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis000_04.png" id="22_smqev"]
+[ext_resource type="Texture2D" uid="uid://dv55aw8ltw6qc" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis000_05.png" id="23_icdju"]
+[ext_resource type="Texture2D" uid="uid://dmv03o8122wwa" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis000_06.png" id="24_2spq0"]
+[ext_resource type="Texture2D" uid="uid://xm6a0u3ijvyg" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis000_07.png" id="25_e2f42"]
+[ext_resource type="Texture2D" uid="uid://cxatdqvpo3kik" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis001_00.png" id="26_2xotl"]
+[ext_resource type="Texture2D" uid="uid://cv8apuditulhs" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis001_01.png" id="27_oa428"]
+[ext_resource type="Texture2D" uid="uid://d3rmvehb7beok" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis001_02.png" id="28_3u2b0"]
+[ext_resource type="Texture2D" uid="uid://d0cn501po6ivp" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis001_03.png" id="29_dfxbg"]
+[ext_resource type="Texture2D" uid="uid://dl6ehyq8nvsq4" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis001_04.png" id="30_m8c68"]
+[ext_resource type="Texture2D" uid="uid://d10ieoccc67e7" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis002_00.png" id="31_x14tt"]
+[ext_resource type="Texture2D" uid="uid://b7n0xc7esd4qs" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis002_01.png" id="32_l3r8j"]
+[ext_resource type="Texture2D" uid="uid://dd2hl2xn12o0u" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis002_02.png" id="33_vagp2"]
+[ext_resource type="Texture2D" uid="uid://bqhyyw5ixw7by" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis002_03.png" id="34_ix85r"]
+[ext_resource type="Texture2D" uid="uid://dfocus6k12cni" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis002_04.png" id="35_3dmdt"]
+[ext_resource type="Texture2D" uid="uid://dfq4v12qk3rea" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis002_05.png" id="36_i1y40"]
+[ext_resource type="Texture2D" uid="uid://wuwbg40jd8s7" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis003_00.png" id="37_ra4hv"]
+[ext_resource type="Texture2D" uid="uid://cwwwj1cvsqy77" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis003_01.png" id="38_invr1"]
+[ext_resource type="Texture2D" uid="uid://blqj3kfxiso75" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis003_02.png" id="39_ku5uu"]
+[ext_resource type="Texture2D" uid="uid://b5qqaf61aa7v0" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis003_03.png" id="40_xrj8g"]
+[ext_resource type="Texture2D" uid="uid://icdom8wrb2qt" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis003_04.png" id="41_w4mqq"]
+[ext_resource type="Texture2D" uid="uid://dlaht14pnri37" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis003_05.png" id="42_fhsl8"]
+[ext_resource type="Texture2D" uid="uid://cs20unn5283us" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis100_00.png" id="43_cjatn"]
+[ext_resource type="Texture2D" uid="uid://q1t5bb4gg7i4" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis100_01.png" id="44_c400q"]
+[ext_resource type="Texture2D" uid="uid://cpurt3cm4p5lv" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis100_02.png" id="45_ptxep"]
+[ext_resource type="Texture2D" uid="uid://42e787wk4k7b" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis100_03.png" id="46_jms4v"]
+[ext_resource type="Texture2D" uid="uid://cewratu3amoca" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis101_00.png" id="47_wej4c"]
+[ext_resource type="Texture2D" uid="uid://b6q6doyndi6ot" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis101_01.png" id="48_38dl5"]
+[ext_resource type="Texture2D" uid="uid://cmt7a6a6uimkp" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis101_02.png" id="49_trnv8"]
+[ext_resource type="Texture2D" uid="uid://bu7pvtypmiflj" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis101_03.png" id="50_pnntv"]
+[ext_resource type="Texture2D" uid="uid://bq73gh3jalt7s" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis102_00.png" id="51_gyrl6"]
+[ext_resource type="Texture2D" uid="uid://b6lb0xcdfbsbh" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis102_01.png" id="52_4svwr"]
+[ext_resource type="Texture2D" uid="uid://68o5sfxfc6p0" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis102_02.png" id="53_xv7yt"]
+[ext_resource type="Texture2D" uid="uid://vhtmb0n42hgl" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis102_03.png" id="54_orhof"]
+[ext_resource type="Texture2D" uid="uid://cekq386716ykf" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis102_04.png" id="55_ukjsw"]
+[ext_resource type="Texture2D" uid="uid://b6r40bti1bq2q" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis103_00.png" id="56_tmmuv"]
+[ext_resource type="Texture2D" uid="uid://d2ift86f7oydw" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis103_01.png" id="57_3ecvl"]
+[ext_resource type="Texture2D" uid="uid://b5mo6vfmk1gv" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis103_02.png" id="58_veexc"]
+[ext_resource type="Texture2D" uid="uid://cevn8r0cwf6kj" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis103_03.png" id="59_ks2s6"]
+[ext_resource type="Texture2D" uid="uid://dujnr1py240q2" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis103_04.png" id="60_4qcbm"]
+[ext_resource type="Texture2D" uid="uid://cakx4mqlc33r3" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis103_05.png" id="61_xfurq"]
+[ext_resource type="Texture2D" uid="uid://c2y4tf3ofoefd" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis103_06.png" id="62_lhaci"]
+[ext_resource type="Texture2D" uid="uid://dk0boew68yr77" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis300_06.png" id="63_y2wps"]
+[ext_resource type="Texture2D" uid="uid://d16s4wyt6ovpi" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis300_07.png" id="64_ctlwx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5v06v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_7udl6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_77bfj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_nbc8t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_7o6qs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_n1b8j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_uxt5q")
+}],
+"loop": true,
+"name": &"Attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_1isy0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_vq3aa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_vj11y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_3adpn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_8fb2l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_atij8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_jbe5m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_b1i7o")
+}],
+"loop": true,
+"name": &"D",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_mt4ii")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_g7gac")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_7iepl")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_2kk12")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_kvure")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_26h7w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_kcyer")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_smqev")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_icdju")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_2spq0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_e2f42")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("26_2xotl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_oa428")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_3u2b0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_dfxbg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_m8c68")
+}],
+"loop": true,
+"name": &"new_animation_1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("31_x14tt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_l3r8j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_vagp2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_ix85r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_3dmdt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_i1y40")
+}],
+"loop": false,
+"name": &"new_animation_2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("37_ra4hv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_invr1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_ku5uu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_xrj8g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_w4mqq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_fhsl8")
+}],
+"loop": true,
+"name": &"new_animation_3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("43_cjatn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_c400q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_ptxep")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_jms4v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_wej4c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_38dl5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_trnv8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_pnntv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_gyrl6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_4svwr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_xv7yt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_orhof")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_ukjsw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_tmmuv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_3ecvl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_veexc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_ks2s6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_4qcbm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_xfurq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_lhaci")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_7udl6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_77bfj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_nbc8t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_7o6qs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_n1b8j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_uxt5q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_y2wps")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_ctlwx")
+}],
+"loop": true,
+"name": &"new_animation_4",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_5wwxt"]
+resource_name = "attack"
+length = 0.65
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"Attack", &"Attack"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0, 2, 5]
+}
+
+[sub_resource type="Animation" id="Animation_7udl6"]
+resource_name = "cast"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"new_animation_2", &"new_animation_2"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.9),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -190)]
+}
+
+[sub_resource type="Animation" id="Animation_fxojd"]
+resource_name = "die"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"D", &"D"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 7]
+}
+
+[sub_resource type="Animation" id="Animation_5s4kc"]
+resource_name = "hurt"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"hurt", &"hurt"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.26666668),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.26666668),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-10, -190), Vector2(0, -190)]
+}
+
+[sub_resource type="Animation" id="Animation_6euom"]
+resource_name = "idle"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"idle", &"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -190), Vector2(0, -190)]
+}
+
+[sub_resource type="Animation" id="Animation_77bfj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pdby6"]
+_data = {
+&"RESET": SubResource("Animation_77bfj"),
+&"attack": SubResource("Animation_5wwxt"),
+&"cast": SubResource("Animation_7udl6"),
+&"die": SubResource("Animation_fxojd"),
+&"hurt": SubResource("Animation_5s4kc"),
+&"idle": SubResource("Animation_6euom")
+}
+
+[node name="Railgun" type="Node2D"]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visuals"]
+position = Vector2(0, -190)
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_5v06v")
+animation = &"idle"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Visuals"]
+libraries = {
+&"": SubResource("AnimationLibrary_pdby6")
+}
+autoplay = "idle"
+playback_default_blend_time = 0.1
+next/idle = &"idle"
+next/attack = &"idle"
+next/cast = &"idle"
+next/hurt = &"idle"
+blend_times = [&"cast", &"idle", 1.0]
+
+[node name="Bounds" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -100.0
+offset_top = -280.0
+offset_right = 100.0
+mouse_filter = 2
+
+[node name="CenterPos" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(3, -181)
+
+[node name="IntentPos" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-2, -362)

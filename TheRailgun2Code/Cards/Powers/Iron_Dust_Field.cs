@@ -5,7 +5,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Models.Powers;
 
-namespace TheRailgun2.TheRailgun2Code.Cards.Powers;
+namespace TheRailgun2.TheRailgun2Code.Cards;
 
 public class IronDustField() : TheRailgun2Card(1,
     CardType.Power, CardRarity.Uncommon,

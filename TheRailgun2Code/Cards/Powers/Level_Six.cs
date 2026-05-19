@@ -11,7 +11,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using TheRailgun2.TheRailgun2Code.Powers;
 
-namespace TheRailgun2.TheRailgun2Code.Cards.Powers;
+namespace TheRailgun2.TheRailgun2Code.Cards;
 
 public class LevelSix() : TheRailgun2Card(4,
     CardType.Power, CardRarity.Ancient,

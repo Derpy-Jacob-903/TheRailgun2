@@ -19,7 +19,7 @@ using TheRailgun2.TheRailgun2Code.Powers;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
-public class VoltaicRailgun() : TheRailgun2Card(1,
+public class VoltaicRailgun() : TheRailgun2Card(3,
     CardType.Skill, CardRarity.Rare,
     TargetType.Self)
 {
