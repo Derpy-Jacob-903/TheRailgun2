@@ -35,10 +35,11 @@ public class OverloadPower : TheRailgun2Power
         modifiedCost = Math.Min(0, originalCost - Amount);
         return true;
     }
-    public override async Task AfterTurnEndLate(PlayerChoiceContext choiceContext, CombatSide side)
+    public override async Task AfterSideTurnEnd(
+        PlayerChoiceContext choiceContext,
+        CombatSide side,
+        IEnumerable<Creature> participants)
     {
-        if (side != Owner.Side)
-            return;
         IEnumerable<DamageResult> damageResults = await CreatureCmd.Damage(choiceContext, Owner, (Decimal) Amount * 5, ValueProp.Unpowered, Owner, (CardModel) null);
         VfxCmd.PlayOnCreatureCenter(Owner, "vfx/vfx_attack_blunt");
     }

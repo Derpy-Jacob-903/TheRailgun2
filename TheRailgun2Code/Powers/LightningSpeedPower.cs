@@ -21,10 +21,13 @@ public class LightningSpeedPower : TheRailgun2Power
         return 1.25M;
     }
 
-    public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
-    {
-        if (side != CombatSide.Enemy)
-            return;
+    public override async Task AfterSideTurnEnd(
+            PlayerChoiceContext choiceContext,
+            CombatSide side,
+            IEnumerable<Creature> participants)
+        {
+            if (side != Owner.Side)
+                return;
         await PowerCmd.TickDownDuration(this);
     }
     public override PowerType Type => PowerType.Buff;

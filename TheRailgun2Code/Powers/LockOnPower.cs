@@ -28,9 +28,12 @@ public class LockOnPower : TheRailgun2Power
         Decimal amount1 = this.DynamicVars["DamageIncrease"].BaseValue;
         return amount1;
     }
-    public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
+    public override async Task AfterSideTurnEnd(
+        PlayerChoiceContext choiceContext,
+        CombatSide side,
+        IEnumerable<Creature> participants)
     {
-        if (side != CombatSide.Enemy)
+        if (side != Owner.Side)
             return;
         await PowerCmd.TickDownDuration(this);
     }

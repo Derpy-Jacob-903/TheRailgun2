@@ -1,6 +1,7 @@
 ﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -24,7 +25,10 @@ public class CoinRelic2() : TheRailgun2Relic
         new EnergyVar("Energy2", 5)
     ];
 
-    public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
+    public override async Task AfterSideTurnEnd(
+        PlayerChoiceContext choiceContext,
+        CombatSide side,
+        IEnumerable<Creature> participants)
     {
         if (Owner.PlayerCombatState != null )
             for (int i = 0; i < Math.Min(Owner.PlayerCombatState.Energy, DynamicVars["Energy2"].BaseValue) + 1; i++)

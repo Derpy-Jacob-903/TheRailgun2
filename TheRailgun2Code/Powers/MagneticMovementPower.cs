@@ -23,9 +23,12 @@ public class MagneticMovementPower : TheRailgun2Power
         return this.Owner != target || !props.IsPoweredCardOrMonsterMoveBlock() ? 1M : 1.25M;
     }
 
-    public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
+    public override async Task AfterSideTurnEnd(
+        PlayerChoiceContext choiceContext,
+        CombatSide side,
+        IEnumerable<Creature> participants)
     {
-        if (side != CombatSide.Enemy)
+        if (side != Owner.Side)
             return;
         await PowerCmd.TickDownDuration(this);
     }
