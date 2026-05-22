@@ -31,7 +31,7 @@ public class ElectricFencePower : TheRailgun2Power
         CombatSide side,
         IEnumerable<Creature> participants)
     {
-        if (side != Owner.Side)
+        if (Owner.Side == side)
             return;
         await PowerCmd.Remove(this);
     }

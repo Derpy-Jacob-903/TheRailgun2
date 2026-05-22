@@ -28,5 +28,5 @@ public class Zip() : TheRailgun2Card(1,
         }
     }
 
-    protected override void OnUpgrade() => this.DynamicVars.Repeat.UpgradeValueBy(1M);
+    protected override void OnUpgrade() => this.DynamicVars.Block.UpgradeValueBy(3M);
 }

@@ -28,6 +28,10 @@ public class ZapRailgun() : TheRailgun2Card(0,
             await OrbCmd.Channel<LightningOrb>(choiceContext, Owner);
         }
     }
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
+        CardKeyword.Exhaust
+    ];
 
     protected override void OnUpgrade() => this.DynamicVars.Repeat.UpgradeValueBy(1M);
     //public CardModel GetTranscendenceTransformedCard() => ModelDb.Card<Fulminate>();

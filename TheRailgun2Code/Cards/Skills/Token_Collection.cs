@@ -22,7 +22,10 @@ public class TokenCollection() : TheRailgun2Card(1,
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        CardSelectorPrefs prefs = new CardSelectorPrefs(SelectionScreenPrompt, 1);
+        int maxCount = Math.Min(DynamicVars.Cards.IntValue, CardPile.MaxCardsInHand - PileType.Hand.GetPile(Owner).Cards.Count);
+        if (maxCount <= 0)
+            return;
+        CardSelectorPrefs prefs = new CardSelectorPrefs(SelectionScreenPrompt, 0, maxCount);
         CardModel card = (await CardSelectCmd.FromSimpleGrid(choiceContext, PileType.Discard.GetPile(Owner).Cards, Owner, prefs)).FirstOrDefault();
         if (card == null)
             return;
