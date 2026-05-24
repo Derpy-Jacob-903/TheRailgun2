@@ -16,18 +16,11 @@ public class LockOnPower : TheRailgun2Power
     protected override IEnumerable<DynamicVar> CanonicalVars =>
         [new DynamicVar("DamageIncrease", 1.5M)];
 
-    public override Decimal ModifyDamageMultiplicative(
-        Creature? target,
-        Decimal amount,
-        ValueProp props,
-        Creature? dealer,
-        CardModel? cardSource)
+    /*public override Decimal ModifyOrbValue(OrbModel orb, Decimal value)
     {
-        if (target != this.Owner || !props.IsPoweredAttack())
-            return 1M;
-        Decimal amount1 = this.DynamicVars["DamageIncrease"].BaseValue;
-        return amount1;
-    }
+        if (orb is FrostOrb) return value;
+        return this.Owner.Player != orb.Owner ? value : Math.Max(value * DynamicVars["DamageIncrease"].BaseValue, 0M);
+    }*/
     public override async Task AfterSideTurnEnd(
         PlayerChoiceContext choiceContext,
         CombatSide side,

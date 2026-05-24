@@ -18,7 +18,7 @@ public class NeedlePotion : TheRailgun2Potion
     public override TargetType TargetType => TargetType.Self;
     public override string CustomPackedOutlinePath => ImageHelper.GetImagePath($"atlases/potion_outline_atlas.sprites/star_potion.tres");
     public override string CustomPackedImagePath => ImageHelper.GetImagePath($"atlases/potion_atlas.sprites/star_potion.tres");
-    protected override IEnumerable<DynamicVar> CanonicalVars => [ new CardsVar(3) ];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [ new CardsVar(2) ];
     protected override async Task OnUse(PlayerChoiceContext choiceContext, Creature target)
     {
         foreach (CardModel card in await Needle.CreateInHand(Owner, DynamicVars.Cards.IntValue, Owner.Creature.CombatState))

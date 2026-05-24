@@ -27,20 +27,29 @@ public class OverloadPower : TheRailgun2Power
         new DisplayVar<PowerModel>("HpLoss", (model) => (model.Amount * 5).ToString())
     ];
 
-    public override bool TryModifyEnergyCostInCombat(CardModel card, decimal originalCost, out decimal modifiedCost)
+    public override bool TryModifyEnergyCostInCombat(
+        CardModel card,
+        Decimal originalCost,
+        out Decimal modifiedCost)
     {
         modifiedCost = originalCost;
-        if (card.Owner.Creature != this.Owner)
+        if (card.Owner.Creature != this.Owner || originalCost <= 0M)
             return false;
-        modifiedCost = Math.Min(0, originalCost - Amount);
+        modifiedCost = originalCost - Amount;
+        if (modifiedCost < 0M)
+            modifiedCost = 0M;
         return true;
     }
+    
     public override async Task AfterSideTurnEnd(
         PlayerChoiceContext choiceContext,
         CombatSide side,
         IEnumerable<Creature> participants)
     {
-        IEnumerable<DamageResult> damageResults = await CreatureCmd.Damage(choiceContext, Owner, (Decimal) Amount * 5, ValueProp.Unpowered, Owner, (CardModel) null);
-        VfxCmd.PlayOnCreatureCenter(Owner, "vfx/vfx_attack_blunt");
+        if (!participants.Contains<Creature>(Owner))
+            return;
+            //hailstormPower.Flash();
+            IEnumerable<DamageResult> damageResults = await CreatureCmd.Damage(choiceContext, Owner, (Decimal) Amount * 5, ValueProp.Unpowered, Owner, (CardModel) null);
+            VfxCmd.PlayOnCreatureCenter(Owner, "vfx/vfx_attack_blunt");
     }
 }
