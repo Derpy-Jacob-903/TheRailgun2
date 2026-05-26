@@ -22,13 +22,14 @@ public class PositiveField() : TheRailgun2Card(1,
     ];
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<DexterityPower>(1)
+        new PowerVar<DexterityPower>(1),
+        new CardsVar(1)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CommonActions.ApplySelf<DexterityPower>(choiceContext, this);
-        CardModel card = (await CardSelectCmd.FromHandForDiscard(choiceContext, Owner, new CardSelectorPrefs(CardSelectorPrefs.DiscardSelectionPrompt, 1), null, this)).FirstOrDefault();
+        CardModel card = (await CardSelectCmd.FromHandForDiscard(choiceContext, Owner, new CardSelectorPrefs(CardSelectorPrefs.DiscardSelectionPrompt, DynamicVars.Cards.IntValue), null, this)).FirstOrDefault();
         if (card == null)
             return;
         await CardCmd.Discard(choiceContext, card);
