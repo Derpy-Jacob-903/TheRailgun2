@@ -14,8 +14,8 @@ using TheRailgun2.TheRailgun2Code.Character;
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
 public class Electrokinesis() : TheRailgun2Card(0,
-    CardType.Skill, CardRarity.Uncommon,
-    TargetType.Self)
+    CardType.Attack, CardRarity.Uncommon,
+    TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
@@ -36,7 +36,7 @@ public class Electrokinesis() : TheRailgun2Card(0,
     
     public override bool ShouldPlay(CardModel card, AutoPlayType autoPlayType)
     {
-        if (card is ParticleWallRailgun && autoPlayType == AutoPlayType.None &&
+        if (card is Electrokinesis && autoPlayType == AutoPlayType.None &&
             card.Owner.PlayerCombatState != null &&
             !card.Owner.PlayerCombatState.OrbQueue.Orbs.Any(c => c is LightningOrb))
             return false;

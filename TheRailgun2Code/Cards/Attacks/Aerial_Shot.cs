@@ -27,31 +27,17 @@ public class AerialShot() : TheRailgun2Card(1,
             .WithHitFx("vfx/vfx_attack_slash").Execute(choiceContext);
     }
     
-    public override bool TryModifyEnergyCostInCombatLate(
+    public override bool TryModifyEnergyCostInCombat(
         CardModel card,
         Decimal originalCost,
         out Decimal modifiedCost)
     {
         modifiedCost = originalCost;
-        if (card.Owner != Owner || card is not AerialShot || !Owner.HasPower<MagneticFlightPower>() || !Owner.HasPower<MagneticMovementPower>())
+        if (card.Owner.Creature != this.Owner.Creature || card is not AerialShot || (!Owner.HasPower<MagneticFlightPower>() && !Owner.HasPower<MagneticMovementPower>()) || originalCost <= 0M)
             return false;
-        PileType? type = card.Pile?.Type;
-        bool flag;
-        if (type.HasValue)
-        {
-            switch (type.GetValueOrDefault())
-            {
-                case PileType.Hand:
-                case PileType.Play:
-                    flag = true;
-                    goto label_6;
-            }
-        }
-        flag = false;
-        label_6:
-        if (!flag)
-            return false;
-        modifiedCost = 0M;
+        modifiedCost = 0;
+        if (modifiedCost < 0M)
+            modifiedCost = 0M;
         return true;
     }
 

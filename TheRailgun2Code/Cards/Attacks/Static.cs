@@ -9,7 +9,7 @@ namespace TheRailgun2.TheRailgun2Code.Cards;
 
 public class Static() : TheRailgun2Card(1,
     CardType.Attack, CardRarity.Common,
-    TargetType.AnyEnemy)
+    TargetType.AllEnemies)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [

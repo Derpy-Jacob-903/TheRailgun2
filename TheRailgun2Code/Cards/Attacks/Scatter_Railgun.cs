@@ -10,7 +10,7 @@ namespace TheRailgun2.TheRailgun2Code.Cards;
 
 public class ScatterRailgun() : TheRailgun2Card(2,
     CardType.Attack, CardRarity.Uncommon,
-    TargetType.AnyEnemy)
+    TargetType.AllEnemies)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [

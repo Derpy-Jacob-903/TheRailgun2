@@ -75,7 +75,7 @@
             <Private>false</Private>
         </Reference>
 
-        <PackageReference Include="Alchyr.Sts2.BaseLib" Version="3.1.4" PrivateAssets="All" />
+        <PackageReference Include="Alchyr.Sts2.BaseLib" Version="3.1.8" PrivateAssets="All" />
         <PackageReference Include="Alchyr.Sts2.ModAnalyzers" Version="0.1.9" />
         <AdditionalFiles Include="TheRailgun2/localization/**/*.json"/>
     </ItemGroup>
@@ -104,12 +104,12 @@
         <None Include="TheRailgun2Code\Cards\Skills\Burning_Pact_Ahh_Card.cs" />
         <Compile Remove="TheRailgun2Code\Relics\DataDisk.cs" />
         <None Include="TheRailgun2Code\Relics\DataDisk.cs" />
-        <Compile Remove="TheRailgun2Code\Potions\NeedlePotion.cs" />
-        <None Include="TheRailgun2Code\Potions\NeedlePotion.cs" />
         <Compile Remove="TheRailgun2Code\Cards\Attacks\Discharge.cs" />
         <None Include="TheRailgun2Code\Cards\Attacks\Discharge.cs" />
         <Compile Remove="TheRailgun2Code\Cards\Archaic_Tooth_Card.cs" />
         <None Include="TheRailgun2Code\Cards\Archaic_Tooth_Card.cs" />
+        <Compile Remove="TheRailgun2Code\Cards\Attacks\Overclock.cs" />
+        <None Include="TheRailgun2Code\Cards\Attacks\Overclock.cs" />
     </ItemGroup>
 
     <ItemGroup>

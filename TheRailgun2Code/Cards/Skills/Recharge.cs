@@ -22,12 +22,13 @@ public class Recharge() : TheRailgun2Card(1,
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
+        new CardsVar(1),
         new EnergyVar(2)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        CardModel card = (await CardSelectCmd.FromHandForDiscard(choiceContext, Owner, new CardSelectorPrefs(CardSelectorPrefs.DiscardSelectionPrompt, 1), null, this)).FirstOrDefault<CardModel>();
+        CardModel card = (await CardSelectCmd.FromHandForDiscard(choiceContext, Owner, new CardSelectorPrefs(CardSelectorPrefs.DiscardSelectionPrompt, DynamicVars.Cards.IntValue), null, this)).FirstOrDefault<CardModel>();
         if (card == null)
             return;
         await CardCmd.Discard(choiceContext, card);

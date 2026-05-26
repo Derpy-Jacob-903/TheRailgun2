@@ -18,10 +18,13 @@ public class Thundershock() : TheRailgun2Card(2,
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await CreatureCmd.LoseBlock(cardPlay.Target, cardPlay.Target.Block);
-        await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(this).Targeting(cardPlay.Target)
-            .WithHitFx("vfx/vfx_attack_lightning").Execute(choiceContext);
+        if (cardPlay.Target != null)
+        {
+            await CreatureCmd.LoseBlock(cardPlay.Target, cardPlay.Target.Block);
+            await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
+                .FromCard(this).Targeting(cardPlay.Target)
+                .WithHitFx("vfx/vfx_attack_lightning").Execute(choiceContext);
+        }
     }
 
     protected override void OnUpgrade() => this.DynamicVars.Damage.UpgradeValueBy(5M);

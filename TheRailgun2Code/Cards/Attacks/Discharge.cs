@@ -13,7 +13,7 @@ namespace TheRailgun2.TheRailgun2Code.Cards;
 
 public class Discharge() : TheRailgun2Card(1,
     CardType.Attack, CardRarity.Common,
-    TargetType.AnyEnemy)//, ITranscendenceCard
+    TargetType.Self)//, ITranscendenceCard
 {
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
@@ -33,5 +33,5 @@ public class Discharge() : TheRailgun2Card(1,
     }
 
     protected override void OnUpgrade() => this.DynamicVars.Damage.UpgradeValueBy(3M);
-    public CardModel GetTranscendenceTransformedCard() => ModelDb.Card<Fulminate2>();
+    //public CardModel GetTranscendenceTransformedCard() => ModelDb.Card<Fulminate2>();
 }
