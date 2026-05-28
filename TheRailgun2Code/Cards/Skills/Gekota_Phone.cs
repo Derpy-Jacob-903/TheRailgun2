@@ -22,6 +22,8 @@ public class GekotaPhone() : TheRailgun2Card(1,
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
+        IEnumerable<CardModel> cardModels = await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, Owner);
         CardSelectorPrefs prefs = new CardSelectorPrefs(CardSelectorPrefs.ExhaustSelectionPrompt, DynamicVars["Exhaust"].IntValue);
         var cards = (await CardSelectCmd.FromHand(choiceContext, Owner, prefs, (Func<CardModel, bool>)null, this));//.FirstOrDefault<CardModel>();
         foreach (var card in cards)
@@ -29,8 +31,6 @@ public class GekotaPhone() : TheRailgun2Card(1,
             if (card != null)
                 await CardCmd.Exhaust(choiceContext, card);
         }
-        await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-        IEnumerable<CardModel> cardModels = await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, Owner);
     }
 
     protected override void OnUpgrade()
