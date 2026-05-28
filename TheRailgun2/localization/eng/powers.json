@@ -20,9 +20,9 @@
   "THERAILGUN2-OVERLOAD_POWER.title": "Overload",
   "THERAILGUN2-OVERLOAD_POWER.description": "Cards cost [blue]1[/blue] {energyPrefix:energyIcons(1)} less.\nAt the end of your turn, take [blue]5[/blue] damage.",
   "THERAILGUN2-OVERLOAD_POWER.smartDescription": "Cards cost [blue]{Amount}[/blue] {energyPrefix:energyIcons(1)} less.\nAt the end of your turn, take [blue]{HpLoss}[/blue] damage.",
-  "THERAILGUN2-LEVEL_SIX_POWER.title": "",
-  "THERAILGUN2-LEVEL_SIX_POWER.description": "",
-  "THERAILGUN2-LEVEL_SIX_POWER.smartDescription": "",
+  "THERAILGUN2-LEVEL_SIX_POWER.title": "Level 6",
+  "THERAILGUN2-LEVEL_SIX_POWER.description": "Whenever you [gold]Evoke[/gold], lose 3 HP.",
+  "THERAILGUN2-LEVEL_SIX_POWER.smartDescription": "Whenever you [gold]Evoke[/gold], lose {Amount} HP.",
   "THERAILGUN2-DEXTERITY_DOWN_POWER.title": "",
   "THERAILGUN2-DEXTERITY_DOWN_POWER.description": "",
   "THERAILGUN2-DEXTERITY_DOWN_POWER.smartDescription": "",
@@ -34,5 +34,8 @@
   "THERAILGUN2-LOCK_ON_POWER.smartDescription": "Receives [blue]50%[/blue] more damage from [gold]Lightning[/gold] Orbs for X turns.",
   "THERAILGUN2-TEMPORARY_THORNS_POWER.title": "Thorns Down",
   "THERAILGUN2-TEMPORARY_THORNS_POWER.description": "Gain [gold]Thorns[/gold] until the end of this turn.",
-  "THERAILGUN2-TEMPORARY_THORNS_POWER.smartDescription": "Gain [blue]{Amount}[/blue] [gold]Thorns[/gold] until the end of this turn."
+  "THERAILGUN2-TEMPORARY_THORNS_POWER.smartDescription": "Gain [blue]{Amount}[/blue] [gold]Thorns[/gold] until the end of this turn.",
+  "THERAILGUN2-FERROUS_POTION_POWER.title": "Ferrous Potion",
+  "THERAILGUN2-FERROUS_POTION_POWER.description": "Cards containing [gold]Iron[/gold] or [gold]Magnetic[/gold] cost 1 {energyPrefix:energyIcons(1)} less.",
+  "THERAILGUN2-FERROUS_POTION_POWER.smartDescription": "Cards containing [gold]Iron[/gold] or [gold]Magnetic[/gold] cost {Amount} {energyPrefix:energyIcons(1)} less."
 }

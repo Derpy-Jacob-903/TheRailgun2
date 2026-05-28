@@ -25,7 +25,7 @@ public class LevelSixPower : TheRailgun2Power
     {
         if (orb.Owner.Creature != Owner)
             return;
-        IEnumerable<DamageResult> damageResults = await CreatureCmd.Damage(choiceContext, Owner, (Decimal) Amount * 5, ValueProp.Unpowered, Owner, (CardModel) null);
+        IEnumerable<DamageResult> damageResults = await CreatureCmd.Damage(choiceContext, Owner, (Decimal) Amount, ValueProp.Unpowered & ValueProp.Unblockable, Owner, (CardModel) null);
         VfxCmd.PlayOnCreatureCenter(Owner, "vfx/vfx_attack_blunt");
     }
 }

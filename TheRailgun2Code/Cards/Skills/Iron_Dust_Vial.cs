@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
+using TheRailgun2.TheRailgun2Code.Character;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
@@ -18,7 +19,7 @@ public class IronDustVial() : TheRailgun2Card(1,
     [
         new CardsVar(2)
     ];
-
+    protected override HashSet<CardTag> CanonicalTags => [EchoOrb.Ferrous];
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);

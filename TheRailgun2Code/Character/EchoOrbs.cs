@@ -1,8 +1,10 @@
-﻿using Godot;
+﻿using BaseLib.Patches.Content;
+using Godot;
 using MegaCrit.Sts2.Core.Assets;
 using MegaCrit.Sts2.Core.Bindings.MegaSpine;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Orbs;
 using MegaCrit.Sts2.Core.Entities.Players;
@@ -143,4 +145,6 @@ public static class EchoOrb
             return;
         evokedOrb.RemoveInternal();
     }
+    [CustomEnum]
+    public static CardTag Ferrous;
 }

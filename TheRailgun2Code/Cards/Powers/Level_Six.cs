@@ -34,7 +34,7 @@ public class LevelSix() : TheRailgun2Card(4,
         }
         //await CreatureCmd.Damage(context, Owner.Creature, DynamicVars.HpLoss.BaseValue, ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move,  this);
         //await PlayerCmd.GainEnergy(DynamicVars["Power"].BaseValue, Owner);
-        //await PowerCmd.Apply<StrengthPower>(context, Owner.Creature, DynamicVars["StrengthPower"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<StrengthPower>(context, Owner.Creature, DynamicVars["StrengthPower"].BaseValue, Owner.Creature, this);
         await PowerCmd.Apply<FocusPower>(context, Owner.Creature, DynamicVars["FocusPower"].BaseValue, Owner.Creature, this);
         await PowerCmd.Apply<LevelSixPower>(context, Owner.Creature, DynamicVars.HpLoss.BaseValue, Owner.Creature, this);
     }

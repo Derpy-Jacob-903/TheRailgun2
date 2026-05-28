@@ -16,18 +16,18 @@ public class LightningSpeedPower : TheRailgun2Power
     public override decimal ModifyDamageMultiplicative(Creature target, decimal amount, ValueProp props, Creature dealer,
         CardModel cardSource)
     {
-        if (target != this.Owner || !props.IsPoweredAttack())
+        if (dealer != this.Owner || !props.IsPoweredAttack())
             return 1M;
         return 1.25M;
     }
-
+    
     public override async Task AfterSideTurnEnd(
             PlayerChoiceContext choiceContext,
             CombatSide side,
             IEnumerable<Creature> participants)
-        {
-            if (side != Owner.Side)
-                return;
+    {
+        if (side != Owner.Side)
+            return;
         await PowerCmd.TickDownDuration(this);
     }
     public override PowerType Type => PowerType.Buff;

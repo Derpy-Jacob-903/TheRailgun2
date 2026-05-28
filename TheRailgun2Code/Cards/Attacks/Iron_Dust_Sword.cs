@@ -4,6 +4,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.ValueProps;
+using TheRailgun2.TheRailgun2Code.Character;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
@@ -16,6 +17,8 @@ public class IronDustSword() : TheRailgun2Card(2,
         new DamageVar(3M, ValueProp.Move),
         new RepeatVar(5)
     ];
+    
+    protected override HashSet<CardTag> CanonicalTags => [EchoOrb.Ferrous];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {

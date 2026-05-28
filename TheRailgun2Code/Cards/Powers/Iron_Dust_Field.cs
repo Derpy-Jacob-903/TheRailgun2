@@ -4,6 +4,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Models.Powers;
+using TheRailgun2.TheRailgun2Code.Character;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
@@ -16,6 +17,9 @@ public class IronDustField() : TheRailgun2Card(1,
         new PowerVar<PlatingPower>(3),
         new PowerVar<ThornsPower>(0)
     ];
+
+    protected override HashSet<CardTag> CanonicalTags => [EchoOrb.Ferrous];
+
     protected override async Task OnPlay(
         PlayerChoiceContext context,
         CardPlay play)

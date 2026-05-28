@@ -13,7 +13,7 @@ public class TheRailgun2CardPool : CustomCardPoolModel
     They are applied as a shader onto an already colored image,
     so it may take some experimentation to find a color you like.
     Generally they should be values between 0 and 1. */
-    public override float H => 0.5f; //Hue; changes the color.
+    public override float H => 0.48f; //Hue; changes the color.
     public override float S => 5f; //Saturation
     public override float V => 1f; //Brightness
 

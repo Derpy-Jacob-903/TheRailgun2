@@ -1,4 +1,5 @@
-﻿using BaseLib.Cards.Variables;
+﻿using System.Globalization;
+using BaseLib.Cards.Variables;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -16,7 +17,8 @@ public class Overload() : TheRailgun2Card(3,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new PowerVar<OverloadPower>(1),
-        new DisplayVar<Overload>("HpLoss", (model) => (model.DynamicVars["OverloadPower"].IntValue * 5).ToString())
+        new DynamicVar("HpLoss2", 5)
+        //new DisplayVar<Overload>("HpLoss2", (model) => (model.DynamicVars["OverloadPower"].BaseValue * 5).ToString())
     ];
     protected override async Task OnPlay(
         PlayerChoiceContext context,
