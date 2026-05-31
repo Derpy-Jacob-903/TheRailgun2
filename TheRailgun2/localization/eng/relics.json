@@ -1,8 +1,20 @@
 {
   "THERAILGUN2-COIN_RELIC.title": "Collector's Coin",
-  "THERAILGUN2-COIN_RELIC.description": "If you end your turn with unspent {energyPrefix:energyIcons(1)}, [gold]Channel[/gold] [blue]{Lightning}[/blue] [gold]Lightning[/gold] for each {energyPrefix:energyIcons(1)} unspent, up to {Energy:diff()} times.",
+  "THERAILGUN2-COIN_RELIC.description": "If you end your turn with unspent {energyPrefix:energyIcons(1)}, [gold]Channel[/gold] [blue]{Lightning}[/blue] [gold]Lightning[/gold] for each {energyPrefix:energyIcons(1)} unspent, up to {Repeat:diff()} times.",
   "THERAILGUN2-COIN_RELIC.flavor": "A coin from an arcade.",
-  "THERAILGUN2-COIN_RELIC2.title": "Collector's Coin",
-  "THERAILGUN2-COIN_RELIC2.description": "Gain {Energy:energyIcons()} at the start of each turn. If you end your turn with unspent, lose ALL {energyPrefix:energyIcons(1)} and [gold]Channel[/gold] [blue]{Lightning}[/blue] [gold]Lightning[/gold] for each {energyPrefix:energyIcons(1)} lost, up to {Energy:diff()} times.",
-  "THERAILGUN2-COIN_RELIC2.flavor": "A coin from an arcade."
+  "THERAILGUN2-COIN_RELIC2.title": "Collector's Coin Pro",
+  "THERAILGUN2-COIN_RELIC2.description": "Gain {Energy:energyIcons()} at the start of each turn.\nIf you end your turn with unspent {energyPrefix:energyIcons(1)}, [gold]Channel[/gold] [blue]{Lightning}[/blue] [gold]Lightning[/gold] for each {energyPrefix:energyIcons(1)} unspent, up to {Repeat:diff()} times.",
+  "THERAILGUN2-COIN_RELIC2.flavor": "A coin from an arcade.",
+  "THERAILGUN2-DATA_DISK_RAILGUN.title": "Lock-On Marbles",
+  "THERAILGUN2-DATA_DISK_RAILGUN.description": "At the start of each combat, apply [blue]{VulnerablePower}[/blue] [gold]Vulnerable[/gold] to ALL enemies.",
+  "THERAILGUN2-DATA_DISK_RAILGUN.flavor": "[red]Details for this relic will be revealed in the future...[/red]",
+  "THERAILGUN2-SPARE_CORE.title": "Spare Core",
+  "THERAILGUN2-SPARE_CORE.description": "At the start of each combat, [gold]Channel[/gold] [blue]{Repeat}[/blue] [gold]Lightning[/gold].",
+  "THERAILGUN2-SPARE_CORE.flavor": "The mysterious life force which powers the Automatons within the Spire. It appears to be cracked.",
+  "THERAILGUN2-LOCK_ON_PAPER_PHROG.title": "Lock-On Paper Phrog",
+  "THERAILGUN2-LOCK_ON_PAPER_PHROG.description": "Enemies with [gold]Lock-On[/gold] take [blue]75%[/blue] more damage rather than [blue]50%[/blue].",
+  "THERAILGUN2-LOCK_ON_PAPER_PHROG.flavor": "The paper continually folds and unfolds itself into the shape of frog!",
+  "THERAILGUN2-LOCK_ON_MARBLES.title": "Lock-On Marbles",
+  "THERAILGUN2-LOCK_ON_MARBLES.description": "At the start of each combat, apply [blue]{LockOnPower}[/blue] [gold]Lock-On[/gold] to ALL enemies.",
+  "THERAILGUN2-LOCK_ON_MARBLES.flavor": "[red]Details for this relic will be revealed in the future...[/red]"
 }

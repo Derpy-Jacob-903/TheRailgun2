@@ -21,6 +21,8 @@ public class Absorb() : TheRailgun2Card(1,
     [
         new PowerVar<StrengthPower>(1),
     ];
+    
+    
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {

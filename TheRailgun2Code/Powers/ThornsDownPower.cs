@@ -12,6 +12,7 @@ using TheRailgun2.TheRailgun2Code.Extensions;
 
 namespace TheRailgun2.TheRailgun2Code.Powers;
 
+[Obsolete("Should still work, but the Iron-Dust Shield rework was reverted, making this unused.")]
 public class TemporaryThornsPower : TheRailgun2Power, ITemporaryPower
 {
     private bool _shouldIgnoreNextInstance = false;

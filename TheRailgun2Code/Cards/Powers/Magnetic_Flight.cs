@@ -17,7 +17,7 @@ public class MagneticFlight() : TheRailgun2Card(1,
     [
         new PowerVar<MagneticFlightPower>(2)
     ];
-    protected override HashSet<CardTag> CanonicalTags => [EchoOrb.Ferrous];
+    protected override HashSet<CardTag> CanonicalTags => [Enums.Ferrous];
     protected override async Task OnPlay(
         PlayerChoiceContext context,
         CardPlay play)

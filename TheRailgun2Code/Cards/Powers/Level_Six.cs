@@ -2,6 +2,7 @@
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Models;
@@ -23,6 +24,12 @@ public class LevelSix() : TheRailgun2Card(4,
         new EnergyVar(3),
         new PowerVar<StrengthPower>(3),
         new PowerVar<FocusPower>(3),
+    ];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        HoverTipFactory.FromOrb<PlasmaOrb>(), 
+        HoverTipFactory.FromPower<StrengthPower>(),
+        HoverTipFactory.FromPower<FocusPower>()
     ];
     protected override async Task OnPlay(
         PlayerChoiceContext context,

@@ -9,6 +9,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Orbs;
 using MegaCrit.Sts2.Core.Models.Powers;
+using MegaCrit.Sts2.Core.Models.Relics;
 using TheRailgun2.TheRailgun2Code.Relics;
 
 namespace TheRailgun2.TheRailgun2Code.Relics;
@@ -21,7 +22,7 @@ public class CoinRelic() : TheRailgun2Relic
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DynamicVar("Lightning", 1M),
-        new EnergyVar(3)
+        new RepeatVar(3)
     ];
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
@@ -36,7 +37,7 @@ public class CoinRelic() : TheRailgun2Relic
         IEnumerable<Creature> participants)
     {
         if (Owner.PlayerCombatState != null && side == CombatSide.Player)
-            for (int i = 0; i < Math.Min(Owner.PlayerCombatState.Energy, DynamicVars.Energy.BaseValue); i++)
+            for (int i = 0; i < Math.Min(Owner.PlayerCombatState.Energy, DynamicVars.Repeat.BaseValue); i++)
             {
                 await OrbCmd.Channel<LightningOrb>(choiceContext, Owner);
             }

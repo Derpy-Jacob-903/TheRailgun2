@@ -12,6 +12,7 @@ using TheRailgun2.TheRailgun2Code.Extensions;
 
 namespace TheRailgun2.TheRailgun2Code.Powers;
 
+[Obsolete("Unimplemented as of 0.4.0")]
 public class FixatePower : TemporaryFocusPower, ICustomPower
 {
     public override PowerType Type => PowerType.Buff;

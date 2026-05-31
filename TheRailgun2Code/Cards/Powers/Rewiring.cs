@@ -1,4 +1,5 @@
-﻿using MegaCrit.Sts2.Core.Commands;
+﻿using BaseLib.Patches.Features;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -11,7 +12,7 @@ namespace TheRailgun2.TheRailgun2Code.Cards;
 
 public class Rewiring() : TheRailgun2Card(2,
     CardType.Power, CardRarity.Uncommon,
-    TargetType.AnyEnemy)
+    CustomTargetType.Anyone)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [

@@ -18,7 +18,7 @@ public class IronDustSword() : TheRailgun2Card(2,
         new RepeatVar(5)
     ];
     
-    protected override HashSet<CardTag> CanonicalTags => [EchoOrb.Ferrous];
+    protected override HashSet<CardTag> CanonicalTags => [Enums.Ferrous];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {

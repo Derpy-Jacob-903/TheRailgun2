@@ -27,6 +27,7 @@ public class DataDiskRailgun() : TheRailgun2Relic
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         HoverTipFactory.FromPower<FocusPower>()
+        Marbles
     ];
     public override async Task AfterRoomEntered(AbstractRoom room)
     {

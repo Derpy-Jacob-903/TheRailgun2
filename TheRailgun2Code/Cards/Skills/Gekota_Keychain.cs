@@ -24,7 +24,7 @@ public class GekotaKeychain() : TheRailgun2Card(1,
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         //Todo: Curse Tooltip like hermit
-        //HoverTipFactory.(StaticHoverTip.)
+        HoverTipFactory.FromKeyword(CardKeyword.Exhaust)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

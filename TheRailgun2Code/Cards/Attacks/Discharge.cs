@@ -7,11 +7,13 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
+using TheRailgun2.TheRailgun2Code.Powers;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
-public class Discharge() : TheRailgun2Card(1,
+public class DischargeOld() : TheRailgun2Card(1,
     CardType.Attack, CardRarity.Common,
     TargetType.Self)//, ITranscendenceCard
 {
@@ -22,7 +24,9 @@ public class Discharge() : TheRailgun2Card(1,
     ];
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.Static(StaticHoverTip.Evoke)
+        HoverTipFactory.Static(StaticHoverTip.Evoke),
+        HoverTipFactory.FromPower<DischargePower>(),
+        HoverTipFactory.FromPower<DexterityPower>()
     ];
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {

@@ -110,6 +110,10 @@
         <None Include="TheRailgun2Code\Cards\Archaic_Tooth_Card.cs" />
         <Compile Remove="TheRailgun2Code\Cards\Attacks\Overclock.cs" />
         <None Include="TheRailgun2Code\Cards\Attacks\Overclock.cs" />
+        <Compile Remove="TheRailgun2Code\Powers\RailgunStaticDischargePower.cs" />
+        <None Include="TheRailgun2Code\Powers\RailgunStaticDischargePower.cs" />
+        <Compile Remove="TheRailgun2Code\Cards\DeckboxDefend.cs" />
+        <None Include="TheRailgun2Code\Cards\DeckboxDefend.cs" />
     </ItemGroup>
 
     <ItemGroup>

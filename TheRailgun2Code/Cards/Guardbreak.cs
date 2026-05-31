@@ -1,22 +1,88 @@
-﻿using BaseLib.Patches.Content;
+﻿using System.Diagnostics;
+using System.Reflection;
+using BaseLib.Patches.Content;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Orbs;
 using MegaCrit.Sts2.Core.Nodes;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
-public class Enums
+public static class Enums
 {
     [CustomEnum] [KeywordProperties(AutoKeywordPosition.After)]
     public static CardKeyword Conduit;
     [CustomEnum] [KeywordProperties(AutoKeywordPosition.Before)]
     public static CardKeyword Guardbreak;
-    
+    [CustomEnum]
+    public static CardTag Ferrous;
+    [CustomEnum]
+    public static ValueProp Orb;
+    public static bool IsOrbCaller()
+    {
+	    return new StackTrace().GetFrames()?.Any(f =>
+	    {
+		    Type type = f.GetMethod()?.DeclaringType;
+
+		    if (type == null)
+			    return false;
+
+		    return typeof(OrbModel).IsAssignableFrom(type)
+		           || (type.DeclaringType != null &&
+		               typeof(OrbModel).IsAssignableFrom(type.DeclaringType));
+	    }) ?? false;
+    }
+}
+
+[HarmonyPatch(
+	typeof(CreatureCmd),
+	nameof(CreatureCmd.Damage),
+	new Type[]
+	{
+		typeof(PlayerChoiceContext),
+		typeof(IEnumerable<Creature>),
+		typeof(decimal),
+		typeof(ValueProp),
+		typeof(Creature)
+	})]
+public static class OrbDamagePatchMulti
+{
+	[HarmonyPrefix]
+	public static void Prefix(ref ValueProp props)
+	{
+		if (!props.HasFlag(Enums.Orb) && Enums.IsOrbCaller())
+		{
+			props |= Enums.Orb;
+		}
+	}
+}
+[HarmonyPatch(
+	typeof(CreatureCmd),
+	nameof(CreatureCmd.Damage),
+	new Type[]
+	{
+		typeof(PlayerChoiceContext),
+		typeof(Creature),
+		typeof(decimal),
+		typeof(ValueProp),
+		typeof(Creature)
+	})]
+public static class OrbDamagePatchSingle
+{
+	[HarmonyPrefix]
+	public static void Prefix(ref ValueProp props)
+	{
+		if (!props.HasFlag(Enums.Orb) && Enums.IsOrbCaller())
+		{
+			props |= Enums.Orb;
+		}
+	}
+}
     /*[HarmonyPatch(typeof(LightningOrb), nameof(LightningOrb.BeforeTurnEndOrbTrigger))]
     public static class IsReleaseGamePatch
     {
@@ -37,5 +103,3 @@ public class Enums
             
         }
     }*/
-}
-

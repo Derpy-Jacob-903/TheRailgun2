@@ -18,7 +18,7 @@ public class IronDustField() : TheRailgun2Card(1,
         new PowerVar<ThornsPower>(0)
     ];
 
-    protected override HashSet<CardTag> CanonicalTags => [EchoOrb.Ferrous];
+    protected override HashSet<CardTag> CanonicalTags => [Enums.Ferrous];
 
     protected override async Task OnPlay(
         PlayerChoiceContext context,

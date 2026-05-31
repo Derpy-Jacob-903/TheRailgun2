@@ -7,7 +7,9 @@ using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Events;
 using MegaCrit.Sts2.Core.Models.Orbs;
+using MegaCrit.Sts2.Core.Models.RelicPools;
 using MegaCrit.Sts2.Core.Models.Relics;
 using TheRailgun2.TheRailgun2Code.Relics;
 
@@ -22,7 +24,7 @@ public class CoinRelic2() : TheRailgun2Relic
     [
         new DynamicVar("Lightning", 1M),
         new EnergyVar(1),
-        new EnergyVar("Energy2", 5)
+        new RepeatVar(5)
     ];
 
     public override async Task AfterSideTurnEnd(
@@ -30,8 +32,8 @@ public class CoinRelic2() : TheRailgun2Relic
         CombatSide side,
         IEnumerable<Creature> participants)
     {
-        if (Owner.PlayerCombatState != null )
-            for (int i = 0; i < Math.Min(Owner.PlayerCombatState.Energy, DynamicVars["Energy2"].BaseValue) + 1; i++)
+        if (Owner.PlayerCombatState != null && side == CombatSide.Player)
+            for (int i = 0; i < Math.Min(Owner.PlayerCombatState.Energy, DynamicVars.Repeat.BaseValue); i++)
             {
                 //await PlayerCmd.LoseEnergy(1, Owner);
                 await OrbCmd.Channel<LightningOrb>(choiceContext, Owner);
@@ -41,8 +43,8 @@ public class CoinRelic2() : TheRailgun2Relic
     {
         return player != this.Owner ? amount : amount + (Decimal) this.DynamicVars.Energy.IntValue;
     }
-    public override RelicModel GetUpgradeReplacement()
+    /*public override RelicModel GetUpgradeReplacement()
     {
         return ModelDb.Relic<CoinRelic2>();
-    }
+    }*/
 }

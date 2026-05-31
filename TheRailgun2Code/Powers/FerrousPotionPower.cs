@@ -12,10 +12,12 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
+using TheRailgun2.TheRailgun2Code.Cards;
 using TheRailgun2.TheRailgun2Code.Character;
 
 namespace TheRailgun2.TheRailgun2Code.Powers;
 
+[Obsolete("Should still work, but Ferrous Potion handles its cost reduction itself.")]
 public class FerrousPotionPower : TheRailgun2Power
 {
     public override PowerType Type => PowerType.Buff;
@@ -34,7 +36,7 @@ public class FerrousPotionPower : TheRailgun2Power
         out Decimal modifiedCost)
     {
         modifiedCost = originalCost;
-        if (card.Owner.Creature != this.Owner || originalCost <= 0M || card.Tags.Contains(EchoOrb.Ferrous))
+        if (card.Owner.Creature != this.Owner || originalCost <= 0M || card.Tags.Contains(Enums.Ferrous))
             return false;
         modifiedCost = originalCost - Amount;
         if (modifiedCost < 0M)

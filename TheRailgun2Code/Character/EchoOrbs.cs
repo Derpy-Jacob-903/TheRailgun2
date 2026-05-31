@@ -145,6 +145,4 @@ public static class EchoOrb
             return;
         evokedOrb.RemoveInternal();
     }
-    [CustomEnum]
-    public static CardTag Ferrous;
 }
