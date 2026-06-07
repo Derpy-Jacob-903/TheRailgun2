@@ -17,7 +17,7 @@ public class DeckboxDefendTwo() : TheRailgun2Card(1,
     CardType.Skill, CardRarity.Basic,
     TargetType.Self)
 {
-    protected override HashSet<CardTag> CanonicalTags => [CardTag.Defend];
+    //protected override HashSet<CardTag> CanonicalTags => [CardTag.Defend];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
@@ -25,22 +25,20 @@ public class DeckboxDefendTwo() : TheRailgun2Card(1,
         new BlockVar("Block2", 2m, ValueProp.Move),
         new CalculationBaseVar(0M),
         new CalculationExtraVar(1M),
-        new CalculatedVar("Shit").WithMultiplier((Func<CardModel, Creature, Decimal>) ((card, _) => CombatManager.Instance.History.Entries.OfType<CardPlayFinishedEntry>().Any(p => p.CardPlay.Card is DeckboxDefendTwo) ? 1 : 0))
+        new CalculatedVar("Shit").WithMultiplier((Func<CardModel, Creature, Decimal>) ((card, _) => CombatManager.Instance.History.Entries.OfType<CardPlayFinishedEntry>().Any(p => p.HappenedThisTurn(CombatState) && p.CardPlay.Card is DeckboxDefendTwo) ? 1 : 0))
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CommonActions.CardBlock(this, DynamicVars.Block, cardPlay);
-        if (((CalculatedVar)DynamicVars["Shit"]).Calculate(null) == 0)
+        for (int i = 0; i < DynamicVars["CalculatedHits"].BaseValue; i++)
         {
-            await OrbCmd.Channel<LightningOrb>(choiceContext, Owner);
+            await CommonActions.CardBlock(this, DynamicVars.Block, cardPlay);
         }
         else
         {
-            foreach (OrbModel orb in Owner.PlayerCombatState.OrbQueue.Orbs)
-            {
-                await OrbCmd.Passive(choiceContext, orb, null);
-            }
+            if (Owner.PlayerCombatState?.OrbQueue?.Orbs?[0] != null)
+                await OrbCmd.Passive(choiceContext, Owner.PlayerCombatState.OrbQueue.Orbs[0], null);
         }
     }
 

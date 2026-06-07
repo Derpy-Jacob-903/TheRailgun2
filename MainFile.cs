@@ -28,7 +28,7 @@ public partial class MainFile : Node
         if (deckboxType != null)
         {
             var addMethod = AccessTools.DeclaredMethod(deckboxType, "AddCharacterDeck");
-            addMethod.Invoke(null, [ModelDb.GetId<TheRailgun2Code.Character.TheRailgun2>(), ModelDb.GetId<Jolt>(), ModelDb.GetId<DeckboxDefendTwo>()]);
+            addMethod.Invoke(null, [ModelDb.GetId<TheRailgun2Code.Character.TheRailgun2>(), ModelDb.GetId<Jolt>(), ModelDb.GetId<DeckboxDefendThree>()]);
         }
     }
 }

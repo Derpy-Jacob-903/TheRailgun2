@@ -4,6 +4,7 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
@@ -20,6 +21,8 @@ namespace TheRailgun2.TheRailgun2Code.Relics;
 
 public class LockOnPaperPhrog() : TheRailgun2Relic
 {
+    protected override string BigIconPath => PackedIconPath;
+    protected override string PackedIconOutlinePath => ImageHelper.GetImagePath($"atlases/relic_outline_atlas.sprites/paper_phrog.tres");
     public override RelicRarity Rarity =>
         RelicRarity.Uncommon;
 

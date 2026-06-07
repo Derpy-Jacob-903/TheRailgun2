@@ -114,6 +114,8 @@
         <None Include="TheRailgun2Code\Powers\RailgunStaticDischargePower.cs" />
         <Compile Remove="TheRailgun2Code\Cards\DeckboxDefend.cs" />
         <None Include="TheRailgun2Code\Cards\DeckboxDefend.cs" />
+        <Compile Remove="TheRailgun2Code\Cards\DeckboxDefendTwo.cs" />
+        <None Include="TheRailgun2Code\Cards\DeckboxDefendTwo.cs" />
     </ItemGroup>
 
     <ItemGroup>

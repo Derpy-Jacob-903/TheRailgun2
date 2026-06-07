@@ -4,6 +4,7 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
@@ -18,6 +19,9 @@ namespace TheRailgun2.TheRailgun2Code.Relics;
 
 public class SpareCore() : TheRailgun2Relic
 {
+    protected override string BigIconPath => ImageHelper.GetImagePath($"relics/cracked_core.png");
+    public override string PackedIconPath => ImageHelper.GetImagePath($"atlases/relic_atlas.sprites/cracked_core.tres");
+    protected override string PackedIconOutlinePath => ImageHelper.GetImagePath($"atlases/relic_outline_atlas.sprites/cracked_core.tres");
     public override RelicRarity Rarity =>
         RelicRarity.Uncommon;
 

@@ -29,13 +29,10 @@ public class AbsorbEx() : TheRailgun2Card(1,
     ];
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        bool canEvoke = Owner.PlayerCombatState?.OrbQueue is not null && Owner.PlayerCombatState?.OrbQueue?.Orbs.Count > 0;
+        //bool canEvoke = Owner.PlayerCombatState?.OrbQueue is not null && Owner.PlayerCombatState?.OrbQueue?.Orbs.Count > 0;
         await OrbCmd.EvokeNext(choiceContext, Owner);
-        if (canEvoke || IsUpgraded)
-        {
-            await CommonActions.ApplySelf<StrengthPower>(choiceContext, this);
-            await CommonActions.ApplySelf<DexterityPower>(choiceContext, this);
-        }
+        await CommonActions.ApplySelf<StrengthPower>(choiceContext, this);
+        await CommonActions.ApplySelf<DexterityPower>(choiceContext, this);
     }
     
     protected override void OnUpgrade() {

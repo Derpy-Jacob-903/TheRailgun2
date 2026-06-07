@@ -155,7 +155,9 @@
   "THERAILGUN2-DECKBOX_DEFEND.title": "Deckbox Defend",
   "THERAILGUN2-DECKBOX_DEFEND.description": "Gain {Block:diff()} [gold]Block[/gold]\nGain {Block2:diff()} [gold]Block[/gold] for each [gold]Channeled[/gold] Orb.{InCombat:\n(Gain {Block2:diff()} [gold]Block[/gold] {CalculatedHits:diff()} {CalculatedHits:plural:time|times})|}",
   "THERAILGUN2-STORM_RAILGUN.title": "Storm",
-  "THERAILGUN2-STORM_RAILGUN.description": "At the start of your turn, [gold]Channel[/gold] 1 [gold]Lightning[/gold].",
+  "THERAILGUN2-STORM_RAILGUN.description": "At the start of your turn, [gold]Channel[/gold] {StormRailgunPower:diff()} [gold]Lightning[/gold].",
   "THERAILGUN2-DECKBOX_DEFEND_TWO.title": "Deckbox Defend",
-  "THERAILGUN2-DECKBOX_DEFEND_TWO.description": "Gain {Block:diff()} [gold]Block[/gold].\n{InCombat:\n({Shit:plural:Trigger the passive effect of all Orbs.|[gold]Channel[/gold] 1 [gold]Lightning[/gold].})|???}"
+  "THERAILGUN2-DECKBOX_DEFEND_TWO.description": "Gain {Block:diff()} [gold]Block[/gold].\n{InCombat:\n({Shit:plural:Trigger the passive effect of your rightmost Orb.|[gold]Channel[/gold] 1 [gold]Lightning[/gold].})|???}",
+  "THERAILGUN2-DECKBOX_DEFEND_THREE.title": "Deckbox Skill",
+  "THERAILGUN2-DECKBOX_DEFEND_THREE.description": "Gain {Block:diff()} [gold]Block[/gold]\nLose {FocusedStrikePower:diff()} [gold]Focus[/gold] this turn."
 }

@@ -24,7 +24,7 @@ public class CoinRelic2() : TheRailgun2Relic
     [
         new DynamicVar("Lightning", 1M),
         new EnergyVar(1),
-        new RepeatVar(5)
+        new RepeatVar(6)
     ];
 
     public override async Task AfterSideTurnEnd(
