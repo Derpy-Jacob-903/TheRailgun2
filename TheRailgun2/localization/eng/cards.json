@@ -104,7 +104,7 @@
   "THERAILGUN2-SUPERCHARGE.title": "Supercharge",
   "THERAILGUN2-SUPERCHARGE.description": "[gold]Upgrade[/gold] ALL your cards for the rest of combat.\nAdd a [gold]Wound[/gold] into your Discard Pile.{IfUpgraded:show:\nGain {Energy:energyIcons()}|}",
   "THERAILGUN2-TASER.title": "Taser",
-  "THERAILGUN2-TASER.description": "Remove all [gold]Block[/gold] from the enemy.\nEnemy loses {EnemyStrengthLoss:diff()} [gold]Strength[/gold].\nApply {WeakPower:diff()} [gold]Weak[/gold].",
+  "THERAILGUN2-TASER.description": "Remove all [gold]Block[/gold] from the enemy.\nEnemy loses {StrengthPower:diff()} [gold]Strength[/gold].\nApply {WeakPower:diff()} [gold]Weak[/gold].",
   "THERAILGUN2-TELEPORTER.title": "Teleporter",
   "THERAILGUN2-TELEPORTER.description": "Add {Cards:diff()} {Cards:plural:Needle|Needles} into your Hand.",
   "THERAILGUN2-TEMPEST_RAILGUN.title": "Tempest",
@@ -159,5 +159,5 @@
   "THERAILGUN2-DECKBOX_DEFEND_TWO.title": "Deckbox Defend",
   "THERAILGUN2-DECKBOX_DEFEND_TWO.description": "Gain {Block:diff()} [gold]Block[/gold].\n{InCombat:\n({Shit:plural:Trigger the passive effect of your rightmost Orb.|[gold]Channel[/gold] 1 [gold]Lightning[/gold].})|???}",
   "THERAILGUN2-DECKBOX_DEFEND_THREE.title": "Deckbox Skill",
-  "THERAILGUN2-DECKBOX_DEFEND_THREE.description": "Gain {Block:diff()} [gold]Block[/gold]\nLose {FocusedStrikePower:diff()} [gold]Focus[/gold] this turn."
+  "THERAILGUN2-DECKBOX_DEFEND_THREE.description": "Gain {Block:diff()} [gold]Block[/gold]\nLose {HotfixPower:diff()} [gold]Focus[/gold] this turn."
 }

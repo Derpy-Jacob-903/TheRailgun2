@@ -23,7 +23,6 @@ public class Taser() : TheRailgun2Card(2,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new PowerVar<StrengthPower>(2),
-        new DisplayVar<Taser>("EnemyStrengthLoss", (model) => (model.DynamicVars.Strength.BaseValue * -1).ToString()),
         new PowerVar<WeakPower>(2)
     ];
 
