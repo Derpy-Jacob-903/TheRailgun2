@@ -16,7 +16,7 @@ public class Thundervolt() : TheRailgun2Card(3,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(20M, ValueProp.Move),
+        new DamageVar(21M, ValueProp.Move),
         new CalculationBaseVar(0M),
         new CalculationExtraVar(1M),
         new CalculatedVar("CalculatedHits").WithMultiplier((Func<CardModel, Creature, Decimal>) ((card, _) => card.Owner.PlayerCombatState.OrbQueue.Orbs.Count))

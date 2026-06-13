@@ -33,14 +33,18 @@ public class StunShock() : TheRailgun2Card(1,
     ];
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await EchoOrb.RemoveFirstOf<LightningOrb>(choiceContext, Owner);
-        if (cardPlay.Target != null)
+        var osty = false;
+        if (!cardPlay.IsAutoPlay) await EchoOrb.RemoveFirstOf<LightningOrb>(choiceContext, Owner);
+        else osty = true;
+        if (osty && cardPlay.Target != null)
         {
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
                 .FromCard(this).Targeting(cardPlay.Target)
                 .WithHitFx("vfx/vfx_attack_lightning").Execute(choiceContext);
-            await PowerCmd.Apply<WeakPower>(choiceContext, cardPlay.Target, DynamicVars.Weak.BaseValue, Owner.Creature, this);
-            await PowerCmd.Apply<VulnerablePower>(choiceContext, cardPlay.Target, DynamicVars.Vulnerable.BaseValue, Owner.Creature, this); 
+            await PowerCmd.Apply<WeakPower>(choiceContext, cardPlay.Target, DynamicVars.Weak.BaseValue, 
+                Owner.Creature, this);
+            await PowerCmd.Apply<VulnerablePower>(choiceContext, cardPlay.Target, DynamicVars.Vulnerable.BaseValue,
+                    Owner.Creature, this);
         }
         
     }
@@ -53,6 +57,8 @@ public class StunShock() : TheRailgun2Card(1,
             return false;
         return base.ShouldPlay(card, autoPlayType);
     }
+    
+    protected override bool ShouldGlowRedInternal => Owner.PlayerCombatState != null && !Owner.PlayerCombatState.OrbQueue.Orbs.Any(c => c is LightningOrb);
 
     protected override void OnUpgrade() => this.DynamicVars.Damage.UpgradeValueBy(5M);
 }

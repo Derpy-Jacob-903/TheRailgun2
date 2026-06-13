@@ -21,12 +21,15 @@ public class StormRailgunPower : TheRailgun2Power
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
     protected override IEnumerable<IHoverTip> ExtraHoverTips => 
-        [HoverTipFactory.ForEnergy(this)];
+        [HoverTipFactory.FromOrb<LightningOrb>()];
 
     public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
     {
         if (player != Owner.Player)
             return;
-        await OrbCmd.Channel<LightningOrb>(choiceContext, Owner.Player);
+        for (int i = 0; i < Amount; i++)
+        {
+            await OrbCmd.Channel<LightningOrb>(choiceContext, Owner.Player);
+        }
     }
 }

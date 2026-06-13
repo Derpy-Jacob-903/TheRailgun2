@@ -15,7 +15,7 @@ public class Crack() : TheRailgun2Card(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(12M, ValueProp.Move),
+        new DamageVar(9M, ValueProp.Move),
         new RepeatVar(1)
     ];
     
@@ -29,7 +29,7 @@ public class Crack() : TheRailgun2Card(1,
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .FromCard(this).Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_attack_lightning").Execute(choiceContext);
-        for (int i = 0; i < DynamicVars.Repeat.BaseValue + 1; i++)
+        for (int i = 0; i < DynamicVars.Repeat.BaseValue; i++)
         {
             await OrbCmd.EvokeNext(choiceContext, Owner);
         }

@@ -55,21 +55,22 @@ public static class EchoOrb
         choiceContext.PopModel(orb);
     }
 
-    public static async Task RemoveFirstOf<OrbType>(
+    public static async Task<bool> RemoveFirstOf<OrbType>(
         PlayerChoiceContext choiceContext,
         Player player,
         bool dequeue = true)
         where OrbType : OrbModel
     {
         if (player.PlayerCombatState == null)
-            return;
+            return false;
         var orbQueue = player.PlayerCombatState.OrbQueue;
         OrbModel orb = orbQueue.Orbs.OfType<OrbType>().FirstOrDefault();
         if (orb == null)
-            return;
+            return false;
         choiceContext.PushModel(orb);
         await RemoveOrb(choiceContext, player, orb, dequeue);
         choiceContext.PopModel(orb);
+        return true;
     }
     
     public static async Task<int> EvokeAllOf<OrbType>(

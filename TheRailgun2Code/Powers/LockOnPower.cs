@@ -34,7 +34,8 @@ public class LockOnPower : TheRailgun2Power
         if (target != this.Owner || !props.HasFlag(Enums.Orb))
             return 1M;
         var amount1 = this.DynamicVars["DamageIncrease"].BaseValue;
-        var relic = target.Player?.GetRelic<LockOnPaperPhrog>();
+        if (dealer == null) return amount1;
+        var relic = dealer.Player?.GetRelic<LockOnPaperPhrog>();
         if (relic != null)
             amount1 = relic.ModifyLockOnMultiplier(target, amount1, props, dealer, cardSource);
         return amount1;

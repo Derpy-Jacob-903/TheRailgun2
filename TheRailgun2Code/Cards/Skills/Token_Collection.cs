@@ -26,10 +26,10 @@ public class TokenCollection() : TheRailgun2Card(1,
         if (maxCount <= 0)
             return;
         CardSelectorPrefs prefs = new CardSelectorPrefs(SelectionScreenPrompt, 0, maxCount);
-        CardModel card = (await CardSelectCmd.FromSimpleGrid(choiceContext, PileType.Discard.GetPile(Owner).Cards, Owner, prefs)).FirstOrDefault();
+        var card = (await CardSelectCmd.FromSimpleGrid(choiceContext, PileType.Discard.GetPile(Owner).Cards, Owner, prefs));
         if (card == null)
             return;
-        CardPileAddResult cardPileAddResult = await CardPileCmd.Add(card, PileType.Hand);
+        var cardPileAddResult = await CardPileCmd.Add(card, PileType.Hand);
     }
 
     protected override void OnUpgrade() => this.DynamicVars.Cards.UpgradeValueBy(1);

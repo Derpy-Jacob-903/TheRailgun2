@@ -31,9 +31,11 @@ public class ParticleWallRailgun() : TheRailgun2Card(0,
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await EchoOrb.RemoveFirstOf<LightningOrb>(choiceContext, Owner);
-        await CommonActions.CardBlock(this, DynamicVars.Block, cardPlay);
-        await Cmd.Wait(0.25f);
+        var osty = false;
+        if (!cardPlay.IsAutoPlay) await EchoOrb.RemoveFirstOf<LightningOrb>(choiceContext, Owner);
+        else osty = true;
+        if (osty) await CommonActions.CardBlock(this, DynamicVars.Block, cardPlay);
+        //await Cmd.Wait(0.25f);
     }
     
     protected override PileType GetResultPileTypeForCardPlay()
@@ -50,6 +52,8 @@ public class ParticleWallRailgun() : TheRailgun2Card(0,
             return false;
         return base.ShouldPlay(card, autoPlayType);
     }
+    
+    protected override bool ShouldGlowRedInternal => Owner.PlayerCombatState != null && !Owner.PlayerCombatState.OrbQueue.Orbs.Any(c => c is LightningOrb);
 
     protected override void OnUpgrade() => this.DynamicVars.Block.UpgradeValueBy(3M);
 }

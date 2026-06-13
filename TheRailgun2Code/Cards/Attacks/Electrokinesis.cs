@@ -28,8 +28,10 @@ public class Electrokinesis() : TheRailgun2Card(0,
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await EchoOrb.RemoveFirstOf<LightningOrb>(choiceContext, Owner);
-        await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
+        var osty = false;
+        if (!cardPlay.IsAutoPlay) await EchoOrb.RemoveFirstOf<LightningOrb>(choiceContext, Owner);
+        else osty = true;
+        if (osty && cardPlay.Target != null) await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .FromCard(this).Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_attack_lightning").Execute(choiceContext);
     }
