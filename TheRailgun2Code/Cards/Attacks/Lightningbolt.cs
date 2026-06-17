@@ -14,8 +14,8 @@ public class Lightningbolt() : TheRailgun2Card(3,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(32M, ValueProp.Move),
-        new RepeatVar(2)
+        new DamageVar(19M, ValueProp.Move),
+        new RepeatVar(3)
     ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>

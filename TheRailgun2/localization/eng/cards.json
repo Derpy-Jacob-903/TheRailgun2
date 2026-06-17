@@ -34,7 +34,7 @@
   "THERAILGUN2-THUNDERSHOCK.title": "Thundershock",
   "THERAILGUN2-THUNDERSHOCK.description": "Remove all [gold]Block[/gold] from the enemy.\nDeal {Damage:diff()} damage.",
   "THERAILGUN2-THUNDERVOLT.title": "Thundervolt",
-  "THERAILGUN2-THUNDERVOLT.description": "Deal {Damage:diff()} damage for each [gold]Channeled[/gold] Orb.{InCombat:\n(Hits {CalculatedHits:diff()} {CalculatedHits:plural:time|times})|}",
+  "THERAILGUN2-THUNDERVOLT.description": "[gold]Spend[/gold] 2 [gold]Lightning[/gold]\nDeal {Damage:diff()} damage {Repeat:diff()} times.",
   "THERAILGUN2-BIRIBIRI.title": "Biribiri!",
   "THERAILGUN2-BIRIBIRI.description": "Gain {Power:diff()} [gold]Strength[/gold].\nGain {Power:diff()} [gold]Dexterity[/gold].",
   "THERAILGUN2-CIRCUITOUS.title": "Circuitous",
@@ -122,7 +122,7 @@
   "THERAILGUN2-STRIKE_RAILGUN.title": "Strike",
   "THERAILGUN2-STRIKE_RAILGUN.description": "Deal {Damage:diff()} damage.",
   "THERAILGUN2-PARTICLE_WALL_RAILGUN.title": "Particle Wall",
-  "THERAILGUN2-PARTICLE_WALL_RAILGUN.description": "[orange]Spend[/orange] {Spend:diff()} [gold]Lightning[/gold].\nGain {Block:diff()} [gold]Block[/gold].\nReturn this card to your [gold]Hand[/gold].",
+  "THERAILGUN2-PARTICLE_WALL_RAILGUN.description": "[gold]Spend[/gold] {Spend:diff()} [gold]Lightning[/gold].\nGain {Block:diff()} [gold]Block[/gold].\nReturn this card to your [gold]Hand[/gold].",
   "THERAILGUN2-UNCOMMON_DRAW_CARD.title": "Burning Pact Ahh Card",
   "THERAILGUN2-UNCOMMON_DRAW_CARD.description": "Draw {Cards:diff()} {Cards:plural:card|cards}|}.\n[gold]Evoke[/gold] \n[aqua]whatever[/aqua]",
   "THERAILGUN2-THE_RAILGUN2_CARD.title": "Broken Card",
@@ -143,7 +143,7 @@
   "THERAILGUN2-VOLTAIC_RAILGUN.title": "Voltaic",
   "THERAILGUN2-VOLTAIC_RAILGUN.description": "[gold]Channel Lightning[/gold] equal to the [gold]Lightning[/gold] already [gold]Channeled[/gold] this combat.{InCombat:\\n([gold]Channel[/gold] {CalculatedChannels:diff()} [gold]Lightning[/gold])|}",
   "THERAILGUN2-ELECTROKINESIS.title": "Electrokinesis",
-  "THERAILGUN2-ELECTROKINESIS.description": "[orange]Spend[/orange] 1 [gold]Lightning[/gold].\nDeal {Damage:diff()} damage.",
+  "THERAILGUN2-ELECTROKINESIS.description": "[gold]Spend[/gold] 1 [gold]Lightning[/gold].\nDeal {Damage:diff()} damage.",
   "THERAILGUN2-TELEPORTER_TWO.title": "Teleporter Two",
   "THERAILGUN2-TELEPORTER_TWO.description": "Discard {Discards:diff()} {Cards:plural:card|cards}.\nAdd {Cards:diff()} {Cards:plural:{IfUpgraded:show:[gold]Needle+[/gold]|[gold]Needle[/gold]}|{IfUpgraded:show:[gold]Needles[/gold]+|[gold]Needles[/gold]}} into your [gold]Hand[/gold].",
   "THERAILGUN2-INDIGNATION_RAILGUN.title": "Indignation",
@@ -159,5 +159,9 @@
   "THERAILGUN2-DECKBOX_DEFEND_TWO.title": "Deckbox Defend",
   "THERAILGUN2-DECKBOX_DEFEND_TWO.description": "Gain {Block:diff()} [gold]Block[/gold].\n{InCombat:\n({Shit:plural:Trigger the passive effect of your rightmost Orb.|[gold]Channel[/gold] 1 [gold]Lightning[/gold].})|???}",
   "THERAILGUN2-DECKBOX_DEFEND_THREE.title": "Deckbox Skill",
-  "THERAILGUN2-DECKBOX_DEFEND_THREE.description": "Gain {Block:diff()} [gold]Block[/gold]\nLose {HotfixPower:diff()} [gold]Focus[/gold] this turn."
+  "THERAILGUN2-DECKBOX_DEFEND_THREE.description": "Gain {Block:diff()} [gold]Block[/gold]\nLose {HotfixPower:diff()} [gold]Focus[/gold] this turn.",
+  "THERAILGUN2-HANG.title": "Hang",
+  "THERAILGUN2-HANG.description": "[gold]Evoke[/gold] your rightmost Orb {Evokes:diff()} {Evokes:plural:time|times}.\nDouble the times ALL Hang cards [gold]Evoke[/gold].",
+  "THERAILGUN2-HANG_RAILGUN.title": "Hang",
+  "THERAILGUN2-HANG_RAILGUN.description": "[gold]Evoke[/gold] your rightmost Orb {Evokes:diff()} {Evokes:plural:time|times}.\nDouble the amount ALL Hang cards [gold]Evoke[/gold]."
 }

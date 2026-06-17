@@ -40,5 +40,8 @@
   "THERAILGUN2-FERROUS_POTION_POWER.smartDescription": "Cards containing [gold]Iron[/gold] or [gold]Magnetic[/gold] cost {Amount} {energyPrefix:energyIcons(1)} less.",
   "THERAILGUN2-STORM_RAILGUN_POWER.title": "Storm",
   "THERAILGUN2-STORM_RAILGUN_POWER.description": "At the start of your turn, [gold]Channel[/gold] [blue]1[/blue] [gold]Lightning[/gold].",
-  "THERAILGUN2-STORM_RAILGUN_POWER.smartDescription": "At the start of your turn, [gold]Channel[/gold] [blue]{Amount}[/blue] [gold]Lightning[/gold]."
+  "THERAILGUN2-STORM_RAILGUN_POWER.smartDescription": "At the start of your turn, [gold]Channel[/gold] [blue]{Amount}[/blue] [gold]Lightning[/gold].",
+  "THERAILGUN2-ADAPT_POWER.title": "Adapt",
+  "THERAILGUN2-ADAPT_POWER.description": "At the start of your turn, remove [blue]1[/blue] [gold]Lightning[/gold]. If an Orb was removed, gain [blue]8[/blue] [gold]Block[/gold].",
+  "THERAILGUN2-ADAPT_POWER.smartDescription": "At the start of your turn, remove 1 Lightning. If an Orb was removed, gain 8 Block."
 }

@@ -1,4 +1,5 @@
-﻿using BaseLib.Utils;
+﻿using BaseLib.Extensions;
+using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -19,6 +20,7 @@ public class Electrokinesis() : TheRailgun2Card(0,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
+        new DynamicVar("Spend", 1).WithTooltip("THERAILGUN2-SPEND"),
         new DamageVar(15m, ValueProp.Move)
     ];
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
@@ -29,8 +31,12 @@ public class Electrokinesis() : TheRailgun2Card(0,
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         var osty = false;
-        if (!cardPlay.IsAutoPlay) await EchoOrb.RemoveFirstOf<LightningOrb>(choiceContext, Owner);
-        else osty = true;
+        if (!cardPlay.IsAutoPlay && Owner.PlayerCombatState.OrbQueue.Orbs.Any(c => c is LightningOrb))
+        {
+            await EchoOrb.RemoveFirstOf<LightningOrb>(choiceContext, Owner);
+            osty = true;
+        }
+        else osty = cardPlay.IsAutoPlay;
         if (osty && cardPlay.Target != null) await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .FromCard(this).Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_attack_lightning").Execute(choiceContext);

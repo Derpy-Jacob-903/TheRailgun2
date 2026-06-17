@@ -19,7 +19,7 @@ public class StunShock() : TheRailgun2Card(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DynamicVar("Spend", 1).WithTooltip("SPEND"),
+        new DynamicVar("Spend", 1).WithTooltip("THERAILGUN2-SPEND"),
         new DamageVar(8M, ValueProp.Move),
         new PowerVar<VulnerablePower>(1M),
         new PowerVar<WeakPower>(1M)
@@ -34,8 +34,12 @@ public class StunShock() : TheRailgun2Card(1,
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         var osty = false;
-        if (!cardPlay.IsAutoPlay) await EchoOrb.RemoveFirstOf<LightningOrb>(choiceContext, Owner);
-        else osty = true;
+        if (!cardPlay.IsAutoPlay && Owner.PlayerCombatState.OrbQueue.Orbs.Any(c => c is LightningOrb))
+        {
+            await EchoOrb.RemoveFirstOf<LightningOrb>(choiceContext, Owner);
+            osty = true;
+        }
+        else osty = cardPlay.IsAutoPlay;
         if (osty && cardPlay.Target != null)
         {
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)

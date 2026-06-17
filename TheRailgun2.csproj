@@ -116,6 +116,8 @@
         <None Include="TheRailgun2Code\Cards\DeckboxDefend.cs" />
         <Compile Remove="TheRailgun2Code\Cards\DeckboxDefendTwo.cs" />
         <None Include="TheRailgun2Code\Cards\DeckboxDefendTwo.cs" />
+        <Compile Remove="TheRailgun2Code\Cards\Skills\Shatter.cs" />
+        <None Include="TheRailgun2Code\Cards\Skills\Shatter.cs" />
     </ItemGroup>
 
     <ItemGroup>
