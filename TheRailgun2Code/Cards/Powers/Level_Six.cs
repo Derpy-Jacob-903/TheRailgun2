@@ -22,12 +22,12 @@ public class LevelSix() : TheRailgun2Card(4,
     [
         new HpLossVar(4),
         new EnergyVar(3),
-        new PowerVar<StrengthPower>(3),
-        new PowerVar<FocusPower>(3),
+        new PowerVar<StrengthPower>(4),
+        new PowerVar<DexterityPower>(2),
     ];
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromOrb<PlasmaOrb>(), 
+        HoverTipFactory.Static(StaticHoverTip.Energy), 
         HoverTipFactory.FromPower<StrengthPower>(),
         HoverTipFactory.FromPower<FocusPower>()
     ];
@@ -35,12 +35,12 @@ public class LevelSix() : TheRailgun2Card(4,
         PlayerChoiceContext context,
         CardPlay play)
     {
-        for (int i = 0; i < DynamicVars.Energy.BaseValue; i++)
+        /*for (int i = 0; i < DynamicVars.Energy.BaseValue; i++)
         {
             await OrbCmd.Channel<PlasmaOrb>(context, Owner);
-        }
+        }*/
         //await CreatureCmd.Damage(context, Owner.Creature, DynamicVars.HpLoss.BaseValue, ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move,  this);
-        //await PlayerCmd.GainEnergy(DynamicVars["Power"].BaseValue, Owner);
+        await PlayerCmd.GainEnergy(DynamicVars["Power"].BaseValue, Owner);
         await PowerCmd.Apply<StrengthPower>(context, Owner.Creature, DynamicVars["StrengthPower"].BaseValue, Owner.Creature, this);
         await PowerCmd.Apply<FocusPower>(context, Owner.Creature, DynamicVars["FocusPower"].BaseValue, Owner.Creature, this);
         await PowerCmd.Apply<LevelSixPower>(context, Owner.Creature, DynamicVars.HpLoss.BaseValue, Owner.Creature, this);

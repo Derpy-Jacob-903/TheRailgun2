@@ -12,8 +12,10 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Hooks;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MegaCrit.Sts2.Core.Random;
+using TheRailgun2.TheRailgun2Code.Cards;
 
 namespace TheRailgun2.TheRailgun2Code.Character;
 
@@ -57,8 +59,7 @@ public static class EchoOrb
 
     public static async Task<bool> RemoveFirstOf<OrbType>(
         PlayerChoiceContext choiceContext,
-        Player player,
-        bool dequeue = true)
+        Player player)
         where OrbType : OrbModel
     {
         if (player.PlayerCombatState == null)
@@ -68,7 +69,7 @@ public static class EchoOrb
         if (orb == null)
             return false;
         choiceContext.PushModel(orb);
-        await RemoveOrb(choiceContext, player, orb, dequeue);
+        await RemoveOrb(choiceContext, player, orb);
         choiceContext.PopModel(orb);
         return true;
     }
@@ -85,7 +86,7 @@ public static class EchoOrb
         var orbs = player.PlayerCombatState.OrbQueue.Orbs.ToList();
         foreach (var orb in orbs.OfType<OrbType>())
         {
-            await RemoveOrb(choiceContext, player, orb, dequeue);
+            await RemoveOrb(choiceContext, player, orb);
             count++;
             if (task != null) await task();
         }
@@ -95,8 +96,7 @@ public static class EchoOrb
     public static async Task<int> RemoveAllOf<OrbType>(
         PlayerChoiceContext choiceContext, 
         Player player,
-        Func<Task> task = null,
-        bool dequeue = true)
+        Func<Task> task = null)
         where OrbType : OrbModel
     {
         var count = 0;
@@ -104,7 +104,7 @@ public static class EchoOrb
         var orbs = player.PlayerCombatState.OrbQueue.Orbs.ToList();
         foreach (var orb in orbs.OfType<OrbType>())
         {
-            await EvokeSpecific(choiceContext, player, orb, dequeue);
+            await EvokeSpecific(choiceContext, player, orb);
             count++;
             if (task != null) await task();
         }
@@ -128,9 +128,9 @@ public static class EchoOrb
             removed = orbQueue.Remove(evokedOrb);
             NCombatRoom.Instance?.GetCreatureNode(player.Creature)?.OrbManager?.EvokeOrbAnim(evokedOrb);
         }
-        choiceContext.PushModel((AbstractModel) evokedOrb);
+        choiceContext.PushModel(evokedOrb);
         IEnumerable<Creature> targets = await evokedOrb.Evoke(choiceContext);
-        choiceContext.PopModel((AbstractModel) evokedOrb);
+        choiceContext.PopModel(evokedOrb);
         await Hook.AfterOrbEvoked(choiceContext, player.Creature.CombatState, evokedOrb, targets);
         if (!removed)
             return;
@@ -140,21 +140,14 @@ public static class EchoOrb
     private static async Task RemoveOrb(
         PlayerChoiceContext choiceContext,
         Player player,
-        OrbModel evokedOrb,
-        bool dequeue = true)
+        OrbModel evokedOrb)
     {
-        if (CombatManager.Instance.IsOverOrEnding || player.PlayerCombatState == null)
+        if (CombatManager.Instance.IsOverOrEnding)
             return;
-        var orbQueue = player.PlayerCombatState.OrbQueue;
+        OrbQueue orbQueue = player.PlayerCombatState.OrbQueue;
         if (player.PlayerCombatState == null || player.Creature.CombatState == null || orbQueue.Orbs.Count <= 0)
             return;
-        var removed = false;
-        if (dequeue)
-        {
-            removed = orbQueue.Remove(evokedOrb);
-        }
-        choiceContext.PushModel(evokedOrb);
-        choiceContext.PopModel(evokedOrb);
+        var removed = orbQueue.Remove(evokedOrb);
         if (!removed)
             return;
         evokedOrb.RemoveInternal();

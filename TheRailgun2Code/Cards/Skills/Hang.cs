@@ -24,12 +24,14 @@ public class HangRailgun() : TheRailgun2Card(1,
     [
         new CalculationBaseVar(1M),
         new CalculationExtraVar(1M),
-        new CalculatedVar("Evokes").WithMultiplier((Func<CardModel, Creature, decimal>) ((card, _) => (CombatManager.Instance.History.Entries.OfType<CardPlayFinishedEntry>().Count<CardPlayFinishedEntry>((Func<CardPlayFinishedEntry, bool>) (e => e.Actor.Player == card.Owner && e.CardPlay.Card is HangRailgun)))^2))
+        new CalculatedVar("Evokes").WithMultiplier(
+            (Func<CardModel, Creature, decimal>) ((card, _) => (decimal)(Math.Pow(2, CombatManager.Instance.History.Entries.OfType<CardPlayFinishedEntry>().Count(
+                (Func<CardPlayFinishedEntry, bool>) (e => e.Actor.Player == card.Owner && e.CardPlay.Card is HangRailgun))))))
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        int orbCount = Owner.PlayerCombatState.OrbQueue.Orbs.Count;
+        //int orbCount = Owner.PlayerCombatState.OrbQueue.Orbs.Count;
         //for (int i = 0; i < orbCount; ++i)
         //{
             for (int j = 0; j < DynamicVars["Evokes"].BaseValue - 1; ++j) await OrbCmd.EvokeNext(choiceContext, Owner, false);

@@ -5,6 +5,8 @@ using Godot;
 using TheRailgun2.TheRailgun2Code.Character;
 using TheRailgun2.TheRailgun2Code.Extensions;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Cards;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
 

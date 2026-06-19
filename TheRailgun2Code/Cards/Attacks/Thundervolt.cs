@@ -13,7 +13,7 @@ using TheRailgun2.TheRailgun2Code.Character;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
-public class Thundervolt() : TheRailgun2Card(2,
+public class Thundervolt() : TheRailgun2Card(1,
     CardType.Attack, CardRarity.Rare,
     TargetType.AnyEnemy)
 {
