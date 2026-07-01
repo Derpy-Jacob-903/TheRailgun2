@@ -10,12 +10,12 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
 public class ScatterRailgun() : TheRailgun2Card(2,
-    CardType.Attack, CardRarity.Uncommon,
+    CardType.Attack, CardRarity.Rare,
     TargetType.AllEnemies)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(11M, ValueProp.Move)
+        new DamageVar(16M, ValueProp.Move)
     ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips

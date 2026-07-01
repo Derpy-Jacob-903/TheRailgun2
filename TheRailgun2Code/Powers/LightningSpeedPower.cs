@@ -18,7 +18,7 @@ public class LightningSpeedPower : TheRailgun2Power
     {
         if (dealer != this.Owner || !props.IsPoweredAttack())
             return 1M;
-        return 1.25M;
+        return 1.5M;
     }
     
     public override async Task AfterSideTurnEnd(

@@ -17,7 +17,7 @@ public class Recharge() : TheRailgun2Card(1,
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
-        CardKeyword.Exhaust
+        //CardKeyword.Exhaust
     ];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>

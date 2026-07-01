@@ -16,7 +16,7 @@ public class IronDustShield() : TheRailgun2Card(2,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(10m, ValueProp.Move),
+        new BlockVar(13m, ValueProp.Move),
         new PowerVar<ThornsPower>(0)
     ];
 

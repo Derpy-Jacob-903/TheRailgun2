@@ -15,8 +15,13 @@ public class Crack() : TheRailgun2Card(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(9M, ValueProp.Move),
+        new DamageVar(7M, ValueProp.Move),
         new RepeatVar(1)
+    ];
+    
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
+        CardKeyword.Sly
     ];
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>

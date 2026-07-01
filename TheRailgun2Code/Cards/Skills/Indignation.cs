@@ -13,7 +13,7 @@ using TheRailgun2.TheRailgun2Code.Powers;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
-public class IndignationRailgun() : TheRailgun2Card(1,
+public class IndignationRailgun() : TheRailgun2Card(2,
     CardType.Skill, CardRarity.Rare,
     TargetType.AllEnemies)
 {

@@ -13,7 +13,8 @@ public class Static() : TheRailgun2Card(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(8M, ValueProp.Move)
+        new DamageVar(4M, ValueProp.Move),
+        new BlockVar(5M, ValueProp.Move)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -26,7 +27,7 @@ public class Static() : TheRailgun2Card(1,
 
     protected override void OnUpgrade()
     {
-        this.AddKeyword(CardKeyword.Sly);
         DynamicVars.Damage.UpgradeValueBy(1);
+        DynamicVars.Block.UpgradeValueBy(1);
     }
 }

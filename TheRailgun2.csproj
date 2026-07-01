@@ -75,7 +75,7 @@
             <Private>false</Private>
         </Reference>
 
-        <PackageReference Include="Alchyr.Sts2.BaseLib" Version="3.2.1" PrivateAssets="All" />
+        <PackageReference Include="Alchyr.Sts2.BaseLib" Version="3.3.0" PrivateAssets="All" />
         <PackageReference Include="Alchyr.Sts2.ModAnalyzers" Version="0.1.9" />
         <AdditionalFiles Include="TheRailgun2/localization/**/*.json"/>
     </ItemGroup>
@@ -116,8 +116,6 @@
         <None Include="TheRailgun2Code\Cards\DeckboxDefend.cs" />
         <Compile Remove="TheRailgun2Code\Cards\DeckboxDefendTwo.cs" />
         <None Include="TheRailgun2Code\Cards\DeckboxDefendTwo.cs" />
-        <Compile Remove="TheRailgun2Code\Cards\Skills\Shatter.cs" />
-        <None Include="TheRailgun2Code\Cards\Skills\Shatter.cs" />
         <Compile Remove="TheRailgun2Code\Cards\Attacks\Spark.cs" />
         <None Include="TheRailgun2Code\Cards\Attacks\Spark.cs" />
         <Compile Remove="TheRailgun2Code\Character\HadesTiers.cs" />

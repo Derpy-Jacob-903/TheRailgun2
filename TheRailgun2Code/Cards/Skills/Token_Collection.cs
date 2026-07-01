@@ -17,11 +17,14 @@ public class TokenCollection() : TheRailgun2Card(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
+        new BlockVar(5, ValueProp.Move),
         new CardsVar(1)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await CommonActions.CardBlock(this, cardPlay);
+        
         int maxCount = Math.Min(DynamicVars.Cards.IntValue, CardPile.MaxCardsInHand - PileType.Hand.GetPile(Owner).Cards.Count);
         if (maxCount <= 0)
             return;

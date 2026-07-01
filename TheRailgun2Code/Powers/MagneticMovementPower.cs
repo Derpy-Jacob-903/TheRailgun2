@@ -20,7 +20,7 @@ public class MagneticMovementPower : TheRailgun2Power
         CardModel? cardSource,
         CardPlay? cardPlay)
     {
-        return this.Owner != target || !props.IsPoweredCardOrMonsterMoveBlock() ? 1M : 1.25M;
+        return this.Owner != target || !props.IsPoweredCardOrMonsterMoveBlock() ? 1M : 1.5M;
     }
 
     public override async Task AfterSideTurnEnd(

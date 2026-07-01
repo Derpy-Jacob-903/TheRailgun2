@@ -16,7 +16,7 @@ public class ShatterRailgun() : TheRailgun2Card(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new RepeatVar(3)
+        new RepeatVar(2)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -28,6 +28,6 @@ public class ShatterRailgun() : TheRailgun2Card(1,
             await OrbCmd.EvokeNext(choiceContext, Owner);
         }
     }
-
-    protected override void OnUpgrade() => this.DynamicVars.Cards.UpgradeValueBy(1M);
+    
+    protected override void OnUpgrade() => this.DynamicVars.Repeat.UpgradeValueBy(1M);
 }

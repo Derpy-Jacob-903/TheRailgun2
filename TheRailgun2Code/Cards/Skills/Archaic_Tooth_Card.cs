@@ -19,7 +19,7 @@ public class AbsorbEx() : TheRailgun2Card(1,
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
-        CardKeyword.Retain
+        //CardKeyword.Retain
         //Enums.Conduit
     ];
     protected override IEnumerable<DynamicVar> CanonicalVars =>
