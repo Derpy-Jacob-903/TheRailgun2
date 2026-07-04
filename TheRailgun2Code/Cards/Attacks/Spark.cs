@@ -27,7 +27,7 @@ public class Spark() : TheRailgun2Card(1,
     {
         if (CombatState != null)
             await DamageCmd.Attack(DynamicVars.CalculatedDamage.Calculate(null))
-                .FromCard(this).TargetingAllOpponents(CombatState)
+                .FromCard(cardPlay.Card, cardPlay).TargetingAllOpponents(CombatState)
                 .WithHitFx("vfx/vfx_attack_lightning").Execute(choiceContext);
     }
 

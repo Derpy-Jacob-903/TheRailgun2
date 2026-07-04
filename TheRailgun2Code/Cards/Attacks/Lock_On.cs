@@ -33,7 +33,7 @@ public class LockOn() : TheRailgun2Card(1,
         if (cardPlay.Target != null)
         {
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-                .FromCard(this).Targeting(cardPlay.Target)
+                .FromCard(cardPlay.Card, cardPlay).Targeting(cardPlay.Target)
                 .WithHitFx("vfx/vfx_attack_lightning").Execute(choiceContext);
             await PowerCmd.Apply<LockOnPower>(choiceContext, cardPlay.Target, DynamicVars["LockOnPower"].BaseValue, Owner.Creature, this);
         }

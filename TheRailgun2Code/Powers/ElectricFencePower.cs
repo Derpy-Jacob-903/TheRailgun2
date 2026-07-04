@@ -23,7 +23,7 @@ public class ElectricFencePower : TheRailgun2Power
     {
         if (target != Owner || dealer == null || !props.IsPoweredAttack())
             return;
-        await CreatureCmd.Damage(choiceContext, dealer, Amount, ValueProp.Unpowered, Owner, null);
+        await CreatureCmd.Damage(choiceContext, dealer, Amount, ValueProp.Unpowered, Owner);
     }
 
     public override async Task AfterSideTurnEnd(

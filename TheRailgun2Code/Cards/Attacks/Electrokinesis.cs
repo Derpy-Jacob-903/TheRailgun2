@@ -38,7 +38,7 @@ public class Electrokinesis() : TheRailgun2Card(0,
         }
         else osty = cardPlay.IsAutoPlay;
         if (osty && cardPlay.Target != null) await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(this).Targeting(cardPlay.Target)
+            .FromCard(cardPlay.Card, cardPlay).Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_attack_lightning").Execute(choiceContext);
     }
     

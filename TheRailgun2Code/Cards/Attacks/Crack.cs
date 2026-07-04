@@ -32,7 +32,7 @@ public class Crack() : TheRailgun2Card(1,
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(this).Targeting(cardPlay.Target)
+            .FromCard(cardPlay.Card, cardPlay).Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_attack_lightning").Execute(choiceContext);
         for (int i = 0; i < DynamicVars.Repeat.BaseValue; i++)
         {

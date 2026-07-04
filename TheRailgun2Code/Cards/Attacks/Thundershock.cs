@@ -27,7 +27,7 @@ public class Thundershock() : TheRailgun2Card(2,
         {
             await CreatureCmd.LoseBlock(cardPlay.Target, cardPlay.Target.Block);
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-                .FromCard(this).Targeting(cardPlay.Target)
+                .FromCard(cardPlay.Card, cardPlay).Targeting(cardPlay.Target)
                 .WithHitFx("vfx/vfx_attack_lightning").Execute(choiceContext);
         }
     }

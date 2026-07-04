@@ -45,7 +45,7 @@ public class ScatterRailgun() : TheRailgun2Card(2,
                 await CreatureCmd.LoseBlock(Target, Target.Block);
             }
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-                .FromCard(this).TargetingAllOpponents(CombatState)
+                .FromCard(cardPlay.Card, cardPlay).TargetingAllOpponents(CombatState)
                 .WithHitFx("vfx/vfx_attack_lightning").Execute(choiceContext);
         }
     }

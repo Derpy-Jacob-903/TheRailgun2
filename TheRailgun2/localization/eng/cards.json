@@ -100,7 +100,7 @@
   "THERAILGUN2-SISTER_NETWORK.title": "Sister Network",
   "THERAILGUN2-SISTER_NETWORK.description": "Draw {CalculationExtra:diff()} {CalculationExtra:plural:card|cards} for each enemy{IfUpgraded:show:, plus {CalculationBase:diff()}}{InCombat:\n(Draws {CalculatedCards:diff()} {CalculatedCards:plural:card|cards})|}.",
   "THERAILGUN2-SISTER_NOISE.title": "Sister Noise",
-  "THERAILGUN2-SISTER_NOISE.description": "Gain {Energy:energyIcons()}.\\nAdd a [gold]Dazed[/gold] into your [gold]Discard Pile[/gold].",
+  "THERAILGUN2-SISTER_NOISE.description": "Gain {Energy:energyIcons()}.\nAdd a [gold]Dazed[/gold] into your [gold]Draw Pile[/gold].",
   "THERAILGUN2-SUPERCHARGE.title": "Supercharge",
   "THERAILGUN2-SUPERCHARGE.description": "[gold]Upgrade[/gold] ALL your cards for the rest of combat.\nAdd a [gold]Wound[/gold] into your Discard Pile.{IfUpgraded:show:\nGain {Energy:energyIcons()}|}",
   "THERAILGUN2-TASER.title": "Taser",

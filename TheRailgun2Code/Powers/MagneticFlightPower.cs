@@ -1,5 +1,6 @@
 ﻿using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -15,12 +16,8 @@ public class MagneticFlightPower : TheRailgun2Power
     protected override IEnumerable<DynamicVar> CanonicalVars =>
         [new DynamicVar("DamageDecrease", 0.5M)];
 
-    public override Decimal ModifyDamageMultiplicative(
-        Creature? target,
-        Decimal amount,
-        ValueProp props,
-        Creature? dealer,
-        CardModel? cardSource)
+    public override decimal ModifyDamageMultiplicative(Creature target, decimal amount, ValueProp props, Creature dealer,
+        CardModel cardSource, CardPlay cardPlay)
     {
         if (target != this.Owner || !props.IsPoweredAttack())
             return 1M;

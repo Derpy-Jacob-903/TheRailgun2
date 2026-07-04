@@ -38,7 +38,7 @@ public class Needle() : CustomCardModel(0,
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         var attackCommand = DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(this).Targeting(cardPlay.Target)
+            .FromCard(cardPlay.Card, cardPlay).Targeting(cardPlay.Target)
             .WithHitVfxNode((t) => NShivThrowVfx.Create(base.Owner.Creature, t, Colors.DarkCyan));
         await attackCommand.Execute(choiceContext);
     }

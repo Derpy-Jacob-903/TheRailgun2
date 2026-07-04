@@ -20,7 +20,7 @@ public class Overclock() : TheRailgun2Card(1,
         CardPlay play)
     {
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(this).Targeting(play.Target)
+            .FromCard(cardPlay.Card, cardPlay).Targeting(play.Target)
             .WithHitFx("vfx/vfx_attack_lightning").Execute(choiceContext);
     }
 

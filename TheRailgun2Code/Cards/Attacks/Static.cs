@@ -1,4 +1,5 @@
-﻿using MegaCrit.Sts2.Core.Commands;
+﻿using BaseLib.Utils;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
@@ -21,8 +22,9 @@ public class Static() : TheRailgun2Card(1,
     {
         if (CombatState != null)
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-                .FromCard(this).TargetingAllOpponents(CombatState)
+                .FromCard(cardPlay.Card, cardPlay).TargetingAllOpponents(CombatState)
                 .WithHitFx("vfx/vfx_attack_lightning").Execute(choiceContext);
+        await CommonActions.CardBlock(this, DynamicVars.Block, cardPlay);
     }
 
     protected override void OnUpgrade()

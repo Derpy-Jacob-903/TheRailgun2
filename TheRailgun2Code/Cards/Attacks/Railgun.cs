@@ -42,7 +42,7 @@ public class Railgun() : TheRailgun2Card(2,
         {
             await CreatureCmd.LoseBlock(cardPlay.Target, cardPlay.Target.Block);
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-                .FromCard(this).Targeting(cardPlay.Target)
+                .FromCard(cardPlay.Card, cardPlay).Targeting(cardPlay.Target)
                 .WithHitFx("vfx/vfx_attack_lightning").Execute(choiceContext);
             await PowerCmd.Apply<WeakPower>(choiceContext, cardPlay.Target, DynamicVars.Weak.BaseValue, Owner.Creature, this);
             await PowerCmd.Apply<VulnerablePower>(choiceContext, cardPlay.Target, DynamicVars.Vulnerable.BaseValue, Owner.Creature, this); 

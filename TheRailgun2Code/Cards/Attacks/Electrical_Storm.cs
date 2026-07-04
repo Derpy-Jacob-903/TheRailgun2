@@ -38,14 +38,14 @@ public class ElectricalStorm() : TheRailgun2Card(-1,
         if (IsUpgraded)
         {
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue + ResolveEnergyXValue())
-                .FromCard(this).TargetingAllOpponents(CombatState)
+                .FromCard(cardPlay.Card, cardPlay).TargetingAllOpponents(CombatState)
                 .WithHitCount(DynamicVars.Repeat.IntValue)
                 .WithHitFx("vfx/vfx_attack_lightning").Execute(choiceContext);
         }
         else
         {
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue + ResolveEnergyXValue())
-                .FromCard(this).Targeting(cardPlay.Target)
+                .FromCard(cardPlay.Card, cardPlay).Targeting(cardPlay.Target)
                 .WithHitCount(DynamicVars.Repeat.IntValue)
                 .WithHitFx("vfx/vfx_attack_lightning").Execute(choiceContext);
         }

@@ -43,7 +43,7 @@ public class StunShock() : TheRailgun2Card(1,
         if (osty && cardPlay.Target != null)
         {
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-                .FromCard(this).Targeting(cardPlay.Target)
+                .FromCard(cardPlay.Card, cardPlay).Targeting(cardPlay.Target)
                 .WithHitFx("vfx/vfx_attack_lightning").Execute(choiceContext);
             await PowerCmd.Apply<WeakPower>(choiceContext, cardPlay.Target, DynamicVars.Weak.BaseValue, 
                 Owner.Creature, this);

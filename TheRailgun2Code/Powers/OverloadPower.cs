@@ -49,7 +49,7 @@ public class OverloadPower : TheRailgun2Power
         if (!participants.Contains<Creature>(Owner))
             return;
             //hailstormPower.Flash();
-            IEnumerable<DamageResult> damageResults = await CreatureCmd.Damage(choiceContext, Owner, (Decimal) Amount * 5, ValueProp.Unpowered, Owner, (CardModel) null);
+            IEnumerable<DamageResult> damageResults = await CreatureCmd.Damage(choiceContext, Owner, (Decimal) Amount * 5, ValueProp.Unpowered, Owner);
             VfxCmd.PlayOnCreatureCenter(Owner, "vfx/vfx_attack_blunt");
     }
 }

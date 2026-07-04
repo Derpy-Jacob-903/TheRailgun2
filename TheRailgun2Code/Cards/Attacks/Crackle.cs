@@ -31,7 +31,7 @@ public class Crackle() : TheRailgun2Card(1,
     {
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .WithHitCount((int) ((CalculatedVar) DynamicVars["CalculatedHits"]).Calculate(cardPlay.Target))
-            .FromCard(this).Targeting(cardPlay.Target)
+            .FromCard(cardPlay.Card, cardPlay).Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_attack_lightning").Execute(choiceContext);
     }
     protected override bool ShouldGlowRedInternal => ((CalculatedVar)DynamicVars["CalculatedHits"]).Calculate(null) == 0;

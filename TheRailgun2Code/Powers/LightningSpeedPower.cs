@@ -14,7 +14,7 @@ namespace TheRailgun2.TheRailgun2Code.Powers;
 public class LightningSpeedPower : TheRailgun2Power
 {
     public override decimal ModifyDamageMultiplicative(Creature target, decimal amount, ValueProp props, Creature dealer,
-        CardModel cardSource)
+        CardModel cardSource, CardPlay cardPlay)
     {
         if (dealer != this.Owner || !props.IsPoweredAttack())
             return 1M;

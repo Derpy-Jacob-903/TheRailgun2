@@ -1,5 +1,6 @@
 ﻿using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -24,12 +25,8 @@ public class LockOnPower : TheRailgun2Power
     }*/
     protected override IEnumerable<DynamicVar> CanonicalVars =>
         [new DynamicVar("DamageIncrease", 1.5M)];
-    public override Decimal ModifyDamageMultiplicative(
-        Creature target,
-        decimal amount,
-        ValueProp props,
-        Creature dealer,
-        CardModel cardSource)
+    public override decimal ModifyDamageMultiplicative(Creature target, decimal amount, ValueProp props, Creature dealer,
+        CardModel cardSource, CardPlay cardPlay)
     {
         if (target != this.Owner || !props.HasFlag(Enums.Orb))
             return 1M;
