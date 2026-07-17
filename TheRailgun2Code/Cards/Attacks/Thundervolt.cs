@@ -43,7 +43,7 @@ public class Thundervolt() : TheRailgun2Card(1,
         if (osty && cardPlay.Target != null)
         {
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-                .WithHitCount((int)((CalculatedVar)DynamicVars["CalculatedHits"]).Calculate(cardPlay.Target))
+                .WithHitCount(DynamicVars.Repeat.IntValue)
                 .FromCard(cardPlay.Card, cardPlay).Targeting(cardPlay.Target)
                 .WithHitFx("vfx/vfx_attack_lightning").Execute(choiceContext);
         }
