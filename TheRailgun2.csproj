@@ -75,7 +75,7 @@
             <Private>false</Private>
         </Reference>
 
-        <PackageReference Include="Alchyr.Sts2.BaseLib" Version="3.3.6" PrivateAssets="All" />
+        <PackageReference Include="Alchyr.Sts2.BaseLib" Version="3.4.0" PrivateAssets="All" />
         <PackageReference Include="Alchyr.Sts2.ModAnalyzers" Version="0.1.9" />
         <AdditionalFiles Include="TheRailgun2/localization/**/*.json"/>
     </ItemGroup>
@@ -119,9 +119,10 @@
         <Compile Remove="TheRailgun2Code\Cards\Attacks\Spark.cs" />
         <None Include="TheRailgun2Code\Cards\Attacks\Spark.cs" />
         <Compile Remove="TheRailgun2Code\Character\HadesTiers.cs" />
-        <None Include="TheRailgun2Code\Character\HadesTiers.cs" />
         <Compile Remove="TheRailgun2Code\Cards\Skills\TestCard.cs" />
         <None Include="TheRailgun2Code\Cards\Skills\TestCard.cs" />
+        <Compile Remove="TheRailgun2Code\Powers\CircuitousPower.cs" />
+        <None Include="TheRailgun2Code\Powers\CircuitousPower.cs" />
     </ItemGroup>
 
     <ItemGroup>

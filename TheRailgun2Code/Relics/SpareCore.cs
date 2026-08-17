@@ -34,16 +34,17 @@ public class SpareCore() : TheRailgun2Relic
     [
         HoverTipFactory.FromOrb<LightningOrb>()
     ];
+    
     public override async Task BeforeSideTurnStart(
         PlayerChoiceContext choiceContext,
         CombatSide side,
         IReadOnlyList<Creature> participants,
         ICombatState combatState)
     {
-        var crackedCore = this;
-        if (crackedCore.Owner.PlayerCombatState != null || !participants.Contains(crackedCore.Owner.Creature) || crackedCore.Owner.PlayerCombatState.TurnNumber > 1)
+        SpareCore crackedCore = this;
+        if (crackedCore.Owner.PlayerCombatState != null && (!participants.Contains<Creature>(crackedCore.Owner.Creature) || crackedCore.Owner.PlayerCombatState.TurnNumber > 1))
             return;
-        for (int i = 0; i < crackedCore.DynamicVars.Repeat.BaseValue; ++i)
+        for (var i = 0; (Decimal) i < crackedCore.DynamicVars.Repeat.BaseValue; ++i)
             await OrbCmd.Channel<LightningOrb>((PlayerChoiceContext) new BlockingPlayerChoiceContext(), crackedCore.Owner);
     }
 }

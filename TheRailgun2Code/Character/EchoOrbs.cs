@@ -137,20 +137,21 @@ public static class EchoOrb
         evokedOrb.RemoveInternal();
     }
     
-    private static Task RemoveOrb(
+    private static async Task RemoveOrb(
         PlayerChoiceContext choiceContext,
         Player player,
         OrbModel evokedOrb)
     {
         if (CombatManager.Instance.IsOverOrEnding)
-            return Task.CompletedTask;
+            return;
         OrbQueue orbQueue = player.PlayerCombatState.OrbQueue;
         if (player.PlayerCombatState == null || player.Creature.CombatState == null || orbQueue.Orbs.Count <= 0)
-            return Task.CompletedTask;
+            return;
         var removed = orbQueue.Remove(evokedOrb);
-        //if (!removed)
-            //return Task.CompletedTask;
+        var nOrbManager = NCombatRoom.Instance?.GetCreatureNode(player.Creature)?.OrbManager;
+        nOrbManager?.EvokeOrbAnim(evokedOrb);
+        if (!removed)
+            return;
         evokedOrb.RemoveInternal();
-        return Task.CompletedTask;
     }
 }

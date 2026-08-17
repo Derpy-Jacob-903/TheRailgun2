@@ -24,7 +24,7 @@ public class ShatterRailgun() : TheRailgun2Card(1,
         int orbCount = Owner.PlayerCombatState.OrbQueue.Orbs.Count;
         for (int i = 0; i < orbCount; ++i)
         {
-            for (int j = 0; i < DynamicVars.Repeat.BaseValue - 1; ++j) await OrbCmd.EvokeNext(choiceContext, Owner, false);
+            for (int j = 0; j < DynamicVars.Repeat.BaseValue - 1; ++j) await OrbCmd.EvokeNext(choiceContext, Owner, false);
             await OrbCmd.EvokeNext(choiceContext, Owner);
         }
     }

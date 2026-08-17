@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
+
 public class Circuitous() : TheRailgun2Card(2,
     CardType.Power, CardRarity.Uncommon,
     TargetType.AnyEnemy)

@@ -13,7 +13,7 @@ using TheRailgun2.TheRailgun2Code.Character;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
-public class StunShock() : TheRailgun2Card(1,
+public class StunShock() : TheRailgun2Card(0,
     CardType.Attack, CardRarity.Common,
     TargetType.AnyEnemy)
 {

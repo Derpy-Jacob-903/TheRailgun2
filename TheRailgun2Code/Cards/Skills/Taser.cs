@@ -30,8 +30,9 @@ public class Taser() : TheRailgun2Card(2,
     {
         if (cardPlay.Target != null)
         {
-            await CreatureCmd.LoseBlock(cardPlay.Target, cardPlay.Target.Block);
-            await BetaMainCompatibility.PowerCmd_.Apply.InvokeGeneric<Task<StrengthPower>, StrengthPower>((object) null, (object) choiceContext, (object) cardPlay.Target, (DynamicVars.Power<StrengthPower>().BaseValue * -1), Owner.Creature, this, false);
+            await CreatureCmd.LoseBlock(choiceContext, cardPlay.Target, cardPlay.Target.Block, Owner.Creature);
+            await PowerCmd.Apply<StrengthPower>(choiceContext, cardPlay.Target,
+                (DynamicVars.Power<StrengthPower>().BaseValue * -1), Owner.Creature, this);//InvokeGeneric<Task<StrengthPower>, StrengthPower>((object) null, (object) choiceContext, (object) cardPlay.Target, (DynamicVars.Power<StrengthPower>().BaseValue * -1), Owner.Creature, this, false);
             //await CommonActions.Apply<StrengthPower>(choiceContext, cardPlay.Target, this);
             await CommonActions.Apply<WeakPower>(choiceContext, cardPlay.Target, this);
         }

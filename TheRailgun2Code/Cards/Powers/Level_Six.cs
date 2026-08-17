@@ -14,16 +14,16 @@ using TheRailgun2.TheRailgun2Code.Powers;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
-public class LevelSix() : TheRailgun2Card(4,
-    CardType.Power, CardRarity.Ancient,
-    TargetType.Self), ITomeCard
+public class LevelSix() : TheRailgun2Card(3,
+    CardType.Power, CardRarity.Rare,
+    TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new HpLossVar(4),
-        new EnergyVar(3),
-        new PowerVar<StrengthPower>(4),
-        new PowerVar<DexterityPower>(2),
+        new HpLossVar(2),
+        new EnergyVar(4),
+        new PowerVar<StrengthPower>(3),
+        new PowerVar<FocusPower>(3),
     ];
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
@@ -48,7 +48,6 @@ public class LevelSix() : TheRailgun2Card(4,
 
     protected override void OnUpgrade()
     {
-        this.EnergyCost.UpgradeBy(-1);
         this.DynamicVars.HpLoss.UpgradeValueBy(-1M);
     } 
 }

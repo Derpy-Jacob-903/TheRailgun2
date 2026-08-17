@@ -41,12 +41,13 @@ public class ParticleWallRailgun() : TheRailgun2Card(0,
         if (osty) await CommonActions.CardBlock(this, DynamicVars.Block, cardPlay);
         //await Cmd.Wait(0.25f);
     }
-    
-    protected override (PileType, CardPilePosition) GetResultPileTypeAndPositionForCardPlay()
+
+    protected override CardLocation GetResultLocationForCardPlay()
     {
-        (PileType pileType, CardPilePosition cardPilePosition) = base.GetResultPileTypeAndPositionForCardPlay();
-        return pileType == PileType.Discard ? (PileType.Hand, CardPilePosition.Bottom) : (pileType, cardPilePosition);
+        var pileType = base.GetResultLocationForCardPlay();
+        return pileType.pileType == PileType.Discard ? new CardLocation(Owner, PileType.Hand, CardPilePosition.Bottom) : new CardLocation(Owner, pileType.pileType, pileType.position);
     }
+    
     
     public override bool ShouldPlay(CardModel card, AutoPlayType autoPlayType)
     {

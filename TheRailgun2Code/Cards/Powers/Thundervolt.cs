@@ -17,7 +17,7 @@ namespace TheRailgun2.TheRailgun2Code.Cards;
 
 public class BigPlating() : TheRailgun2Card(1,
     CardType.Power, CardRarity.Rare,
-    TargetType.AnyEnemy)
+    TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
@@ -35,18 +35,26 @@ public class BigPlating() : TheRailgun2Card(1,
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        var osty = false;
-        if (!cardPlay.IsAutoPlay && Owner.PlayerCombatState.OrbQueue.Orbs.Where(c => c is LightningOrb).Count() >= 2)
+        var osty = cardPlay.IsAutoPlay;
+        if (!osty && Owner.PlayerCombatState.OrbQueue.Orbs.Where(c => c is LightningOrb).Count() >= 2)
         {
             await EchoOrb.RemoveFirstOf<LightningOrb>(choiceContext, Owner);
             await EchoOrb.RemoveFirstOf<LightningOrb>(choiceContext, Owner);
             osty = true;
         }
-        else osty = cardPlay.IsAutoPlay;
         if (osty && cardPlay.Target != null)
         {
             await CommonActions.ApplySelf<PlatingPower>(choiceContext, this);
         }
+    }
+    
+    public override bool ShouldPlay(CardModel card, AutoPlayType autoPlayType)
+    {
+        if (card is BigPlating && autoPlayType == AutoPlayType.None &&
+            card.Owner.PlayerCombatState != null &&
+            !(card.Owner.PlayerCombatState.OrbQueue.Orbs.Count(c => c is LightningOrb) >= 2))
+            return false;
+        return base.ShouldPlay(card, autoPlayType);
     }
     
     protected override void OnUpgrade() => this.DynamicVars["PlatingPower"].UpgradeValueBy(3M);

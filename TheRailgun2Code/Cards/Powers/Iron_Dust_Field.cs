@@ -14,7 +14,7 @@ public class IronDustField() : TheRailgun2Card(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<PlatingPower>(3),
+        new PowerVar<PlatingPower>(4),
         new PowerVar<ThornsPower>(0)
     ];
 

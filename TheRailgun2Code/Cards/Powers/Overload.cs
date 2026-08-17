@@ -11,7 +11,7 @@ using TheRailgun2.TheRailgun2Code.Powers;
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
 public class Overload() : TheRailgun2Card(3,
-    CardType.Power, CardRarity.Rare,
+    CardType.Power, CardRarity.Ancient,
     TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>

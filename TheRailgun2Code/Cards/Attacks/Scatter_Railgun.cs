@@ -42,7 +42,7 @@ public class ScatterRailgun() : TheRailgun2Card(2,
             foreach (var Target in CombatState.HittableEnemies)
             {
                 if (IsUpgraded) await PowerCmd.Remove<ArtifactPower>(Target);
-                await CreatureCmd.LoseBlock(Target, Target.Block);
+                await CreatureCmd.LoseBlock(choiceContext, Target, Target.Block, Owner.Creature);
             }
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
                 .FromCard(cardPlay.Card, cardPlay).TargetingAllOpponents(CombatState)

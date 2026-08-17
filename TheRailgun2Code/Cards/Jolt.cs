@@ -9,7 +9,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
 public class Jolt() : TheRailgun2Card(1,
-    CardType.Attack, CardRarity.Basic,
+    CardType.Attack, CardRarity.Common,
     TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>

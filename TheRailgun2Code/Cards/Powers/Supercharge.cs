@@ -29,11 +29,11 @@ public class Supercharge() : TheRailgun2Card(3,
                     CardCmd.Upgrade(allCard);
             }
 
-        if (CombatState != null)
+        /*if (CombatState != null)
         {
             var card = await CardPileCmd.AddGeneratedCardToCombat(CombatState.CreateCard<Wound>(Owner), PileType.Discard, Owner);
             //CardCmd.Enchant<Steady>(card.cardAdded, 1M);
-        }
+        }*/
 
         if (this.IsUpgraded)
         {

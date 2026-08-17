@@ -12,7 +12,7 @@ using MegaCrit.Sts2.Core.Models.Orbs;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
-
+[Pool(typeof(DeprecatedCardPool))]
 public class DeckboxDefendTwo() : TheRailgun2Card(1,
     CardType.Skill, CardRarity.Basic,
     TargetType.Self)

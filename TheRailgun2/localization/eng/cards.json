@@ -44,7 +44,7 @@
   "THERAILGUN2-IRON_DUST_FIELD.title": "Iron-Dust Field",
   "THERAILGUN2-IRON_DUST_FIELD.description": "Gain {PlatingPower:diff()} [gold]Plating[/gold].{IfUpgraded:show:\nGain {ThornsPower:diff()} [gold]Thorns[/gold].|}",
   "THERAILGUN2-LEVEL_SIX.title": "Level 6",
-  "THERAILGUN2-LEVEL_SIX.description": "Gain {Energy:energyIcons()}.\nGain {StrengthPower:diff()} [gold]Strength.[/gold]\nGain {DexterityPower:diff()} [gold]Dexterity[/gold].\nWhenever you [gold]Evoke[/gold], lose {HpLoss:diff()} HP.",
+  "THERAILGUN2-LEVEL_SIX.description": "Gain {Energy:energyIcons()}.\nGain {StrengthPower:diff()} [gold]Strength.[/gold]\nGain {FocusPower:diff()} [gold]Focus[/gold].\nWhenever you [gold]Evoke[/gold], lose {HpLoss:diff()} HP.",
   "THERAILGUN2-LIGHTNING_SPEED.title": "Lightning Speed",
   "THERAILGUN2-LIGHTNING_SPEED.description": "You deal an additional 50% damage for {LightningSpeedPower:diff()} turns.",
   "THERAILGUN2-MAGNETIC_FLIGHT.title": "Magnetic Flight",
@@ -102,7 +102,7 @@
   "THERAILGUN2-SISTER_NOISE.title": "Sister Noise",
   "THERAILGUN2-SISTER_NOISE.description": "Gain {Energy:energyIcons()}.\nAdd a [gold]Dazed[/gold] into your [gold]Draw Pile[/gold].",
   "THERAILGUN2-SUPERCHARGE.title": "Supercharge",
-  "THERAILGUN2-SUPERCHARGE.description": "[gold]Upgrade[/gold] ALL your cards for the rest of combat.\nAdd a [gold]Wound[/gold] into your Discard Pile.{IfUpgraded:show:\nGain {Energy:energyIcons()}|}",
+  "THERAILGUN2-SUPERCHARGE.description": "[gold]Upgrade[/gold] ALL your cards for the rest of combat.\n{IfUpgraded:show:\nGain {Energy:energyIcons()}|}",
   "THERAILGUN2-TASER.title": "Taser",
   "THERAILGUN2-TASER.description": "Remove all [gold]Block[/gold] from the enemy.\nEnemy loses {StrengthPower:diff()} [gold]Strength[/gold].\nApply {WeakPower:diff()} [gold]Weak[/gold].",
   "THERAILGUN2-TELEPORTER.title": "Teleporter",
@@ -177,5 +177,7 @@
   "THERAILGUN2-BIG_PLATING.title": "Big Plating",
   "THERAILGUN2-BIG_PLATING.description": "[gold]Spend[/gold] 2 [gold]Lightning[/gold].\nGain {PlatingPower:diff()} [gold]Plating[/gold].",
   "THERAILGUN2-SHATTER_RAILGUN.title": "Shatter",
-  "THERAILGUN2-SHATTER_RAILGUN.description": "[gold]Evoke[/gold] ALL of your Orbs {Repeat:diff()} {Repeat:plural:time|times}."
+  "THERAILGUN2-SHATTER_RAILGUN.description": "[gold]Evoke[/gold] ALL of your Orbs {Repeat:diff()} {Repeat:plural:time|times}.",
+  "THERAILGUN2-POSITIVE_FIELD_NEW.title": "Positive Field",
+  "THERAILGUN2-POSITIVE_FIELD_NEW.description": "Gain 7 [gold]Block[/gold].\nDiscard 1 card."
 }

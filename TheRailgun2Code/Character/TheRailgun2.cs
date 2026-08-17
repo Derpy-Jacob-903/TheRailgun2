@@ -4,7 +4,9 @@ using TheRailgun2.TheRailgun2Code.Extensions;
 using Godot;
 using MegaCrit.Sts2.Core.Entities.Characters;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Characters;
 using MegaCrit.Sts2.Core.Nodes.Combat;
+using MegaCrit.Sts2.Core.Nodes.Vfx;
 using TheRailgun2.TheRailgun2Code.Cards;
 using TheRailgun2.TheRailgun2Code.Relics;
 
@@ -20,6 +22,12 @@ public class TheRailgun2 : PlaceholderCharacterModel
     public override CharacterGender Gender => CharacterGender.Feminine;
     public override int StartingHp => 70;
     public override int BaseOrbSlotCount => 2;
+
+    public override Color MapDrawingColor => new Color("0D8C66");
+    public override Color DialogueColor => new Color("136B51");
+    public override Color RemoteTargetingLineColor => new Color("6FEDC7FF");
+    public override Color RemoteTargetingLineOutline => new Color("16634CFF");
+    public override VfxColor SpeechBubbleColor => VfxColor.Cyan;
 
     public override IEnumerable<CardModel> StartingDeck =>
     [

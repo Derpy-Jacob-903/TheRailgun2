@@ -16,5 +16,6 @@
   "THERAILGUN2-LOCK_ON_PAPER_PHROG.flavor": "The paper continually folds and unfolds itself into the shape of frog!",
   "THERAILGUN2-LOCK_ON_MARBLES.title": "Lock-On Marbles",
   "THERAILGUN2-LOCK_ON_MARBLES.description": "At the start of each combat, apply [blue]{LockOnPower}[/blue] [gold]Lock-On[/gold] to ALL enemies.",
-  "THERAILGUN2-LOCK_ON_MARBLES.flavor": "[red]Details for this relic will be revealed in the future...[/red]"
+  "THERAILGUN2-LOCK_ON_MARBLES.flavor": "[red]Details for this relic will be revealed in the future...[/red]",
+  "SEA_GLASS.THERAILGUN2-THE_RAILGUN2.title": "Electromaster Glass"
 }

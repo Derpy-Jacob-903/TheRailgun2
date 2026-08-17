@@ -3,6 +3,7 @@ using Godot;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Modding;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Cards;
 using TheRailgun2.TheRailgun2Code.Cards;
 
 namespace TheRailgun2;
@@ -28,7 +29,7 @@ public partial class MainFile : Node
         if (deckboxType != null)
         {
             var addMethod = AccessTools.DeclaredMethod(deckboxType, "AddCharacterDeck");
-            addMethod.Invoke(null, [ModelDb.GetId<TheRailgun2Code.Character.TheRailgun2>(), ModelDb.GetId<Jolt>(), ModelDb.GetId<DeckboxDefendThree>()]);
+            addMethod.Invoke(null, [ModelDb.GetId<TheRailgun2Code.Character.TheRailgun2>(), ModelDb.GetId<Zap>(), ModelDb.GetId<Ax>()]);
         }
     }
 }
