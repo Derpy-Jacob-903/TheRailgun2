@@ -13,8 +13,8 @@ using TheRailgun2.TheRailgun2Code.Powers;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
-public class Discharge() : TheRailgun2Card(1,
-    CardType.Attack, CardRarity.Status,
+public class DischargeNew() : TheRailgun2Card(1,
+    CardType.Attack, CardRarity.Common,
     TargetType.Self)//, ITranscendenceCard
 {
 

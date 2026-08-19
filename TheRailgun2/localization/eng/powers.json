@@ -20,9 +20,9 @@
   "THERAILGUN2-OVERLOAD_POWER.title": "Overload",
   "THERAILGUN2-OVERLOAD_POWER.description": "Cards cost [blue]1[/blue] {energyPrefix:energyIcons(1)} less.\nAt the end of your turn, take [blue]5[/blue] damage.",
   "THERAILGUN2-OVERLOAD_POWER.smartDescription": "Cards cost [blue]{Amount}[/blue] {energyPrefix:energyIcons(1)} less.\nAt the end of your turn, take [blue]{HpLoss}[/blue] damage.",
-  "THERAILGUN2-LEVEL_SIX_POWER.title": "Level 6",
-  "THERAILGUN2-LEVEL_SIX_POWER.description": "Whenever you [gold]Evoke[/gold], lose [blue]N[/blue] HP.",
-  "THERAILGUN2-LEVEL_SIX_POWER.smartDescription": "Whenever you [gold]Evoke[/gold], lose {Amount} HP.",
+  "THERAILGUN2-LEVEL_SIX_POWER.title": "Electric Virus",
+  "THERAILGUN2-LEVEL_SIX_POWER.description": "Whenever you [gold]Evoke[/gold], lose [blue]X[/blue] HP.",
+  "THERAILGUN2-LEVEL_SIX_POWER.smartDescription": "Whenever you [gold]Evoke[/gold], lose [blue]{Amount}[/blue] HP.",
   "THERAILGUN2-DEXTERITY_DOWN_POWER.title": "",
   "THERAILGUN2-DEXTERITY_DOWN_POWER.description": "",
   "THERAILGUN2-DEXTERITY_DOWN_POWER.smartDescription": "",
@@ -43,5 +43,11 @@
   "THERAILGUN2-STORM_RAILGUN_POWER.smartDescription": "At the start of your turn, [gold]Channel[/gold] [blue]{Amount}[/blue] [gold]Lightning[/gold].",
   "THERAILGUN2-ADAPT_POWER.title": "Adapt",
   "THERAILGUN2-ADAPT_POWER.description": "At the start of your turn, remove [blue]1[/blue] [gold]Lightning[/gold] and gain [blue]8[/blue] [gold]Block[/gold] for each Orb removed.",
-  "THERAILGUN2-ADAPT_POWER.smartDescription": "At the start of your turn, remove [blue]1[/blue] Lightning and gain [blue]{Amount}[/blue] [gold]Block[/gold] for each Orb removed."
+  "THERAILGUN2-ADAPT_POWER.smartDescription": "At the start of your turn, remove [blue]1[/blue] Lightning and gain [blue]{Amount}[/blue] [gold]Block[/gold] for each Orb removed.",
+  "THERAILGUN2-LEVEL_SIX_NEW_POWER.title": "Level Six",
+  "THERAILGUN2-LEVEL_SIX_NEW_POWER.description": "Whenever you [gold]Channel[/gold] an Orb, [gold]Channel[/gold] [blue]1[/blue] [gold]Lightning[/gold].",
+  "THERAILGUN2-LEVEL_SIX_NEW_POWER.smartDescription": "Whenever you [gold]Channel[/gold] an Orb, [gold]Channel[/gold] [blue]{Amount}[/blue] [gold]Lightning[/gold].",
+  "THERAILGUN2-CIRCUITOUS_POWER.title": "",
+  "THERAILGUN2-CIRCUITOUS_POWER.description": "",
+  "THERAILGUN2-CIRCUITOUS_POWER.smartDescription": ""
 }

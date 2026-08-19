@@ -25,11 +25,11 @@ public partial class MainFile : Node
         var assembly = Assembly.GetExecutingAssembly();
         Godot.Bridge.ScriptManagerBridge.LookupScriptsInAssembly(assembly);
         
-        var deckboxType = AccessTools.TypeByName("MoreNeow.MoreNeowCode.Relics.Complex.UnfamiliarDeckbox");
+        /*var deckboxType = AccessTools.TypeByName("MoreNeow.MoreNeowCode.Relics.Complex.UnfamiliarDeckbox");
         if (deckboxType != null)
         {
             var addMethod = AccessTools.DeclaredMethod(deckboxType, "AddCharacterDeck");
             addMethod.Invoke(null, [ModelDb.GetId<TheRailgun2Code.Character.TheRailgun2>(), ModelDb.GetId<Zap>(), ModelDb.GetId<Ax>()]);
-        }
+        } */
     }
 }

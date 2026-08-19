@@ -20,7 +20,7 @@ public class Thundervolt() : TheRailgun2Card(1,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(21M, ValueProp.Move),
-        new RepeatVar(2),
+        //new RepeatVar(2),
         new DynamicVar("Spend", 2).WithTooltip("THERAILGUN2-SPEND")
     ];
     
@@ -39,11 +39,11 @@ public class Thundervolt() : TheRailgun2Card(1,
             await EchoOrb.RemoveFirstOf<LightningOrb>(choiceContext, Owner);
             osty = true;
         }
-        if (osty && cardPlay.Target != null)
+        if (osty && CombatState != null)
         {
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
                 .WithHitCount(DynamicVars.Repeat.IntValue)
-                .FromCard(cardPlay.Card, cardPlay).Targeting(cardPlay.Target)
+                .FromCard(cardPlay.Card, cardPlay).TargetingAllOpponents(CombatState)
                 .WithHitFx("vfx/vfx_attack_lightning").Execute(choiceContext);
         }
     }

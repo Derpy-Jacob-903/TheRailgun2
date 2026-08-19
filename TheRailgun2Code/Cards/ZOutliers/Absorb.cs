@@ -13,15 +13,17 @@ using TheRailgun2.TheRailgun2Code.Powers;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
-public class ElectronBurst() : TheRailgun2Card(1,
+public class Absorb() : TheRailgun2Card(1,
     CardType.Skill, CardRarity.Basic,
     TargetType.Self), ITranscendenceCard
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new RepeatVar(1)
+        new PowerVar<StrengthPower>(1),
     ];
     
+    
+
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         bool canEvoke = Owner.PlayerCombatState?.OrbQueue is not null && Owner.PlayerCombatState?.OrbQueue?.Orbs.Count > 0;

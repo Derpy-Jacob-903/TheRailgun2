@@ -10,7 +10,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
 public class Crackle() : TheRailgun2Card(1,
-    CardType.Attack, CardRarity.Common,
+    CardType.Attack, CardRarity.Status,
     TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>

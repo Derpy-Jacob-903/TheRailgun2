@@ -1,6 +1,8 @@
 {
   "THERAILGUN2-CONDUIT.title": "Conduit",
-  "THERAILGUN2-CONDUIT.description": "Todo",
+  "THERAILGUN2-CONDUIT.description": "If this card is discarded during the player's turn, immediately Channel 1 Lightning.",
   "THERAILGUN2-GUARDBREAK.title": "Guardbreak",
-  "THERAILGUN2-GUARDBREAK.description": "Todo"
+  "THERAILGUN2-GUARDBREAK.description": "Immediately before dealing any damage from this card, remove all Block from the damage's target.",
+  "THERAILGUN2-DISCHARGE.title": "Discharge",
+  "THERAILGUN2-DISCHARGE.description": " If this card is discarded or Exhausted during the player's turn, it immediately plays for free."
 }

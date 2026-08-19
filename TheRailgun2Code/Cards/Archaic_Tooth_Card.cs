@@ -12,7 +12,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
 public class Fulminate2() : TheRailgun2Card(0,
-    CardType.Skill, CardRarity.Ancient,
+    CardType.Skill, CardRarity.Status,
     TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
@@ -25,7 +25,7 @@ public class Fulminate2() : TheRailgun2Card(0,
     {
         Fulminate2 quadcast = this;
         if (cardPlay.Target != null)
-            await DamageCmd.Attack(quadcast.DynamicVars.Damage.BaseValue).FromCard(quadcast).Targeting(cardPlay.Target)
+            await DamageCmd.Attack(quadcast.DynamicVars.Damage.BaseValue).FromCard(quadcast, cardPlay).Targeting(cardPlay.Target)
                 .WithHitFx("vfx/vfx_attack_blunt", tmpSfx: "blunt_attack.mp3").Execute(choiceContext);
         if (quadcast.Owner.PlayerCombatState != null && quadcast.Owner.PlayerCombatState.OrbQueue.Orbs.Count <= 0)
             return;

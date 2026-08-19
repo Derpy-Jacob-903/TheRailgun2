@@ -15,9 +15,11 @@ namespace TheRailgun2.TheRailgun2Code.Cards;
 
 public static class Enums
 {
-    [CustomEnum] [KeywordProperties(AutoKeywordPosition.After)]
+    [CustomEnum] [KeywordProperties(AutoKeywordPosition.After)] [Obsolete]
     public static CardKeyword Conduit;
-    [CustomEnum] [KeywordProperties(AutoKeywordPosition.Before)]
+    [CustomEnum] [KeywordProperties(AutoKeywordPosition.After)]
+    public static CardKeyword Discharge;
+    [CustomEnum] [KeywordProperties(AutoKeywordPosition.Before)] [Obsolete]
     public static CardKeyword Guardbreak;
     [CustomEnum]
     public static CardTag Ferrous;

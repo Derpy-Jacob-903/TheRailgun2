@@ -12,17 +12,23 @@ using TheRailgun2.TheRailgun2Code.Extensions;
 
 namespace TheRailgun2.TheRailgun2Code.Powers;
 
-[Obsolete("Unimplemented as of 0.4.0")]
-public class FixatePower : TemporaryFocusPower, ICustomPower
+public class CircuitousPower : TheRailgun2Power
 {
-    public override PowerType Type => PowerType.Buff;
+    public override PowerType Type => PowerType.Debuff;
     public override PowerStackType StackType => PowerStackType.Counter;
-    public override AbstractModel OriginModel => ModelDb.Card<Charge>();
-    public string CustomPackedIconPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".PowerImagePath();
-    public string CustomBigIconPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".BigPowerImagePath();
-
-    public override async Task AfterRemoved(Creature oldOwner)
+    public string CustomPackedIconPath => "discharge_power.png".PowerImagePath();
+    public string CustomBigIconPath => "discharge_power.png".BigPowerImagePath();
+    
+    public override async Task AfterSideTurnEnd(
+        PlayerChoiceContext choiceContext,
+        CombatSide side,
+        IEnumerable<Creature> participants)
     {
-        if (oldOwner.Player != null) await OrbCmd.AddSlots(oldOwner.Player, Amount);
+        if (side != Owner.Side)
+            return;
+        var power = this;
+        power.Flash();
+        await PowerCmd.Remove(power);
+        await PowerCmd.Apply<DexterityPower>(choiceContext, power.Owner, -power.Amount, power.Owner, null);
     }
 }

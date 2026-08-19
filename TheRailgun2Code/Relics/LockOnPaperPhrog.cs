@@ -19,12 +19,13 @@ using TheRailgun2.TheRailgun2Code.Relics;
 
 namespace TheRailgun2.TheRailgun2Code.Relics;
 
+
 public class LockOnPaperPhrog() : TheRailgun2Relic
 {
     protected override string BigIconPath => PackedIconPath;
     protected override string PackedIconOutlinePath => ImageHelper.GetImagePath($"atlases/relic_outline_atlas.sprites/paper_phrog.tres");
     public override RelicRarity Rarity =>
-        RelicRarity.Uncommon;
+        RelicRarity.Event;
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
