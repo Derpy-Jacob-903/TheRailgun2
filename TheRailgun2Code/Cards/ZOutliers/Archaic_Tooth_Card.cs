@@ -7,12 +7,14 @@ using MegaCrit.Sts2.Core.Models.Orbs;
 using MegaCrit.Sts2.Core.Models.Powers;
 using BaseLib.Abstracts;
 using BaseLib.Utils;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Saves.Migrations.SerializableRuns;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
+[Pool(typeof(DeprecatedCardPool))]
 public class AbsorbEx() : TheRailgun2Card(1,
     CardType.Skill, CardRarity.Ancient,
     TargetType.Self)

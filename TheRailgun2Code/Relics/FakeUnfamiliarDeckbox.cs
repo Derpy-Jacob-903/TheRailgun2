@@ -1,10 +1,14 @@
-﻿using BaseLib.Utils;
+﻿using System.Reflection;
+using BaseLib.Utils;
+using HarmonyLib;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Relics;
+using MegaCrit.Sts2.Core.Events;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
@@ -32,11 +36,6 @@ public class FakeUnfamiliarDeckbox() : TheRailgun2Relic
     public static bool DoesCharacterHaveDeck(CharacterModel character)
     {
         return character is Character.TheRailgun2;
-    }
-    
-    public static IEnumerable<RelicModel> GetValidRelics(Player owner)
-    {
-        return ModelDb.Event<Neow>().AllPossibleOptions.Where(o => o.Relic != null && o.Relic.IsAllowedAtNeow(owner) && !(o.Relic is FakeUnfamiliarDeckbox)).Select((o => o.Relic)).OfType<RelicModel>();
     }
     
     public override async Task AfterObtained()
@@ -81,9 +80,52 @@ public class FakeUnfamiliarDeckbox() : TheRailgun2Relic
             CardCmd.PreviewCardPileAdd(toPreview, style: CardPreviewStyle.MessyLayout);
             await Cmd.CustomScaledWait(0.1f, 0.2f);
         }
-        List<RelicModel> list1 = GetValidRelics(Owner).ToList();
-        Owner.PlayerRng.Rewards.Shuffle(list1);
-        List<Reward> list2 = list1.Take<RelicModel>(1).Select(relic => new RelicReward(relic, Owner)).ToList<Reward>();
-        await new RewardsSet(Owner).WithCustomRewards(list2).Offer();
+        RelicModel mutable = ModelDb.Relic<CoinRelic>().ToMutable();
+        await RelicCmd.Replace(Owner.Relics.First(), mutable);
+        //List<RelicModel> list1 = GetValidRelics(Owner).ToList();
+        //Owner.PlayerRng.Rewards.Shuffle(list1);
+        //List<Reward> list2 = list1.Take<RelicModel>(1).Select(relic => new RelicReward(relic, Owner)).ToList<Reward>();
+        //await new RewardsSet(Owner).WithCustomRewards(list2).Offer();
     }
+    
+    [HarmonyPatch(typeof(Neow), "CurseOptions", MethodType.Getter)]
+public class AddCursedNeowOptionsPatch
+{
+    public static void Postfix(Neow __instance, ref IEnumerable<EventOption> __result)
+    {
+        if (__instance is not Neow neow)
+            return;
+        List<EventOption> options = __result.ToList();
+        options.Add(RelicOption<FakeUnfamiliarDeckbox>(customDonePage: "NEOW.pages.DONE.POSITIVE.description", neow: neow));
+        __result = options;
+    }
+    
+    protected static EventOption RelicOption<T>(string pageName = "INITIAL", string? customDonePage = null, Neow neow = null) where T : RelicModel
+    {
+        return RelicOption(ModelDb.Relic<T>().ToMutable(), pageName, neow: neow);
+    }
+
+    protected static EventOption RelicOption(RelicModel relic, string pageName = "INITIAL", string? customDonePage = null, Neow neow = null)
+    {
+        relic.AssertMutable();
+        relic.Owner = neow.Owner;
+
+        string textKey = $"{StringHelper.Slugify(neow.GetType().Name)}.pages.{pageName}.options.{relic.Id.Entry}";
+        //string textKey = neow.OptionKey(pageName, relic.Id.Entry);
+        return EventOption.FromRelic(relic, neow, OnChosen, textKey);
+
+        async Task OnChosen()
+        {
+            RelicModel relicModel = await RelicCmd.Obtain(relic, neow.Owner);
+            PropertyInfo customDonePageProp = typeof(AncientEventModel).GetProperty("CustomDonePage",
+                BindingFlags.NonPublic | BindingFlags.Instance);
+            customDonePageProp.SetValue(neow, "NEOW.pages.DONE.POSITIVE.description");
+        
+            MethodInfo doneMethod = typeof(AncientEventModel).GetMethod("Done",
+                BindingFlags.NonPublic | BindingFlags.Instance);
+            doneMethod.Invoke(neow, null);
+
+        }
+    }
+}
 }

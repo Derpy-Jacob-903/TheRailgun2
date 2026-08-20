@@ -32,7 +32,7 @@
   "THERAILGUN2-THUNDERJOLT.title": "Thunderjolt",
   "THERAILGUN2-THUNDERJOLT.description": "Deal X+{Damage:diff()} damage for each [gold]Channeled[/gold] Orb.{InCombat:\n(Hits {CalculatedHits:diff()} {CalculatedHits:plural:time|times})|}",
   "THERAILGUN2-THUNDERSHOCK.title": "Thundershock",
-  "THERAILGUN2-THUNDERSHOCK.description": "Remove all [gold]Block[/gold] from the enemy.\nDeal {Damage:diff()} damage.",
+  "THERAILGUN2-THUNDERSHOCK.description": "Deal {Damage:diff()} damage.",
   "THERAILGUN2-THUNDERVOLT.title": "Thundervolt",
   "THERAILGUN2-THUNDERVOLT.description": "[gold]Spend[/gold] 2 [gold]Lightning[/gold]\nDeal {Damage:diff()} damage to ALL enemies.",
   "THERAILGUN2-BIRIBIRI.title": "Biribiri!",
@@ -195,5 +195,7 @@
   "THERAILGUN2-ELECTRON_BURST.title": "Electron Burst",
   "THERAILGUN2-ELECTRON_BURST.description": "",
   "THERAILGUN2-ZUP.title": "Zup",
-  "THERAILGUN2-ZUP.description": "Channel 4 Lightning."
+  "THERAILGUN2-ZUP.description": "Channel 4 Lightning.",
+  "THERAILGUN2-DISCHARGE_EX.title": "Discharge EX",
+  "THERAILGUN2-DISCHARGE_EX.description": "Evoke your rightmost Orb.\nGain {DexterityPower:diff()} Dexterity.\nGain {DischargePower:diff()} Dexterity this turn."
 }

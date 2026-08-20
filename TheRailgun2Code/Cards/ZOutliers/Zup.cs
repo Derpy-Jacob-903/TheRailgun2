@@ -1,4 +1,5 @@
 ﻿using BaseLib.Utils;
+using Godot;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -17,6 +18,8 @@ public class Zup() : TheRailgun2Card(1,
     [
         new RepeatVar(1)
     ];
+
+    public override Material CreateCustomBannerMaterial => ShaderUtils.GenerateHsv(15.2f / 360f, .373f, 0.75f);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {

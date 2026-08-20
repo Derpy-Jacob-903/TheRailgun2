@@ -14,15 +14,15 @@ using TheRailgun2.TheRailgun2Code.Relics;
 
 namespace TheRailgun2.TheRailgun2Code.Relics;
 
-public class CoinRelic() : TheRailgun2Relic
+public class CoinRelicNew() : TheRailgun2Relic
 {
     public override RelicRarity Rarity =>
-        RelicRarity.Ancient;
+        RelicRarity.Starter;
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DynamicVar("Lightning", 1M),
-        new RepeatVar(3)
+        new RepeatVar(1)
     ];
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
@@ -31,16 +31,34 @@ public class CoinRelic() : TheRailgun2Relic
         HoverTipFactory.FromOrb<LightningOrb>()
     ];
 
+    public override Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, IReadOnlyList<Creature> participants,
+        ICombatState combatState)
+    {
+        if (Owner.PlayerCombatState == null || side != CombatSide.Player)
+            return base.BeforeSideTurnStart(choiceContext, side, participants, combatState);
+        if (Owner.PlayerCombatState.TurnNumber == 3)
+        {
+            DynamicVars.Repeat.BaseValue += 1;
+        }
+        if (Owner.PlayerCombatState.TurnNumber == 5)
+        {
+            DynamicVars.Repeat.BaseValue += 1;
+        }
+        return base.BeforeSideTurnStart(choiceContext, side, participants, combatState);
+    }
+
     public override async Task AfterSideTurnEnd(
         PlayerChoiceContext choiceContext,
         CombatSide side,
         IEnumerable<Creature> participants)
     {
         if (Owner.PlayerCombatState != null && side == CombatSide.Player)
-            for (int i = 0; i < Math.Min(Owner.PlayerCombatState.Energy, DynamicVars.Repeat.BaseValue); i++)
+        {
+            for (int i = 0; i < DynamicVars.Repeat.BaseValue; i++)
             {
                 await OrbCmd.Channel<LightningOrb>(choiceContext, Owner);
             }
+        }
     }
-    public override RelicModel GetUpgradeReplacement() => ModelDb.Relic<CoinRelic2>();
+    public override RelicModel GetUpgradeReplacement() => ModelDb.Relic<CoinRelicNewPro>();
 }

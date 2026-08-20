@@ -14,7 +14,7 @@ using TheRailgun2.TheRailgun2Code.Character;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
-public class Electrokinesis() : TheRailgun2Card(0,
+public class Electrokinesis() : SpendCard(0,
     CardType.Attack, CardRarity.Uncommon,
     TargetType.AnyEnemy)
 {
@@ -28,27 +28,11 @@ public class Electrokinesis() : TheRailgun2Card(0,
         HoverTipFactory.FromOrb<LightningOrb>()
     ];
 
-    protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    protected override async Task MyOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        var osty = false;
-        if (!cardPlay.IsAutoPlay && Owner.PlayerCombatState.OrbQueue.Orbs.Any(c => c is LightningOrb))
-        {
-            await EchoOrb.RemoveFirstOf<LightningOrb>(choiceContext, Owner);
-            osty = true;
-        }
-        else osty = cardPlay.IsAutoPlay;
-        if (osty && cardPlay.Target != null) await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
+        if (cardPlay.Target != null) await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .FromCard(cardPlay.Card, cardPlay).Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_attack_lightning").Execute(choiceContext);
-    }
-    
-    public override bool ShouldPlay(CardModel card, AutoPlayType autoPlayType)
-    {
-        if (card is Electrokinesis && autoPlayType == AutoPlayType.None &&
-            card.Owner.PlayerCombatState != null &&
-            !card.Owner.PlayerCombatState.OrbQueue.Orbs.Any(c => c is LightningOrb))
-            return false;
-        return base.ShouldPlay(card, autoPlayType);
     }
 
     protected override void OnUpgrade() => this.DynamicVars.Damage.UpgradeValueBy(3M);

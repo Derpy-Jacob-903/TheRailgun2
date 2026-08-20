@@ -2,9 +2,11 @@
 using BaseLib.Extensions;
 using BaseLib.Utils;
 using Godot;
+using MegaCrit.Sts2.Core.Commands;
 using TheRailgun2.TheRailgun2Code.Character;
 using TheRailgun2.TheRailgun2Code.Extensions;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Cards;
 
@@ -27,4 +29,10 @@ public abstract class TheRailgun2Card(int cost, CardType type, CardRarity rarity
     //Uses card_portraits/card_name.png as image path. These should be smaller images.
     public override string PortraitPath => this.HasPortrait ? $"{Id.Entry.ToLowerInvariant().RemovePrefix()}.png".CardImagePath() : BetaPortraitPath;
     public override string BetaPortraitPath => $"card_p.png".CardImagePath();
+
+    public static async Task DischargeCmd(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    {
+        await CardCmd.AutoPlay(choiceContext, cardPlay.Card, null);
+        await CardPileCmd.Add(cardPlay.Card, PileType.Exhaust, skipVisuals: true);
+    }
 }

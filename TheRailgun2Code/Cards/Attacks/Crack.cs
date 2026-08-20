@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Models.Orbs;
 using MegaCrit.Sts2.Core.ValueProps;
+using TheRailgun2.TheRailgun2Code.Character;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
@@ -21,7 +22,8 @@ public class Crack() : TheRailgun2Card(1,
     
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
-        CardKeyword.Sly
+        CardKeyword.Sly,
+        Enums.Discharge
     ];
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
@@ -43,6 +45,5 @@ public class Crack() : TheRailgun2Card(1,
     protected override void OnUpgrade()
     {
         this.DynamicVars.Damage.UpgradeValueBy(6M);
-        this.DynamicVars.Repeat.UpgradeValueBy(1M);
     }
 }

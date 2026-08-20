@@ -18,6 +18,8 @@ public class CoinFlip() : TheRailgun2Card(1,
         new CardsVar(1)
     ];
 
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [Enums.Conduit];
+
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await OrbCmd.Channel<LightningOrb>(choiceContext, Owner);

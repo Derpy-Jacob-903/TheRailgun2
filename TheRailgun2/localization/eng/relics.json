@@ -18,7 +18,13 @@
   "THERAILGUN2-LOCK_ON_MARBLES.description": "At the start of each combat, apply [blue]{LockOnPower}[/blue] [gold]Lock-On[/gold] to ALL enemies.",
   "THERAILGUN2-LOCK_ON_MARBLES.flavor": "[red]Details for this relic will be revealed in the future...[/red]",
   "SEA_GLASS.THERAILGUN2-THE_RAILGUN2.title": "Electromaster Glass",
-  "THERAILGUN2-FAKE_UNFAMILIAR_DECKBOX.title": "Unfamiliar Deckbox???",
-  "THERAILGUN2-FAKE_UNFAMILIAR_DECKBOX.description": "Upon pickup, replace your starting deck with an alternate version. Gain a random [gold]Neow Relic[/gold].",
-  "THERAILGUN2-FAKE_UNFAMILIAR_DECKBOX.flavor": ""
+  "THERAILGUN2-FAKE_UNFAMILIAR_DECKBOX.title": "Unfamiliar Deckbox?",
+  "THERAILGUN2-FAKE_UNFAMILIAR_DECKBOX.description": "Upon pickup, replace your starting deck with an alternate version. Replace your Starting relic with Collector's Coin?",
+  "THERAILGUN2-FAKE_UNFAMILIAR_DECKBOX.flavor": "",
+  "THERAILGUN2-COIN_RELIC_NEW_PRO.title": "Collector's Coin Pro",
+  "THERAILGUN2-COIN_RELIC_NEW_PRO.description": "At the end of your turn, [gold]Channel[/gold] [blue]{Repeat}[/blue] [gold]Lightning[/gold]\nEvery other turn, increase the [gold]Lightning[/gold] [gold]Channeled[/gold] by this relic by [blue]1[/blue] this combat.",
+  "THERAILGUN2-COIN_RELIC_NEW_PRO.flavor": "",
+  "THERAILGUN2-COIN_RELIC_NEW.title": "Collector's Coin",
+  "THERAILGUN2-COIN_RELIC_NEW.description": "At the end of your turn, [gold]Channel[/gold] [blue]{Repeat}[/blue] [gold]Lightning[/gold].\nAt the start of your 3rd and 5th turns, increase the [gold]Lightning[/gold] [gold]Channeled[/gold] by this relic by [blue]1[/blue] this combat.",
+  "THERAILGUN2-COIN_RELIC_NEW.flavor": ""
 }

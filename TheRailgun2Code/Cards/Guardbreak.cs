@@ -105,3 +105,38 @@ public static class OrbDamagePatchSingle
             
         }
     }*/
+    public class RailgunKeywordSingleton : SingletonModel
+    {
+	    public override bool ShouldReceiveCombatHooks => true;
+#pragma warning disable CS0612 // Type or member is obsolete 
+	    public override async Task AfterCardDiscarded(PlayerChoiceContext choiceContext, CardModel card)
+	    {
+		    if (card.Keywords.Contains(Enums.Conduit))
+		    {
+			    await OrbCmd.Channel<LightningOrb>(choiceContext, card.Owner);
+		    }
+		    if (card.Keywords.Contains(Enums.Discharge))
+		    {
+			    await CardCmd.AutoPlay(choiceContext, card, null, AutoPlayType.SlyDiscard, skipCardPileVisuals: true);
+			    await CardPileCmd.Add(card, PileType.Exhaust, skipVisuals: true);
+		    }
+	    }
+	    public override async Task AfterCardExhausted(PlayerChoiceContext choiceContext, CardModel card, bool causedByEthereal)
+	    {
+		    if (card.Keywords.Contains(Enums.Discharge))
+		    {
+			    await CardCmd.AutoPlay(choiceContext, card, null, AutoPlayType.SlyDiscard, skipCardPileVisuals: true);
+			    await CardPileCmd.Add(card, PileType.Exhaust, skipVisuals: true);
+		    }
+	    }
+
+	    public override async Task BeforeDamageReceived(PlayerChoiceContext choiceContext, Creature target, decimal amount, ValueProp props,
+		    Creature dealer, CardModel cardSource)
+	    {
+		    if (cardSource != null && cardSource.Keywords.Contains(Enums.Guardbreak))
+		    {
+			    await CreatureCmd.LoseBlock(choiceContext, target, target.Block, dealer);
+		    }
+	    }
+    }
+#pragma warning restore CS0612 // Type or member is obsolete

@@ -96,6 +96,7 @@
         <Compile Remove="TheRailgun2Code\Cards\DeckboxDefendThree.cs" />
         <Compile Remove="TheRailgun2Code\Cards\Attacks\Discharge.cs" />
         <Compile Remove="TheRailgun2Code\Cards\Attacks\Discharge_New.cs" />
+        <Compile Remove="TheRailgun2Code\Relics\CoinRelicPro.cs" />
     </ItemGroup>
 
     <ItemGroup>

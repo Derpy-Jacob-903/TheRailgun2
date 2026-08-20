@@ -21,6 +21,7 @@ public class Thundershock() : TheRailgun2Card(2,
             HoverTipFactory.Static(StaticHoverTip.Block)
         ];
 
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [Enums.Guardbreak];
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         if (cardPlay.Target != null)
