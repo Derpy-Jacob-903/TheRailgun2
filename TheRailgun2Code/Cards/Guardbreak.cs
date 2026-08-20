@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Reflection;
+using BaseLib.Abstracts;
 using BaseLib.Patches.Content;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Commands;
@@ -105,9 +106,8 @@ public static class OrbDamagePatchSingle
             
         }
     }*/
-    public class RailgunKeywordSingleton : SingletonModel
+    public class RailgunKeywordSingleton() : CustomSingletonModel(HookType.Combat)
     {
-	    public override bool ShouldReceiveCombatHooks => true;
 #pragma warning disable CS0612 // Type or member is obsolete 
 	    public override async Task AfterCardDiscarded(PlayerChoiceContext choiceContext, CardModel card)
 	    {

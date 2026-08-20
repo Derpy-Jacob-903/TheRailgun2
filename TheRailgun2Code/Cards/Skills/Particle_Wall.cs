@@ -14,13 +14,13 @@ using TheRailgun2.TheRailgun2Code.Character;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
-public class ParticleWallRailgun() : TheRailgun2Card(0,
+public class ParticleWallRailgun() : SpendCard(0,
     CardType.Skill, CardRarity.Uncommon,
     TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DynamicVar("Spend", 1).WithTooltip("THERAILGUN2-SPEND"),
+        new DynamicVar("Spend", canonicalSpendCost).WithTooltip("THERAILGUN2-SPEND"),
         new BlockVar(9m, ValueProp.Move)
     ];
     
@@ -29,18 +29,7 @@ public class ParticleWallRailgun() : TheRailgun2Card(0,
         HoverTipFactory.FromOrb<LightningOrb>()
     ];
 
-    protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
-    {
-        var osty = false;
-        if (!cardPlay.IsAutoPlay && Owner.PlayerCombatState.OrbQueue.Orbs.Any(c => c is LightningOrb))
-        {
-            await EchoOrb.RemoveFirstOf<LightningOrb>(choiceContext, Owner);
-            osty = true;
-        }
-        else osty = cardPlay.IsAutoPlay;
-        if (osty) await CommonActions.CardBlock(this, DynamicVars.Block, cardPlay);
-        //await Cmd.Wait(0.25f);
-    }
+    public override int canonicalSpendCost => 1;
 
     protected override CardLocation GetResultLocationForCardPlay()
     {
@@ -48,7 +37,11 @@ public class ParticleWallRailgun() : TheRailgun2Card(0,
         return pileType.pileType == PileType.Discard ? new CardLocation(Owner, PileType.Hand, CardPilePosition.Bottom) : new CardLocation(Owner, pileType.pileType, pileType.position);
     }
     
-    
+    protected override async Task MyOnPlay(PlayerChoiceContext choiceContext, CardPlay play)
+    {
+        await CommonActions.CardBlock(this, DynamicVars.Block, play);
+    }
+
     public override bool ShouldPlay(CardModel card, AutoPlayType autoPlayType)
     {
         if (card is ParticleWallRailgun && autoPlayType == AutoPlayType.None &&

@@ -7,20 +7,19 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Models.Orbs;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using TheRailgun2.TheRailgun2Code.Powers;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
-public class ElectronBurst() : TheRailgun2Card(1,
-    CardType.Skill, CardRarity.Basic,
-    TargetType.Self), ITranscendenceCard
+public class ElectronBurstEx() : TheRailgun2Card(1,
+    CardType.Skill, CardRarity.Ancient,
+    TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new RepeatVar(1)
+        new RepeatVar(4)
     ];
     
     public override IEnumerable<CardKeyword> CanonicalKeywords => [Enums.Discharge];
@@ -30,7 +29,6 @@ public class ElectronBurst() : TheRailgun2Card(1,
         if (Owner.PlayerCombatState != null)
             foreach (OrbModel orb in Owner.PlayerCombatState.OrbQueue.Orbs)
             {
-                if (orb is not LightningOrb) continue;
                 for (int i = 0; i < DynamicVars.Repeat.BaseValue; i++)
                 {
                     await OrbCmd.Passive(choiceContext, orb, null);
@@ -39,10 +37,4 @@ public class ElectronBurst() : TheRailgun2Card(1,
     }
     
     protected override void OnUpgrade() => this.DynamicVars.Repeat.UpgradeValueBy(1M);
-
-    //protected override void OnUpgrade() => this.DynamicVars.Strength.UpgradeValueBy(1M);
-    public CardModel GetTranscendenceTransformedCard()
-    {
-        return ModelDb.Card<ElectronBurstEx>();
-    }
 }

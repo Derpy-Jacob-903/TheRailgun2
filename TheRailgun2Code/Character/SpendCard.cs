@@ -11,7 +11,8 @@ namespace TheRailgun2.TheRailgun2Code.Character;
 
 public abstract class SpendCard(int cost, CardType type, CardRarity rarity, TargetType target) : TheRailgun2Card(cost, type, rarity, target)
 {
-    public int canonicalSpendCost => 0;
+    public abstract int canonicalSpendCost { get; }
+
     /// <summary>
     /// Whst kinda Orb this card Spends?
     /// Use `typeof(OrbModel)`
@@ -23,7 +24,7 @@ public abstract class SpendCard(int cost, CardType type, CardRarity rarity, Targ
         CardPlay play)
     {
         bool osty = play.IsAutoPlay;
-        if (!osty && Owner.PlayerCombatState.OrbQueue.Orbs.Where(c => c is LightningOrb).Count() >= canonicalSpendCost)
+        if (!osty && Owner.PlayerCombatState != null && Owner.PlayerCombatState.OrbQueue.Orbs.Count(c => c is LightningOrb) >= canonicalSpendCost)
         {
             await BeforeSpend(choiceContext, play);
             for (int i = 0; i < canonicalSpendCost; i++)

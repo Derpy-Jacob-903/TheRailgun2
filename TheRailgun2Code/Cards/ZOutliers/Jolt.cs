@@ -18,7 +18,7 @@ public class Jolt() : TheRailgun2Card(1,
         new DamageVar(3M, ValueProp.Move)
     ];
     
-    public override Material CreateCustomBannerMaterial => ShaderUtils.GenerateHsv(15.2f / 360f, .373f, 0.75f);
+    public override Material CreateCustomBannerMaterial => ShaderUtils.GenerateHsv(195.2f / 360f, .373f, 0.75f);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {

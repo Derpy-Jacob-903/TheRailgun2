@@ -45,7 +45,7 @@ public class TheRailgun2 : PlaceholderCharacterModel
 
     public override IReadOnlyList<RelicModel> StartingRelics =>
     [
-        ModelDb.Relic<CoinRelic>()
+        ModelDb.Relic<CoinRelicNew>()
     ];
 
     public override CardPoolModel CardPool => ModelDb.CardPool<TheRailgun2CardPool>();
@@ -65,5 +65,4 @@ public class TheRailgun2 : PlaceholderCharacterModel
     {
         return NodeFactory<NCreatureVisuals>.CreateFromScene("res://TheRailgun2/images/char/railgun.tscn");
     }
-
 }

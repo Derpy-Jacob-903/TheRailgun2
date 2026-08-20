@@ -8,10 +8,11 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
+using TheRailgun2.TheRailgun2Code.Character;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
-public class Taser() : TheRailgun2Card(2,
+public class Taser() : SpendCard(2,
     CardType.Skill, CardRarity.Rare,
     TargetType.AnyEnemy)
 {
@@ -20,20 +21,22 @@ public class Taser() : TheRailgun2Card(2,
         CardKeyword.Exhaust
     ];
 
+    public override int canonicalSpendCost => 1;
+
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new PowerVar<StrengthPower>(2),
-        new PowerVar<WeakPower>(2)
+        new PowerVar<WeakPower>(2),
+        new DynamicVar("Spend", 1).WithTooltip("THERAILGUN2-SPEND")
     ];
-
-    protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    
+    protected override async Task MyOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         if (cardPlay.Target != null)
         {
             await CreatureCmd.LoseBlock(choiceContext, cardPlay.Target, cardPlay.Target.Block, Owner.Creature);
             await PowerCmd.Apply<StrengthPower>(choiceContext, cardPlay.Target,
-                (DynamicVars.Power<StrengthPower>().BaseValue * -1), Owner.Creature, this);//InvokeGeneric<Task<StrengthPower>, StrengthPower>((object) null, (object) choiceContext, (object) cardPlay.Target, (DynamicVars.Power<StrengthPower>().BaseValue * -1), Owner.Creature, this, false);
-            //await CommonActions.Apply<StrengthPower>(choiceContext, cardPlay.Target, this);
+                (DynamicVars.Power<StrengthPower>().BaseValue * -1), Owner.Creature, this);
             await CommonActions.Apply<WeakPower>(choiceContext, cardPlay.Target, this);
         }
     }

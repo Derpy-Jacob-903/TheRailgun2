@@ -109,7 +109,6 @@
         <None Include="TheRailgun2Code\Cards\Skills\Gekotamania.cs" />
         <Compile Remove="TheRailgun2Code\Cards\Dusty_Tome_Card.cs" />
         <Compile Remove="TheRailgun2Code\Cards\Skills\Burning_Pact_Ahh_Card.cs" />
-        <None Include="TheRailgun2Code\Cards\Skills\Burning_Pact_Ahh_Card.cs" />
         <Compile Remove="TheRailgun2Code\Relics\DataDisk.cs" />
         <None Include="TheRailgun2Code\Relics\DataDisk.cs" />
         <Compile Remove="TheRailgun2Code\Character\HadesTiers.cs" />
@@ -124,6 +123,9 @@
 
     <Target Name="CopyToModsFolderOnBuild" AfterTargets="PostBuildEvent">
         <Message Text="Copying .dll and manifest to mods folder." Importance="high"/>
+        <PropertyGroup>
+            <TargetRepoPath>C:\Program Files (x86)\Steam\steamapps\common\Slay the Spire 2\mods\TheRailgun2</TargetRepoPath>
+        </PropertyGroup>
         <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(ModsPath)$(MSBuildProjectName)/"/>
         <Copy SourceFiles="TheRailgun2.json" DestinationFolder="$(ModsPath)$(MSBuildProjectName)/"/>
         <Message Text="Copying BaseLib to mods folder." Importance="high"/>
@@ -138,6 +140,10 @@
         <Exec Command="&quot;$(GodotPath)&quot; --headless --export-pack &quot;BasicExport&quot; &quot;$(ModsPath)$(MSBuildProjectName)/$(MSBuildProjectName).pck&quot;"
               EnvironmentVariables="IsInnerGodotExport=true;MSBUILDDISABLENODEREUSE=1"
               ContinueOnError="WarnAndContinue"/>
+        
+        <Exec Command="git -C &quot;$(TargetRepoPath)&quot; add ." ContinueOnError="true" />
+        <Exec Command="git -C &quot;$(TargetRepoPath)&quot; commit -m &quot;Auto-build deploy: $([System.DateTime]::Now.ToString('yyyy-MM-dd HH:mm:ss'))&quot;" ContinueOnError="true" />
+        <Exec Command="git -C &quot;$(TargetRepoPath)&quot; push" ContinueOnError="true" />
     </Target>
 
     <Target Name="GodotPublishSkipped" AfterTargets="Publish" Condition="'$(GodotPath)' == '' or !Exists('$(GodotPath)')">

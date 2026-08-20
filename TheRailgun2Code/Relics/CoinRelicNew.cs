@@ -10,6 +10,7 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Orbs;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Models.Relics;
+using MegaCrit.Sts2.Core.Rooms;
 using TheRailgun2.TheRailgun2Code.Relics;
 
 namespace TheRailgun2.TheRailgun2Code.Relics;
@@ -59,6 +60,12 @@ public class CoinRelicNew() : TheRailgun2Relic
                 await OrbCmd.Channel<LightningOrb>(choiceContext, Owner);
             }
         }
+    }
+    
+    public override Task AfterCombatEnd(CombatRoom room)
+    {
+        DynamicVars.Repeat.BaseValue = 1;
+        return base.AfterCombatEnd(room);
     }
     public override RelicModel GetUpgradeReplacement() => ModelDb.Relic<CoinRelicNewPro>();
 }

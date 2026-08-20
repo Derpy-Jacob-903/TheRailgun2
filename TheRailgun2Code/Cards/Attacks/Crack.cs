@@ -22,7 +22,6 @@ public class Crack() : TheRailgun2Card(1,
     
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
-        CardKeyword.Sly,
         Enums.Discharge
     ];
     

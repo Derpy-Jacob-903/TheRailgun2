@@ -20,13 +20,15 @@ public class Electrokinesis() : SpendCard(0,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DynamicVar("Spend", 1).WithTooltip("THERAILGUN2-SPEND"),
+        new DynamicVar("Spend", canonicalSpendCost).WithTooltip("THERAILGUN2-SPEND"),
         new DamageVar(15m, ValueProp.Move)
     ];
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         HoverTipFactory.FromOrb<LightningOrb>()
     ];
+
+    public override int canonicalSpendCost => 1;
 
     protected override async Task MyOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {

@@ -8,19 +8,24 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
-public class Fulminate() : TheRailgun2Card(0,
-    CardType.Skill, CardRarity.Ancient,
+public class Fulminate() : TheRailgun2Card(2,
+    CardType.Skill, CardRarity.Uncommon,
     TargetType.Self)
 {
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [Enums.Discharge];
+
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new RepeatVar(4),
+        new RepeatVar(3),
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await OrbCmd.Channel<LightningOrb>(choiceContext, Owner);
+        for (int i = 0; i < DynamicVars.Repeat.BaseValue; i++)
+        {
+            await OrbCmd.Channel<LightningOrb>(choiceContext, Owner);
+        }
     }
 
-    protected override void OnUpgrade() => this.DynamicVars.Repeat.UpgradeValueBy(2M);
+    protected override void OnUpgrade() => this.DynamicVars.Repeat.UpgradeValueBy(1M);
 }

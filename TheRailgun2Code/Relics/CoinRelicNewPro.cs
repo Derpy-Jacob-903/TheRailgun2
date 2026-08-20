@@ -56,6 +56,4 @@ public class CoinRelicNewPro() : TheRailgun2Relic
         DynamicVars.Repeat.BaseValue = 1;
         return base.AfterCombatEnd(room);
     }
-
-    public override RelicModel GetUpgradeReplacement() => ModelDb.Relic<CoinRelic2>();
 }
