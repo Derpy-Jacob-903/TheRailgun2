@@ -1,4 +1,5 @@
-﻿using BaseLib.Patches.Content;
+﻿using BaseLib.Abstracts;
+using BaseLib.Patches.Content;
 using Godot;
 using MegaCrit.Sts2.Core.Assets;
 using MegaCrit.Sts2.Core.Bindings.MegaSpine;
@@ -13,8 +14,10 @@ using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Hooks;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Cards;
+using MegaCrit.Sts2.Core.Models.Orbs;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MegaCrit.Sts2.Core.Random;
+using MegaCrit.Sts2.Core.ValueProps;
 using TheRailgun2.TheRailgun2Code.Cards;
 
 namespace TheRailgun2.TheRailgun2Code.Character;
@@ -137,7 +140,7 @@ public static class EchoOrb
         evokedOrb.RemoveInternal();
     }
     
-    private static async Task RemoveOrb(
+    public static async Task RemoveOrb(
         PlayerChoiceContext choiceContext,
         Player player,
         OrbModel evokedOrb)
@@ -154,4 +157,66 @@ public static class EchoOrb
             return;
         evokedOrb.RemoveInternal();
     }
+}
+
+public class VoltOrb : CustomOrbModel
+{
+    public override decimal PassiveVal => ModifyOrbValue(3m);
+    public override decimal EvokeVal => ModifyOrbValue(4m);
+
+    public override Node2D CreateCustomSprite()
+    {
+        var container = new Node2D();
+        string darkPath = SceneHelper.GetScenePath("orbs/orb_visuals/lightning_orb");
+        Node2D dark = PreloadManager.Cache.GetScene(darkPath)
+            .Instantiate<Node2D>();
+        new MegaSprite(dark.GetNode("SpineSkeleton"))
+            .GetAnimationState().SetAnimation("idle_loop");
+        dark.Modulate = new Color(0f, 1f, 2f, 1.0f);
+        container.AddChild(dark);
+        return container;
+    }
+protected override string PassiveSfx => "event:/sfx/characters/defect/defect_lightning_passive";
+
+  protected override string EvokeSfx => "event:/sfx/characters/defect/defect_lightning_evoke";
+
+  protected override string ChannelSfx => "event:/sfx/characters/defect/defect_lightning_channel";
+
+  public override Color DarkenedColor => new Color("796606");
+
+  public override async Task BeforeTurnEndOrbTrigger(PlayerChoiceContext choiceContext)
+  {
+    await this.TriggerPassive(choiceContext, (Creature) null);
+  }
+
+  public override async Task Passive(PlayerChoiceContext choiceContext, Creature? target)
+  {
+    ActivatePassive();
+    await ApplyLightningDamage(PassiveVal, target, choiceContext, false);
+  }
+
+  public override async Task<IEnumerable<Creature>> Evoke(PlayerChoiceContext playerChoiceContext)
+  {
+    return await ApplyLightningDamage(EvokeVal, (Creature) null, playerChoiceContext, true);
+  }
+
+  private async Task<IEnumerable<Creature>> ApplyLightningDamage(
+    Decimal value,
+    Creature? target,
+    PlayerChoiceContext choiceContext,
+    bool isEvoke)
+  {
+    var list = CombatState.GetOpponentsOf(Owner.Creature).Where<Creature>((Func<Creature, bool>) (e => e.IsHittable)).ToList();
+    if (list.Count == 0)
+      return [];
+    IReadOnlyList<Creature> targets = [target ?? Owner.RunState.Rng.CombatTargets.NextItem(list)];
+    if (isEvoke)
+      ActivateEvoke(targets.ToArray());
+    foreach (Creature target1 in  targets)
+      VfxCmd.PlayOnCreature(target1, "vfx/vfx_attack_lightning");
+    PlayEvokeSfx();
+     await CreatureCmd.Damage(choiceContext, targets, value, ValueProp.Unpowered, Owner.Creature);
+    return targets;
+  }
+    
 }

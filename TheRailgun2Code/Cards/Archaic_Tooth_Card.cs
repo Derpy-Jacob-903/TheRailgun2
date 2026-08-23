@@ -6,13 +6,15 @@ using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Models.Orbs;
 using MegaCrit.Sts2.Core.Models.Powers;
 using BaseLib.Abstracts;
+using BaseLib.Utils;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
-
+[Pool(typeof(DeprecatedCardPool))]
 public class Fulminate2() : TheRailgun2Card(0,
-    CardType.Skill, CardRarity.Status,
+    CardType.Skill, CardRarity.Ancient,
     TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>

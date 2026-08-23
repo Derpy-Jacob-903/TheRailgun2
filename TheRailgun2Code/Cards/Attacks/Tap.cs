@@ -33,5 +33,8 @@ public class Tap() : TheRailgun2Card(0,
         await CommonActions.Apply<LockOnPower>(choiceContext, cardPlay.Target, this);
     }
 
-    protected override void OnUpgrade() => this.DynamicVars.Damage.UpgradeValueBy(3M);
+    protected override void OnUpgrade()
+    {
+        this.DynamicVars.Damage.UpgradeValueBy(3M);
+    }
 }

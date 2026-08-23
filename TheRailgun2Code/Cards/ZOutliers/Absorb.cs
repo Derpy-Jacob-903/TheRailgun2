@@ -15,17 +15,14 @@ using TheRailgun2.TheRailgun2Code.Powers;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
-[Pool(typeof(DeprecatedCardPool))]
 public class Absorb() : TheRailgun2Card(1,
-    CardType.Skill, CardRarity.Basic,
-    TargetType.Self), ITranscendenceCard
+    CardType.Skill, CardRarity.Uncommon,
+    TargetType.Self)//, ITranscendenceCard
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new PowerVar<StrengthPower>(1),
     ];
-    
-    public override Material CreateCustomBannerMaterial => ShaderUtils.GenerateHsv(195.2f / 360f, .373f, 0.75f);
     
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
@@ -38,8 +35,8 @@ public class Absorb() : TheRailgun2Card(1,
     }
 
     //protected override void OnUpgrade() => this.DynamicVars.Strength.UpgradeValueBy(1M);
-    public CardModel GetTranscendenceTransformedCard()
-    {
-        return ModelDb.Card<AbsorbEx>();
-    }
+    //public CardModel GetTranscendenceTransformedCard()
+    //{
+        //return ModelDb.Card<AbsorbEx>();
+    //}
 }

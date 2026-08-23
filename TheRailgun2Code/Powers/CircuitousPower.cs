@@ -29,6 +29,6 @@ public class CircuitousPower : TheRailgun2Power
         var power = this;
         power.Flash();
         await PowerCmd.Remove(power);
-        await PowerCmd.Apply<DexterityPower>(choiceContext, power.Owner, -power.Amount, power.Owner, null);
+        await PowerCmd.Apply<DexterityPower>(choiceContext, power.Owner, -power.Amount, power.Owner, null);0
     }
 }

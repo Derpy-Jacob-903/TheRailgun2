@@ -10,6 +10,7 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Orbs;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
+using TheRailgun2.TheRailgun2Code.Character;
 using TheRailgun2.TheRailgun2Code.Powers;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
@@ -30,7 +31,7 @@ public class ElectronBurst() : TheRailgun2Card(1,
         if (Owner.PlayerCombatState != null)
             foreach (OrbModel orb in Owner.PlayerCombatState.OrbQueue.Orbs)
             {
-                if (orb is not LightningOrb) continue;
+                if (orb is not LightningOrb or VoltOrb) continue;
                 for (int i = 0; i < DynamicVars.Repeat.BaseValue; i++)
                 {
                     await OrbCmd.Passive(choiceContext, orb, null);

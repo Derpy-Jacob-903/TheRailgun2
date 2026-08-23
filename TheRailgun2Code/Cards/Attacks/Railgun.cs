@@ -19,7 +19,7 @@ public class Railgun() : TheRailgun2Card(2,
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
-         //CardKeyword.Retain
+         Enums.Discharge
     ];
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
@@ -36,8 +36,6 @@ public class Railgun() : TheRailgun2Card(2,
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        //await EchoOrb.EvokeFirstOf<LightningOrb>(choiceContext, Owner);
-        //await EchoOrb.EvokeFirstOf<LightningOrb>(choiceContext, Owner);
         if (cardPlay.Target != null)
         {
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
@@ -48,15 +46,10 @@ public class Railgun() : TheRailgun2Card(2,
         }
     }
 
-    /*public override bool ShouldPlay(CardModel card, AutoPlayType autoPlayType)
+    protected override void OnUpgrade()
     {
-        if (card is Railgun && autoPlayType == AutoPlayType.None &&
-            card.Owner.PlayerCombatState != null &&
-            card.Owner.PlayerCombatState.OrbQueue.Orbs.Count(c => c is LightningOrb) < 2)
-            return false;
-        return base.ShouldPlay(card, autoPlayType);
-    }*/
-
-    protected override void OnUpgrade() => this.AddKeyword(CardKeyword.Retain);
-    //this.DynamicVars.Damage.UpgradeValueBy(5M);
+        DynamicVars.Damage.UpgradeValueBy(5);
+        DynamicVars["WeakPower"].UpgradeValueBy(1);
+        DynamicVars["VulnerablePower"].UpgradeValueBy(1);
+    }
 }

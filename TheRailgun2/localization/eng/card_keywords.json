@@ -4,5 +4,7 @@
   "THERAILGUN2-GUARDBREAK.title": "Guardbreak",
   "THERAILGUN2-GUARDBREAK.description": "Immediately before dealing any damage from this card, remove all Block from the damage's target.",
   "THERAILGUN2-DISCHARGE.title": "Discharge",
-  "THERAILGUN2-DISCHARGE.description": " If this card is discarded or Exhausted during the player's turn, it immediately plays for free."
+  "THERAILGUN2-DISCHARGE.description": "If this card is discarded or Exhausted during the player's turn, it immediately plays for free.",
+  "THERAILGUN2-BURNED.title": "Shorted",
+  "THERAILGUN2-BURNED.description": "This card will not be played when Exhausted as an effect of Discharge."
 }

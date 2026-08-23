@@ -16,7 +16,7 @@ using TheRailgun2.TheRailgun2Code.Powers;
 namespace TheRailgun2.TheRailgun2Code.Cards;
 [Pool(typeof(DeprecatedCardPool))]
 public class RecursionRailgun() : TheRailgun2Card(2,
-    CardType.Skill, CardRarity.Uncommon,
+    CardType.Skill, CardRarity.Status,
     TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>

@@ -56,7 +56,7 @@ public class FakeUnfamiliarDeckbox() : TheRailgun2Relic
         List<CardPileAddResult> results = new List<CardPileAddResult>();
         for (int i = 0; i < 4; ++i)
         {
-            CardModel card = Owner.RunState.CreateCard(ModelDb.Card<StrikeRailgun>(), Owner);
+            CardModel card = Owner.RunState.CreateCard(ModelDb.Card<ShankRailgun>(), Owner);
             results.Add(await CardPileCmd.Add(card, PileType.Deck));
         }
         for (int i = 0; i < 4; ++i)

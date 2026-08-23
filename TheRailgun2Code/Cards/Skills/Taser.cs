@@ -13,7 +13,7 @@ using TheRailgun2.TheRailgun2Code.Character;
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
 public class Taser() : SpendCard(2,
-    CardType.Skill, CardRarity.Rare,
+    CardType.Skill, CardRarity.Uncommon,
     TargetType.AnyEnemy)
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords =>

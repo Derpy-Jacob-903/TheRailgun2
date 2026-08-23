@@ -23,15 +23,7 @@ public class LevelSixNewPower : TheRailgun2Power
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.Static(StaticHoverTip.Evoke), HoverTipFactory.FromOrb<LightningOrb>()];
-
-    public override async Task AfterOrbEvoked(PlayerChoiceContext choiceContext, OrbModel orb, IEnumerable<Creature> targets)
-    {
-        if (orb.Owner.Creature != Owner)
-            return;
-        IEnumerable<DamageResult> damageResults = await CreatureCmd.Damage(choiceContext, Owner, (Decimal) Amount, ValueProp.Unpowered & ValueProp.Unblockable, Owner);
-        VfxCmd.PlayOnCreatureCenter(Owner, "vfx/vfx_attack_blunt");
-    }
-
+    
     private bool _channelingFromLevelSix;
 
     public override async Task AfterOrbChanneled(

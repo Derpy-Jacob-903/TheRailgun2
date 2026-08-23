@@ -18,12 +18,14 @@ public static class Enums
 {
     [CustomEnum] [KeywordProperties(AutoKeywordPosition.After)] [Obsolete]
     public static CardKeyword Conduit;
-    [CustomEnum] [KeywordProperties(AutoKeywordPosition.After)]
+    [CustomEnum] [KeywordProperties(AutoKeywordPosition.Before)]
     public static CardKeyword Discharge;
     [CustomEnum] [KeywordProperties(AutoKeywordPosition.Before)] [Obsolete]
     public static CardKeyword Guardbreak;
     [CustomEnum]
     public static CardTag Ferrous;
+    [CustomEnum]
+    public static CardTag Spend;
     [CustomEnum]
     public static ValueProp Orb;
     public static bool IsOrbCaller()
@@ -106,6 +108,11 @@ public static class OrbDamagePatchSingle
             
         }
     }*/
+
+    public class Shorted() : AfflictionModel, ICustomModel
+    {
+	    public override bool HasExtraCardText => true;
+    }
     public class RailgunKeywordSingleton() : CustomSingletonModel(HookType.Combat)
     {
 #pragma warning disable CS0612 // Type or member is obsolete 
@@ -118,15 +125,15 @@ public static class OrbDamagePatchSingle
 		    if (card.Keywords.Contains(Enums.Discharge))
 		    {
 			    await CardCmd.AutoPlay(choiceContext, card, null, AutoPlayType.SlyDiscard, skipCardPileVisuals: true);
-			    await CardPileCmd.Add(card, PileType.Exhaust, skipVisuals: true);
 		    }
 	    }
 	    public override async Task AfterCardExhausted(PlayerChoiceContext choiceContext, CardModel card, bool causedByEthereal)
 	    {
-		    if (card.Keywords.Contains(Enums.Discharge))
+		    if (card.Keywords.Contains(Enums.Discharge) && card.Affliction is not Shorted)
 		    {
+			    await CardCmd.Afflict(ModelDb.Affliction<Shorted>(), card, 1m);
 			    await CardCmd.AutoPlay(choiceContext, card, null, AutoPlayType.SlyDiscard, skipCardPileVisuals: true);
-			    await CardPileCmd.Add(card, PileType.Exhaust, skipVisuals: true);
+			    await CardPileCmd.Add(card, PileType.Exhaust, clonedBy: this, skipVisuals: true); //Exhaust
 		    }
 	    }
 

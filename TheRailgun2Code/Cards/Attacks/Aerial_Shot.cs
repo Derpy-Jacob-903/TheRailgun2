@@ -21,11 +21,6 @@ public class AerialShot() : TheRailgun2Card(1,
     [
         new DamageVar(9M, ValueProp.Move)
     ];
-    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-    [
-        HoverTipFactory.FromPower<MagneticFlightPower>(),
-        HoverTipFactory.FromPower<MagneticMovementPower>()
-    ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
@@ -33,7 +28,13 @@ public class AerialShot() : TheRailgun2Card(1,
             .FromCard(cardPlay.Card, cardPlay).Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_attack_slash").Execute(choiceContext);
     }
-    
+
+    public override Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    {
+        if (cardPlay.Card.Type == CardType.Power) EnergyCost.SetThisCombat(0);
+        return base.AfterCardPlayed(choiceContext, cardPlay);
+    }
+
     public override bool TryModifyEnergyCostInCombat(
         CardModel card,
         Decimal originalCost,

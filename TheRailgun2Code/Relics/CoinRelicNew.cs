@@ -11,6 +11,7 @@ using MegaCrit.Sts2.Core.Models.Orbs;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Models.Relics;
 using MegaCrit.Sts2.Core.Rooms;
+using TheRailgun2.TheRailgun2Code.Character;
 using TheRailgun2.TheRailgun2Code.Relics;
 
 namespace TheRailgun2.TheRailgun2Code.Relics;
@@ -23,13 +24,14 @@ public class CoinRelicNew() : TheRailgun2Relic
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DynamicVar("Lightning", 1M),
-        new RepeatVar(1)
+        new RepeatVar(1),
+        new DynamicVar("EvokeDown", 4)
     ];
-    
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         HoverTipFactory.ForEnergy(this),
-        HoverTipFactory.FromOrb<LightningOrb>()
+        HoverTipFactory.FromPower<FocusPower>(),
+        HoverTipFactory.FromOrb<VoltOrb>()
     ];
 
     public override Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, IReadOnlyList<Creature> participants,
@@ -57,7 +59,7 @@ public class CoinRelicNew() : TheRailgun2Relic
         {
             for (int i = 0; i < DynamicVars.Repeat.BaseValue; i++)
             {
-                await OrbCmd.Channel<LightningOrb>(choiceContext, Owner);
+                await OrbCmd.Channel<VoltOrb>(choiceContext, Owner);
             }
         }
     }

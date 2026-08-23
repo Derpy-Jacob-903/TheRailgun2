@@ -6,7 +6,8 @@
       "id": "card",
       "markers": [
         "TheRailgun2Card",
-	"CustomCardModel"
+	"CustomCardModel",
+	"SpendCard"
       ],
       "fields": [
         {

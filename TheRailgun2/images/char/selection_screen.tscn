@@ -1,0 +1,63 @@
+[gd_scene load_steps=13 format=3 uid="uid://c02nv4jj2cw1v"]
+
+[ext_resource type="Texture2D" uid="uid://ckensvnfdqa3s" path="res://TheRailgun2/images/char/defaultCharacter/Select/RailgunBg1.png" id="1_c1r83"]
+[ext_resource type="Texture2D" uid="uid://ci6cdlq3vkyy4" path="res://TheRailgun2/images/char/defaultCharacter/Select/RailgunBg2.png" id="2_o0khg"]
+[ext_resource type="Texture2D" uid="uid://bljg00nweskho" path="res://TheRailgun2/images/char/defaultCharacter/Select/RailgunBg3.png" id="3_mopuv"]
+[ext_resource type="Texture2D" uid="uid://d1yi4jrl213x4" path="res://TheRailgun2/images/char/defaultCharacter/Select/RailgunBg4.png" id="4_aw8kh"]
+[ext_resource type="Texture2D" uid="uid://ho0ofphcdnhx" path="res://TheRailgun2/images/char/defaultCharacter/Select/RailgunBg5.png" id="5_0geal"]
+[ext_resource type="Texture2D" uid="uid://c4qec8v3dfdoi" path="res://TheRailgun2/images/char/defaultCharacter/Select/RailgunBg6.png" id="6_xor46"]
+[ext_resource type="Texture2D" uid="uid://b3tjhuwjf35so" path="res://TheRailgun2/images/char/defaultCharacter/Select/RailgunBg7.png" id="7_vo5wv"]
+[ext_resource type="Texture2D" uid="uid://tsoab3fgkwo7" path="res://TheRailgun2/images/char/defaultCharacter/Select/RailgunBg8.png" id="8_i33qe"]
+[ext_resource type="Texture2D" uid="uid://diejhuxf8owwp" path="res://TheRailgun2/images/char/defaultCharacter/Select/RailgunBg9.png" id="9_iw8l8"]
+[ext_resource type="Texture2D" uid="uid://b8kd0emmvey6j" path="res://TheRailgun2/images/char/defaultCharacter/Select/RailgunBg010.png" id="10_nc50v"]
+[ext_resource type="Texture2D" uid="uid://cgp2uf4w3j4dx" path="res://TheRailgun2/images/char/defaultCharacter/Select/RailgunBg011.png" id="11_lox4j"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gigkm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_c1r83")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_o0khg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_mopuv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_aw8kh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_0geal")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xor46")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_vo5wv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_i33qe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_iw8l8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_nc50v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_lox4j")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 7.5
+}]
+
+[node name="RailgunBackgrown" type="Node2D"]
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+position = Vector2(583.2954, 327.76514)
+scale = Vector2(2.333, 2.333)
+sprite_frames = SubResource("SpriteFrames_gigkm")
+animation = &"idle"
+frame_progress = 0.202582

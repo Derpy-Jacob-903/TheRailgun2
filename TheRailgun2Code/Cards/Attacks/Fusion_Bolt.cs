@@ -5,18 +5,18 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.ValueProps;
-using TheRailgun2.TheRailgun2Code.Powers;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
-public class ConcentratedShock() : TheRailgun2Card(2,
-    CardType.Attack, CardRarity.Rare,
+public class FusionBolt() : TheRailgun2Card(2,
+    CardType.Attack, CardRarity.Common,
     TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        ..MakeCalculatedDamage(14, (model, creature) => creature.GetPowerAmount<LockOnPower>())
+        ..MakeCalculatedDamage(14, (Func<CardModel, Creature, Decimal>) ((card, _) => card.Owner.PlayerCombatState!.AllCards.Count<CardModel>((Func<CardModel, bool>) (c => c.Tags.Contains(Enums.Spend)))), 2)
     ];
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [];
@@ -30,5 +30,5 @@ public class ConcentratedShock() : TheRailgun2Card(2,
                 .WithHitFx("vfx/vfx_attack_lightning").Execute(choiceContext);
     }
 
-    protected override void OnUpgrade() => this.AddKeyword(CardKeyword.Retain);
+    protected override void OnUpgrade() => this.DynamicVars.ExtraDamage.UpgradeValueBy(1M);
 }

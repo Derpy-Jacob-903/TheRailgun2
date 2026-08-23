@@ -12,6 +12,7 @@ using MegaCrit.Sts2.Core.Models.Orbs;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Models.Relics;
 using MegaCrit.Sts2.Core.Rooms;
+using TheRailgun2.TheRailgun2Code.Character;
 using TheRailgun2.TheRailgun2Code.Relics;
 
 namespace TheRailgun2.TheRailgun2Code.Relics;
@@ -29,7 +30,7 @@ public class CoinRelicNewPro() : TheRailgun2Relic
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         HoverTipFactory.ForEnergy(this),
-        HoverTipFactory.FromOrb<LightningOrb>()
+        HoverTipFactory.FromOrb<VoltOrb>()
     ];
     
     public override async Task AfterSideTurnEnd(
@@ -46,7 +47,7 @@ public class CoinRelicNewPro() : TheRailgun2Relic
             }
             for (int i = 0; i < DynamicVars.Repeat.BaseValue; i++)
             {
-                await OrbCmd.Channel<LightningOrb>(choiceContext, Owner);
+                await OrbCmd.Channel<VoltOrb>(choiceContext, Owner);
             }
         }
     }

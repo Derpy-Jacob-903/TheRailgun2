@@ -22,9 +22,9 @@
   "THERAILGUN2-FAKE_UNFAMILIAR_DECKBOX.description": "Upon pickup, replace your starting deck with an alternate version. Replace your Starting relic with Collector's Coin?",
   "THERAILGUN2-FAKE_UNFAMILIAR_DECKBOX.flavor": "",
   "THERAILGUN2-COIN_RELIC_NEW_PRO.title": "Collector's Coin Pro",
-  "THERAILGUN2-COIN_RELIC_NEW_PRO.description": "At the end of your turn, [gold]Channel[/gold] [blue]{Repeat}[/blue] [gold]Lightning[/gold]\nEvery other turn, increase the [gold]Lightning[/gold] [gold]Channeled[/gold] by this relic by [blue]1[/blue] this combat.",
+  "THERAILGUN2-COIN_RELIC_NEW_PRO.description": "At the end of your turn, [gold]Channel[/gold] [blue]{Repeat}[/blue] [gold]Volt[/gold]\nEvery other turn, increase the [gold]Volt[/gold] [gold]Channeled[/gold] by this relic by [blue]1[/blue] this combat.",
   "THERAILGUN2-COIN_RELIC_NEW_PRO.flavor": "",
   "THERAILGUN2-COIN_RELIC_NEW.title": "Collector's Coin",
-  "THERAILGUN2-COIN_RELIC_NEW.description": "At the end of your turn, [gold]Channel[/gold] [blue]{Repeat}[/blue] [gold]Lightning[/gold].\nAt the start of your 3rd and 5th turns, increase the [gold]Lightning[/gold] [gold]Channeled[/gold] by this relic by [blue]1[/blue] this combat.",
+  "THERAILGUN2-COIN_RELIC_NEW.description": "At the end of your turn, [gold]Channel[/gold] [blue]{Repeat}[/blue] [gold]Volt[/gold].\nAt the start of your 3rd and 5th turns, increase the [gold]Volt[/gold] [gold]Channeled[/gold] by this relic by [blue]1[/blue] this combat.",
   "THERAILGUN2-COIN_RELIC_NEW.flavor": ""
 }

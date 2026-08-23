@@ -31,11 +31,11 @@ public class LevelSixNew() : TheRailgun2Card(3,
         CardPlay play)
     {
         await PowerCmd.Apply<LevelSixNewPower>(context, Owner.Creature, 1, Owner.Creature, this);
-        await PowerCmd.Apply<LevelSixPower>(context, Owner.Creature, DynamicVars.HpLoss.BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<DemisePower>(context, Owner.Creature, DynamicVars.HpLoss.BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
-        this.DynamicVars.HpLoss.UpgradeValueBy(-1M);
+        this.DynamicVars.HpLoss.UpgradeValueBy(-2M);
     } 
 }

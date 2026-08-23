@@ -12,8 +12,6 @@ public class Pull() : TheRailgun2Card(1,
     CardType.Skill, CardRarity.Common,
     TargetType.AnyEnemy)
 {
-    protected override HashSet<CardTag> CanonicalTags => [CardTag.Defend];
-
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new CardsVar(1),
@@ -22,8 +20,8 @@ public class Pull() : TheRailgun2Card(1,
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await CommonActions.Draw(this, choiceContext);
         if (cardPlay.Target != null) await CommonActions.Apply<VulnerablePower>(choiceContext, cardPlay.Target, this);
+        await CommonActions.Draw(this, choiceContext);
     }
 
     protected override void OnUpgrade() => this.DynamicVars.Cards.UpgradeValueBy(1);

@@ -1,0 +1,152 @@
+[gd_scene load_steps=17 format=3 uid="uid://bpqepdiugyh8a"]
+
+[ext_resource type="Texture2D" uid="uid://ckensvnfdqa3s" path="res://TheRailgun2/images/char/defaultCharacter/Select/RailgunBg1.png" id="1_c1r83"]
+[ext_resource type="Texture2D" uid="uid://d3f0jhc4nbt6y" path="res://TheRailgun2/images/charui/TheRailgunPortraitBG.jpg" id="1_o0khg"]
+[ext_resource type="Texture2D" uid="uid://ci6cdlq3vkyy4" path="res://TheRailgun2/images/char/defaultCharacter/Select/RailgunBg2.png" id="2_o0khg"]
+[ext_resource type="Texture2D" uid="uid://bljg00nweskho" path="res://TheRailgun2/images/char/defaultCharacter/Select/RailgunBg3.png" id="3_mopuv"]
+[ext_resource type="Texture2D" uid="uid://d1yi4jrl213x4" path="res://TheRailgun2/images/char/defaultCharacter/Select/RailgunBg4.png" id="4_aw8kh"]
+[ext_resource type="Texture2D" uid="uid://ho0ofphcdnhx" path="res://TheRailgun2/images/char/defaultCharacter/Select/RailgunBg5.png" id="5_0geal"]
+[ext_resource type="Texture2D" uid="uid://c4qec8v3dfdoi" path="res://TheRailgun2/images/char/defaultCharacter/Select/RailgunBg6.png" id="6_xor46"]
+[ext_resource type="Texture2D" uid="uid://b3tjhuwjf35so" path="res://TheRailgun2/images/char/defaultCharacter/Select/RailgunBg7.png" id="7_vo5wv"]
+[ext_resource type="Texture2D" uid="uid://tsoab3fgkwo7" path="res://TheRailgun2/images/char/defaultCharacter/Select/RailgunBg8.png" id="8_i33qe"]
+[ext_resource type="Texture2D" uid="uid://diejhuxf8owwp" path="res://TheRailgun2/images/char/defaultCharacter/Select/RailgunBg9.png" id="9_iw8l8"]
+[ext_resource type="Texture2D" uid="uid://b8kd0emmvey6j" path="res://TheRailgun2/images/char/defaultCharacter/Select/RailgunBg010.png" id="10_nc50v"]
+[ext_resource type="Texture2D" uid="uid://cgp2uf4w3j4dx" path="res://TheRailgun2/images/char/defaultCharacter/Select/RailgunBg011.png" id="11_lox4j"]
+
+[sub_resource type="Animation" id="Animation_c1r83"]
+resource_name = "new_animation"
+length = 1.25
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect/AnimatedSprite2D2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 10]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect/AnimatedSprite2D2:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"idle", &"idle"]
+}
+
+[sub_resource type="Animation" id="Animation_o0khg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect/AnimatedSprite2D2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect/AnimatedSprite2D2:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mopuv"]
+_data = {
+&"RESET": SubResource("Animation_o0khg"),
+&"new_animation": SubResource("Animation_c1r83")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gigkm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_c1r83")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_o0khg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_mopuv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_aw8kh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_0geal")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xor46")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_vo5wv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_i33qe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_iw8l8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_nc50v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_lox4j")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 7.5
+}]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchor_right = 4.34
+anchor_bottom = 4.3360004
+offset_left = -0.072021484
+offset_right = -4999.752
+offset_bottom = -2809.7283
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_mopuv")
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+offset_right = 1920.0
+offset_bottom = 1200.0
+texture = ExtResource("1_o0khg")
+
+[node name="Sprite2D" type="Sprite2D" parent="TextureRect"]
+self_modulate = Color(0, 0, 0.5019608, 1)
+position = Vector2(620.32153, 434.22498)
+scale = Vector2(2.97201, 2.0376983)
+texture = ExtResource("1_o0khg")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="TextureRect"]
+position = Vector2(-25, -25)
+scale = Vector2(2.4, 2.5)
+sprite_frames = SubResource("SpriteFrames_gigkm")
+animation = &"idle"
+frame = 6
+centered = false

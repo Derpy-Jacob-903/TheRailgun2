@@ -26,7 +26,7 @@ public class Needle() : CustomCardModel(0,
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
-        CardKeyword.Sly,
+        Enums.Discharge,
         CardKeyword.Exhaust
     ];
 

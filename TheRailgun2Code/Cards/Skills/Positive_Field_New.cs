@@ -18,22 +18,21 @@ public class PositiveFieldNew() : TheRailgun2Card(1,
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
-        CardKeyword.Exhaust
     ];
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<DexterityPower>(1),
+        new BlockVar(7, ValueProp.Move),
         new CardsVar(1)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await CommonActions.ApplySelf<DexterityPower>(choiceContext, this);
+        await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
         CardModel card = (await CardSelectCmd.FromHandForDiscard(choiceContext, Owner, new CardSelectorPrefs(CardSelectorPrefs.DiscardSelectionPrompt, DynamicVars.Cards.IntValue), null, this)).FirstOrDefault();
         if (card == null)
             return;
         await CardCmd.Discard(choiceContext, card);
     }
 
-    protected override void OnUpgrade() => this.DynamicVars.Dexterity.UpgradeValueBy(1M);
+    protected override void OnUpgrade() => this.DynamicVars.Block.UpgradeValueBy(3M);
 }

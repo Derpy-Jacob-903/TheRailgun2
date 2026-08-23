@@ -1,22 +1,24 @@
-﻿using MegaCrit.Sts2.Core.Commands;
+﻿using BaseLib.Utils;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Logging;
+using MegaCrit.Sts2.Core.Models.CardPools;
+using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using TheRailgun2.TheRailgun2Code.Powers;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
-public class ConcentratedShock() : TheRailgun2Card(2,
+public class LightningSpeedNew() : TheRailgun2Card(2,
     CardType.Attack, CardRarity.Rare,
-    TargetType.AnyEnemy)
+    TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        ..MakeCalculatedDamage(14, (model, creature) => creature.GetPowerAmount<LockOnPower>())
+        new DamageVar(14M, ValueProp.Move),
     ];
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [];
@@ -24,11 +26,10 @@ public class ConcentratedShock() : TheRailgun2Card(2,
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        if (cardPlay.Target != null)
-            await DamageCmd.Attack(DynamicVars.CalculatedDamage.Calculate(cardPlay.Target))
-                .FromCard(cardPlay.Card, cardPlay).Targeting(cardPlay.Target)
-                .WithHitFx("vfx/vfx_attack_lightning").Execute(choiceContext);
+        await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
+            .FromCard(cardPlay.Card, cardPlay).Targeting(cardPlay.Target)
+            .WithHitFx("vfx/vfx_attack_lightning").Execute(choiceContext);
     }
 
-    protected override void OnUpgrade() => this.AddKeyword(CardKeyword.Retain);
+    protected override void OnUpgrade() => this.DynamicVars.Damage.UpgradeValueBy(3M);
 }

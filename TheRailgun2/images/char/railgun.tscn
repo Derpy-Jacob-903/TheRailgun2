@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://bnx0x2damphks"]
+[gd_scene load_steps=75 format=3 uid="uid://bnx0x2damphks"]
 
 [ext_resource type="Texture2D" uid="uid://dos6cvtcplaem" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis300_00.png" id="1_7udl6"]
 [ext_resource type="Texture2D" uid="uid://cjqfmpa34ooia" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis300_01.png" id="2_77bfj"]
@@ -64,6 +64,7 @@
 [ext_resource type="Texture2D" uid="uid://c2y4tf3ofoefd" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis103_06.png" id="62_lhaci"]
 [ext_resource type="Texture2D" uid="uid://dk0boew68yr77" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis300_06.png" id="63_y2wps"]
 [ext_resource type="Texture2D" uid="uid://d16s4wyt6ovpi" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis300_07.png" id="64_ctlwx"]
+[ext_resource type="Texture2D" uid="uid://dq7dxiuhe77u" path="res://TheRailgun2/images/char/defaultCharacter/Mikoto Misaka/Mis395_00.png" id="65_77bfj"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5v06v"]
 animations = [{
@@ -321,6 +322,14 @@ animations = [{
 "loop": true,
 "name": &"new_animation_4",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("65_77bfj")
+}],
+"loop": true,
+"name": &"relaxed_loop",
+"speed": 5.0
 }]
 
 [sub_resource type="Animation" id="Animation_77bfj"]
@@ -336,6 +345,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [&"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_5wwxt"]
@@ -514,6 +535,33 @@ tracks/2/keys = {
 "values": [Vector2(0, -190), Vector2(0, -190)]
 }
 
+[sub_resource type="Animation" id="Animation_nbc8t"]
+resource_name = "relaxed_loop"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"relaxed_loop", &"relaxed_loop"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pdby6"]
 _data = {
 &"RESET": SubResource("Animation_77bfj"),
@@ -521,7 +569,8 @@ _data = {
 &"cast": SubResource("Animation_7udl6"),
 &"die": SubResource("Animation_fxojd"),
 &"hurt": SubResource("Animation_5s4kc"),
-&"idle": SubResource("Animation_6euom")
+&"idle": SubResource("Animation_6euom"),
+&"relaxed_loop": SubResource("Animation_nbc8t")
 }
 
 [node name="Railgun" type="Node2D"]
