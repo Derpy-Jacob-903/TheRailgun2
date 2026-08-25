@@ -75,8 +75,9 @@
             <Private>false</Private>
         </Reference>
 
-        <PackageReference Include="Alchyr.Sts2.BaseLib" Version="3.4.0" PrivateAssets="All" />
+        <PackageReference Include="Alchyr.Sts2.BaseLib" Version="3.4.5" PrivateAssets="All" />
         <PackageReference Include="Alchyr.Sts2.ModAnalyzers" Version="0.1.9" />
+        <PackageReference Include="Krafs.Publicizer" Version="2.3.0" PrivateAssets="All"/>
         <AdditionalFiles Include="TheRailgun2/localization/**/*.json"/>
     </ItemGroup>
 
@@ -114,6 +115,10 @@
         <None Include="TheRailgun2Code\Relics\DataDisk.cs" />
         <Compile Remove="TheRailgun2Code\Character\HadesTiers.cs" />
         <Compile Remove="TheRailgun2Code\Cards\Skills\TestCard.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Publicize Include="sts2" IncludeVirtualMembers="false" IncludeCompilerGeneratedMembers="false"/>
     </ItemGroup>
 
     <ItemGroup>

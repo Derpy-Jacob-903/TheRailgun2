@@ -10,7 +10,7 @@
   "THERAILGUN2-ELECTRICAL_FIRE.title": "Electrical Fire",
   "THERAILGUN2-ELECTRICAL_FIRE.description": "Deal {Damage:diff()} damage to ALL enemies.\n[gold]Exhaust[/gold] 1 card.",
   "THERAILGUN2-ELECTRICAL_STORM.title": "Electrical Storm",
-  "THERAILGUN2-ELECTRICAL_STORM.description": "Deal X+{Damage:diff()} damage and apply X+{LockOnPower:diff()} [gold]Lock-On[/gold] to ALL enemies.",
+  "THERAILGUN2-ELECTRICAL_STORM.description": "Deal X+{Damage:diff()} damage and apply X{IfUpgraded:show:+{LockOnPower:diff()}|} [gold]Lock-On[/gold] to ALL enemies.",
   "THERAILGUN2-IRON_DUST_SWORD.title": "Iron-Dust Sword",
   "THERAILGUN2-IRON_DUST_SWORD.description": "Deal {Damage:diff()} damage {Repeat:diff()} {Repeat:plural:time|times}.",
   "THERAILGUN2-LIGHTNINGBOLT.title": "Lightningbolt",

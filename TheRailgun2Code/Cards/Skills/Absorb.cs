@@ -15,7 +15,7 @@ using TheRailgun2.TheRailgun2Code.Powers;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
-public class ElectronBurst() : TheRailgun2Card(1,
+public class ElectronBurst() : TheRailgun2Card(0,
     CardType.Skill, CardRarity.Basic,
     TargetType.Self), ITranscendenceCard
 {
@@ -31,10 +31,12 @@ public class ElectronBurst() : TheRailgun2Card(1,
         if (Owner.PlayerCombatState != null)
             foreach (OrbModel orb in Owner.PlayerCombatState.OrbQueue.Orbs)
             {
-                if (orb is not LightningOrb or VoltOrb) continue;
-                for (int i = 0; i < DynamicVars.Repeat.BaseValue; i++)
+                if (orb is LightningOrb or VoltOrb)
                 {
-                    await OrbCmd.Passive(choiceContext, orb, null);
+                    for (int i = 0; i < DynamicVars.Repeat.BaseValue; i++)
+                    {
+                        await OrbCmd.Passive(choiceContext, orb, null);
+                    }
                 }
             }
     }

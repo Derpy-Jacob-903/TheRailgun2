@@ -50,7 +50,6 @@ public class ElectricalStorm() : TheRailgun2Card(-1,
         {
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue + ResolveEnergyXValue())
                 .FromCard(cardPlay.Card, cardPlay).TargetingAllOpponents(CombatState)
-                .WithHitCount(DynamicVars.Repeat.IntValue)
                 .WithHitFx("vfx/vfx_attack_lightning").Execute(choiceContext);
             await PowerCmd.Apply<LockOnPower>(choiceContext, CombatState.Enemies,
                 DynamicVars["LockOnPower"].BaseValue + ResolveEnergyXValue(), Owner.Creature, this);

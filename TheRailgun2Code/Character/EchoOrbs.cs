@@ -161,8 +161,8 @@ public static class EchoOrb
 
 public class VoltOrb : CustomOrbModel
 {
-    public override decimal PassiveVal => ModifyOrbValue(3m);
-    public override decimal EvokeVal => ModifyOrbValue(4m);
+    public override decimal PassiveVal => ModifyOrbValue(2m);
+    public override decimal EvokeVal => ModifyOrbValue(3m);
 
     public override Node2D CreateCustomSprite()
     {
@@ -172,7 +172,7 @@ public class VoltOrb : CustomOrbModel
             .Instantiate<Node2D>();
         new MegaSprite(dark.GetNode("SpineSkeleton"))
             .GetAnimationState().SetAnimation("idle_loop");
-        dark.Modulate = new Color(0f, 1f, 2f, 1.0f);
+        dark.Modulate = new Color(0f, 1f, 4f, 1.0f);
         container.AddChild(dark);
         return container;
     }

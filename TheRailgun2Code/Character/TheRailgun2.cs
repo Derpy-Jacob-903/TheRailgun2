@@ -65,6 +65,6 @@ public class TheRailgun2 : PlaceholderCharacterModel
     {
         return NodeFactory<NCreatureVisuals>.CreateFromScene("res://TheRailgun2/images/char/railgun.tscn");
     }
-    public override string CustomCharacterSelectBg => "res://TheRailgun2/images/char/selection_screen.tscn";
+    //public override string CustomCharacterSelectBg => "res://TheRailgun2/images/char/selection_screen.tscn";
     public override string CustomMerchantAnimPath => "res://TheRailgun2/images/char/railgun.tscn";
 }

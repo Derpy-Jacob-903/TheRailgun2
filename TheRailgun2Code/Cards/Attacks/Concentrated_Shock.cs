@@ -16,7 +16,7 @@ public class ConcentratedShock() : TheRailgun2Card(2,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        ..MakeCalculatedDamage(14, (model, creature) => creature.GetPowerAmount<LockOnPower>())
+        ..MakeCalculatedDamage(14, (model, creature) => creature?.GetPowerAmount<LockOnPower>() ?? 0)
     ];
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [];

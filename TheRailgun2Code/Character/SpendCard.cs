@@ -17,7 +17,7 @@ public abstract class SpendCard(int cost, CardType type, CardRarity rarity, Targ
     /// </summary>
     public bool CanSpendOrb(OrbModel orb)
     {
-        return orb is LightningOrb or VoltOrb;
+        return true; //orb is LightningOrb or VoltOrb;
     }
     
     public override IEnumerable<CardTag> Tags => [Enums.Spend];

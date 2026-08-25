@@ -13,7 +13,7 @@ using TheRailgun2.TheRailgun2Code.Powers;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
-public class ElectronBurstEx() : TheRailgun2Card(1,
+public class ElectronBurstEx() : TheRailgun2Card(0,
     CardType.Skill, CardRarity.Ancient,
     TargetType.Self)
 {
@@ -29,12 +29,12 @@ public class ElectronBurstEx() : TheRailgun2Card(1,
         if (Owner.PlayerCombatState != null)
             foreach (OrbModel orb in Owner.PlayerCombatState.OrbQueue.Orbs)
             {
-                for (int i = 0; i < DynamicVars.Repeat.BaseValue; i++)
+                for (int i = 0; i < DynamicVars.Repeat.BaseValue; i++) 
                 {
                     await OrbCmd.Passive(choiceContext, orb, null);
                 }
             }
     }
     
-    protected override void OnUpgrade() => this.DynamicVars.Repeat.UpgradeValueBy(1M);
+    protected override void OnUpgrade() => this.DynamicVars.Repeat.UpgradeValueBy(2M);
 }
