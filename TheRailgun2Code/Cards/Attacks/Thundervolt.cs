@@ -13,7 +13,7 @@ using TheRailgun2.TheRailgun2Code.Character;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
-public class Thundervolt() : TheRailgun2Card(1,
+public class Thundervolt() : SpendCard(1,
     CardType.Attack, CardRarity.Rare,
     TargetType.AnyEnemy)
 {
@@ -21,7 +21,7 @@ public class Thundervolt() : TheRailgun2Card(1,
     [
         new DamageVar(21M, ValueProp.Move),
         //new RepeatVar(2),
-        new DynamicVar("Spend", 2).WithTooltip("THERAILGUN2-SPEND")
+        new DynamicVar("Spend", canonicalSpendCost).WithTooltip("THERAILGUN2-SPEND")
     ];
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
@@ -30,32 +30,16 @@ public class Thundervolt() : TheRailgun2Card(1,
         HoverTipFactory.FromOrb<LightningOrb>()
     ];
 
-    protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    public override int canonicalSpendCost => 2;
+    
+    protected override async Task MyOnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        var osty = cardPlay.IsAutoPlay;
-        if (!cardPlay.IsAutoPlay && Owner.PlayerCombatState.OrbQueue.Orbs.Where(c => c is LightningOrb).Count() >= 2)
-        {
-            await EchoOrb.RemoveFirstOf<LightningOrb>(choiceContext, Owner);
-            await EchoOrb.RemoveFirstOf<LightningOrb>(choiceContext, Owner);
-            osty = true;
-        }
-        if (osty && CombatState != null)
-        {
+        if (CombatState != null)
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
                 .WithHitCount(DynamicVars.Repeat.IntValue)
-                .FromCard(cardPlay.Card, cardPlay).TargetingAllOpponents(CombatState)
+                .FromCard(play.Card, play).TargetingAllOpponents(CombatState)
                 .WithHitFx("vfx/vfx_attack_lightning").Execute(choiceContext);
-        }
     }
-    
-    public override bool ShouldPlay(CardModel card, AutoPlayType autoPlayType)
-    {
-        if (card is Thundervolt && autoPlayType == AutoPlayType.None &&
-            card.Owner.PlayerCombatState != null &&
-            !(card.Owner.PlayerCombatState.OrbQueue.Orbs.Count(c => c is LightningOrb) >= 2))
-            return false;
-        return base.ShouldPlay(card, autoPlayType);
-    }
-    
+
     protected override void OnUpgrade() => this.DynamicVars.Damage.UpgradeValueBy(9M);
 }

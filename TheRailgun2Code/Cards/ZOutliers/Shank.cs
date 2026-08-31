@@ -1,4 +1,6 @@
-﻿using MegaCrit.Sts2.Core.Commands;
+﻿using BaseLib.Utils;
+using Godot;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
@@ -12,6 +14,8 @@ public class ShankRailgun() : TheRailgun2Card(0,
 {
     protected override HashSet<CardTag> CanonicalTags => [CardTag.Strike];
 
+    public override Material CreateCustomBannerMaterial => ShaderUtils.GenerateHsv(195.2f / 360f, .373f, 0.75f);
+    
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(3M, ValueProp.Move),

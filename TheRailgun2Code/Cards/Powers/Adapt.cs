@@ -11,18 +11,17 @@ using MegaCrit.Sts2.Core.Models.Powers;
 using TheRailgun2.TheRailgun2Code.Powers;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
-[Pool(typeof(DeprecatedCardPool))]
-public class Adapt() : TheRailgun2Card(2,
+public class Adapt() : TheRailgun2Card(0,
     CardType.Power, CardRarity.Rare,
     TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<AdaptPower>(8)
+        new PowerVar<AdaptPower>(3)
     ];
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromPower<AdaptPower>(8)
+        HoverTipFactory.FromPower<AdaptPower>(DynamicVars["AdaptPower"].IntValue)
     ];
     protected override async Task OnPlay(
         PlayerChoiceContext context,
@@ -31,5 +30,6 @@ public class Adapt() : TheRailgun2Card(2,
         await CommonActions.ApplySelf<AdaptPower>(context, this);
     }
 
-    protected override void OnUpgrade() => this.EnergyCost.UpgradeBy(-1);
+    protected override void OnUpgrade() =>
+        this.DynamicVars["AdaptPower"].UpgradeValueBy(2); //this.EnergyCost.UpgradeBy(-1);
 }

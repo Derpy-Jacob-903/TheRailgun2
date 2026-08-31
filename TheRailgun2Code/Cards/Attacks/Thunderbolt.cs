@@ -6,11 +6,12 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Models.Orbs;
 using MegaCrit.Sts2.Core.ValueProps;
+using TheRailgun2.TheRailgun2Code.Character;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
 public class Thunderbolt() : TheRailgun2Card(3,
-    CardType.Attack, CardRarity.Uncommon,
+    CardType.Attack, CardRarity.Common,
     TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
@@ -21,14 +22,15 @@ public class Thunderbolt() : TheRailgun2Card(3,
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         HoverTipFactory.Static(StaticHoverTip.Channeling),
-        HoverTipFactory.FromOrb<LightningOrb>()
+        HoverTipFactory.FromOrb<VoltOrb>()
     ];
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .FromCard(cardPlay.Card, cardPlay).Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_attack_lightning").Execute(choiceContext);
-        await OrbCmd.Channel<LightningOrb>(choiceContext, Owner);
+        await OrbCmd.Channel<VoltOrb>(choiceContext, Owner);
+        await OrbCmd.Channel<VoltOrb>(choiceContext, Owner);
     }
 
     protected override void OnUpgrade() => this.EnergyCost.UpgradeBy(-1);

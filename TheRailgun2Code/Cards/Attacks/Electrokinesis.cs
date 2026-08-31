@@ -14,7 +14,7 @@ using TheRailgun2.TheRailgun2Code.Character;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
-public class Electrokinesis() : SpendCard(0,
+public class Electrokinesis() : SpendCard(1,
     CardType.Attack, CardRarity.Uncommon,
     TargetType.AnyEnemy)
 {
@@ -23,11 +23,6 @@ public class Electrokinesis() : SpendCard(0,
         new DynamicVar("Spend", canonicalSpendCost).WithTooltip("THERAILGUN2-SPEND"),
         new DamageVar(15m, ValueProp.Move)
     ];
-    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-    [
-        HoverTipFactory.FromOrb<LightningOrb>()
-    ];
-
     public override int canonicalSpendCost => 1;
 
     protected override async Task MyOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

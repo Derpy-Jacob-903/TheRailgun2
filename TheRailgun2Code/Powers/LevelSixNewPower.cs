@@ -31,8 +31,7 @@ public class LevelSixNewPower : TheRailgun2Power
         Player player,
         OrbModel orb)
     {
-        if (_channelingFromLevelSix)
-            return;
+        if (_channelingFromLevelSix || player.Creature != Owner) return;
         await MyAfterOrbChanneled(choiceContext, player, orb);
     }
 
@@ -46,7 +45,7 @@ public class LevelSixNewPower : TheRailgun2Power
         {
             for (int i = 0; i < Amount; i++)
             {
-                await OrbCmd.Channel<LightningOrb>(choiceContext, player);
+                await OrbCmd.Channel(choiceContext, orb, player);
             }
         }
         finally

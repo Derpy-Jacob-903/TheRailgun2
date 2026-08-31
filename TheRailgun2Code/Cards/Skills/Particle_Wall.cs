@@ -41,15 +41,6 @@ public class ParticleWallRailgun() : SpendCard(0,
     {
         await CommonActions.CardBlock(this, DynamicVars.Block, play);
     }
-
-    public override bool ShouldPlay(CardModel card, AutoPlayType autoPlayType)
-    {
-        if (card is ParticleWallRailgun && autoPlayType == AutoPlayType.None &&
-            card.Owner.PlayerCombatState != null &&
-            !card.Owner.PlayerCombatState.OrbQueue.Orbs.Any(c => c is LightningOrb))
-            return false;
-        return base.ShouldPlay(card, autoPlayType);
-    }
     
     protected override bool ShouldGlowRedInternal => Owner.PlayerCombatState != null && !Owner.PlayerCombatState.OrbQueue.Orbs.Any(c => c is LightningOrb);
 

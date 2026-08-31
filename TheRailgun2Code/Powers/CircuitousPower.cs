@@ -8,27 +8,39 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using TheRailgun2.TheRailgun2Code.Cards;
+using TheRailgun2.TheRailgun2Code.Character;
 using TheRailgun2.TheRailgun2Code.Extensions;
 
 namespace TheRailgun2.TheRailgun2Code.Powers;
 
 public class CircuitousPower : TheRailgun2Power
 {
-    public override PowerType Type => PowerType.Debuff;
+    public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
-    public string CustomPackedIconPath => "discharge_power.png".PowerImagePath();
-    public string CustomBigIconPath => "discharge_power.png".BigPowerImagePath();
     
-    public override async Task AfterSideTurnEnd(
-        PlayerChoiceContext choiceContext,
-        CombatSide side,
-        IEnumerable<Creature> participants)
+    public override bool AllowNegative => true;
+    private bool _balls => Owner.Player?.PlayerCombatState != null && Owner.Player.PlayerCombatState.Phase == PlayerTurnPhase.Play;
+
+    public override Decimal ModifyOrbValue(OrbModel orb, Decimal value)
+    {
+        if (orb is VoltOrb && _balls) return value;
+        return this.Owner.Player != orb.Owner ? value : Math.Max(value + (Decimal) this.Amount, 0M);
+    }
+
+    /*
+    public override Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, IReadOnlyList<Creature> participants,
+        ICombatState combatState)
     {
         if (side != Owner.Side)
             return;
-        var power = this;
-        power.Flash();
-        await PowerCmd.Remove(power);
-        await PowerCmd.Apply<DexterityPower>(choiceContext, power.Owner, -power.Amount, power.Owner, null);
+        return base.BeforeSideTurnStart(choiceContext, side, participants, combatState);
     }
+
+    public override Task BeforeSideTurnEndVeryEarly(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)
+    {
+        if (side != Owner.Side)
+            return;
+        return base.BeforeSideTurnEndVeryEarly(choiceContext, side, participants);
+    }
+    */
 }

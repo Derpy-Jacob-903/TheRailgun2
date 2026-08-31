@@ -23,7 +23,7 @@ public static class DownfallMetrics
     private static readonly RunMetricsUploader<RunMetrics> Uploader = new(
         new MetricsUploaderConfig
         {
-            ModName = "Downfall",
+            ModName = "TheRailgun2",
             EndpointUrl = "https://poefclgeeqhmtpdcrcev.supabase.co/rest/v1/runs",
             ApiKey = BuildSecrets.MetricsApiKey,
             ModVersionProvider = um,
@@ -33,6 +33,7 @@ public static class DownfallMetrics
                 typeof(Character.TheRailgun2).Assembly,
                 typeof(CharacterModel).Assembly,
             },
+            RejectForeignContent = false,
             Logger = MainFile.Logger,
         },
         buildPayload: GetRunMetrics,

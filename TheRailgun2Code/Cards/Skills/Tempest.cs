@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Models.Orbs;
 using MegaCrit.Sts2.Core.ValueProps;
+using TheRailgun2.TheRailgun2Code.Character;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
@@ -22,8 +23,8 @@ public class TempestRailgun() : TheRailgun2Card(1,
         await CreatureCmd.TriggerAnim(tempest.Owner.Creature, "Cast", tempest.Owner.Character.CastAnimDelay);
         int numOfOrbs = tempest.ResolveEnergyXValue();
         if (tempest.IsUpgraded)
-            numOfOrbs += CurrentUpgradeLevel;
+            numOfOrbs += 2 * CurrentUpgradeLevel;
         for (int i = 0; i < numOfOrbs; ++i)
-            await OrbCmd.Channel<LightningOrb>(choiceContext, tempest.Owner);
+            await OrbCmd.Channel<VoltOrb>(choiceContext, tempest.Owner);
     }
 }

@@ -1,0 +1,5 @@
+﻿{
+  "THERAILGUN2-VOLT_ORB.description": "Orb: Deals damage to random enemies, favoring those with [gold]Lock-On[/gold].",
+  "THERAILGUN2-VOLT_ORB.smartDescription": "[gold]Passive:[/gold] At the end of turn, deal [blue]{Passive}[/blue] damage to a random enemy.\n[gold]Evoke:[/gold] Deal [blue]{Evoke}[/blue] damage to a random enemy.\nPrioritizes targeting enemies with [gold]Lock-On[/gold].\nDeals [blue]1[/blue] additional damage if any valid target has [gold]Lock-On[/gold].",
+  "THERAILGUN2-VOLT_ORB.title": "Volt"
+}

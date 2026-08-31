@@ -12,6 +12,7 @@ using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Hooks;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Models.Orbs;
@@ -19,6 +20,9 @@ using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MegaCrit.Sts2.Core.Random;
 using MegaCrit.Sts2.Core.ValueProps;
 using TheRailgun2.TheRailgun2Code.Cards;
+using TheRailgun2.TheRailgun2Code.Extensions;
+using TheRailgun2.TheRailgun2Code.Powers;
+using TheRailgun2.TheRailgun2Code.Relics;
 
 namespace TheRailgun2.TheRailgun2Code.Character;
 
@@ -159,10 +163,22 @@ public static class EchoOrb
     }
 }
 
+interface ISpendHooks
+{
+    
+}
+
 public class VoltOrb : CustomOrbModel
 {
     public override decimal PassiveVal => ModifyOrbValue(2m);
     public override decimal EvokeVal => ModifyOrbValue(3m);
+    
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        HoverTipFactory.FromPower<LockOnPower>()
+    ];
+    
+    //how'd I make a character use a recolor of an existing character?
 
     public override Node2D CreateCustomSprite()
     {
@@ -170,19 +186,55 @@ public class VoltOrb : CustomOrbModel
         string darkPath = SceneHelper.GetScenePath("orbs/orb_visuals/lightning_orb");
         Node2D dark = PreloadManager.Cache.GetScene(darkPath)
             .Instantiate<Node2D>();
-        new MegaSprite(dark.GetNode("SpineSkeleton"))
-            .GetAnimationState().SetAnimation("idle_loop");
-        dark.Modulate = new Color(0f, 1f, 4f, 1.0f);
+        var sprite = new MegaSprite(dark.GetNode("SpineSkeleton"));
+        ApplyTextureSkin(sprite, ImageTexture.CreateFromImage(Image.LoadFromFile("char/railgun_orbs".ImagePath())));
+        
+        sprite.GetAnimationState().SetAnimation("idle_loop");
+        //dark.Modulate = new Color(0f, 1f, 4f, 1.0f);
         container.AddChild(dark);
         return container;
     }
+    
+    //bullshit from the CustomSkins mod
+    static Shader _skinShader = null;
+    static Shader GetSkinShader() => _skinShader ??= MakeSkinShader();
+
+    static Shader MakeSkinShader()
+    {
+        _skinShader = new Shader();
+        _skinShader.Code = """
+                           shader_type canvas_item;
+                           uniform sampler2D skin_texture;
+                           varying vec4 modulate_color;
+                           void vertex() { modulate_color = COLOR; }
+                           void fragment() { COLOR = texture(skin_texture, UV) * modulate_color; }
+                           """;
+        return _skinShader;
+    }
+    
+    static void ApplyTextureSkin(MegaSprite spineBody, Texture2D texture)
+    {
+        var shader = GetSkinShader();
+        var mat = new ShaderMaterial();
+        mat.Shader = shader;
+        mat.SetShaderParameter("skin_texture", texture);
+        spineBody.SetNormalMaterial(mat);
+
+        // TODO UNDERSTAND HOW DOES THIS KIND OF FIX IT???
+        // Tried using an llm to solve the shader issue it added this
+        /*var addMat = new ShaderMaterial();
+        addMat.Shader = shader;
+        addMat.SetShaderParameter("skin_texture", texture);
+        spineBody.BoundObject.Call("set_additive_material", addMat);*/
+    }
+    //bullshit ends
 protected override string PassiveSfx => "event:/sfx/characters/defect/defect_lightning_passive";
 
   protected override string EvokeSfx => "event:/sfx/characters/defect/defect_lightning_evoke";
 
   protected override string ChannelSfx => "event:/sfx/characters/defect/defect_lightning_channel";
 
-  public override Color DarkenedColor => new Color("796606");
+  public override Color DarkenedColor => new Color("7860a7");
 
   public override async Task BeforeTurnEndOrbTrigger(PlayerChoiceContext choiceContext)
   {
@@ -200,6 +252,11 @@ protected override string PassiveSfx => "event:/sfx/characters/defect/defect_lig
     return await ApplyLightningDamage(EvokeVal, (Creature) null, playerChoiceContext, true);
   }
 
+  public override decimal ModifyOrbValue(OrbModel orb, decimal value)
+  {
+      return orb == this && CombatState.GetOpponentsOf(Owner.Creature).Where<Creature>((Func<Creature, bool>) (e => e.IsHittable)).ToList().Any(c => c.HasPower<LockOnPower>()) ? value + 1 : value;
+  }
+
   private async Task<IEnumerable<Creature>> ApplyLightningDamage(
     Decimal value,
     Creature? target,
@@ -207,16 +264,20 @@ protected override string PassiveSfx => "event:/sfx/characters/defect/defect_lig
     bool isEvoke)
   {
     var list = CombatState.GetOpponentsOf(Owner.Creature).Where<Creature>((Func<Creature, bool>) (e => e.IsHittable)).ToList();
+    if (!Owner.Creature.HasPower<Ec>() && list.Any(c => c.HasPower<LockOnPower>()))
+    {
+        list = list.Where(c => c.HasPower<LockOnPower>()).ToList();
+    }
     if (list.Count == 0)
       return [];
-    IReadOnlyList<Creature> targets = [target ?? Owner.RunState.Rng.CombatTargets.NextItem(list)];
+    IReadOnlyList<Creature> targets = this.Owner.Creature.HasPower(Electrodynamics) ?  [target ?? Owner.RunState.Rng.CombatTargets.NextItem(list)];
+    if ()
     if (isEvoke)
       ActivateEvoke(targets.ToArray());
     foreach (Creature target1 in  targets)
       VfxCmd.PlayOnCreature(target1, "vfx/vfx_attack_lightning");
     PlayEvokeSfx();
-     await CreatureCmd.Damage(choiceContext, targets, value, ValueProp.Unpowered, Owner.Creature);
+     await CreatureCmd.Damage(choiceContext, targets, value, ValueProp.Unpowered & Enums.VoltOrb, Owner.Creature);
     return targets;
   }
-    
 }

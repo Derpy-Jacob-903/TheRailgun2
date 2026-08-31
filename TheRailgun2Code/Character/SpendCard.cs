@@ -15,10 +15,12 @@ public abstract class SpendCard(int cost, CardType type, CardRarity rarity, Targ
     /// <summary>
     /// Can this card Spend this Orb?
     /// </summary>
-    public bool CanSpendOrb(OrbModel orb)
+    public virtual bool CanSpendOrb(OrbModel orb)
     {
         return true; //orb is LightningOrb or VoltOrb;
     }
+    
+    
     
     public override IEnumerable<CardTag> Tags => [Enums.Spend];
     

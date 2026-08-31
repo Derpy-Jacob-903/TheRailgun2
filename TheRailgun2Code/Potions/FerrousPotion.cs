@@ -20,7 +20,7 @@ namespace TheRailgun2.TheRailgun2Code.Potions;
 
 public class FerrousPotion : TheRailgun2Potion
 {
-    public override PotionRarity Rarity => PotionRarity.Rare;
+    public override PotionRarity Rarity => PotionRarity.Event;
     public override PotionUsage Usage => PotionUsage.CombatOnly;
     public override TargetType TargetType => TargetType.Self;
     public override string CustomPackedOutlinePath => ImageHelper.GetImagePath($"atlases/potion_outline_atlas.sprites/blood_potion.tres");
@@ -48,6 +48,4 @@ public class FerrousPotion : TheRailgun2Potion
             cardModel.EnergyCost.AddThisCombat(-1, true);
         }
     }
-    
-    
 }

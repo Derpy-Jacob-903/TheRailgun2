@@ -13,13 +13,13 @@ using TheRailgun2.TheRailgun2Code.Powers;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
-public class ElectronBurstEx() : TheRailgun2Card(0,
+public class ElectronBurstEx() : TheRailgun2Card(1,
     CardType.Skill, CardRarity.Ancient,
     TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new RepeatVar(4)
+        new RepeatVar(7)
     ];
     
     public override IEnumerable<CardKeyword> CanonicalKeywords => [Enums.Discharge];

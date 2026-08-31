@@ -10,6 +10,7 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Models.Orbs;
 using MegaCrit.Sts2.Core.ValueProps;
+using TheRailgun2.TheRailgun2Code.Character;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
@@ -44,7 +45,7 @@ public class ChannelStrike() : TheRailgun2Card(0,
             return;
         for (int i = 0; i < DynamicVars.Repeat.BaseValue; i++)
         {
-            await OrbCmd.Channel<LightningOrb>(choiceContext, Owner);
+            await OrbCmd.Channel<VoltOrb>(choiceContext, Owner);
         }
     }
 

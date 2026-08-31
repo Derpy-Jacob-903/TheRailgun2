@@ -15,6 +15,7 @@ using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Models.Orbs;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
+using TheRailgun2.TheRailgun2Code.Character;
 using TheRailgun2.TheRailgun2Code.Powers;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
@@ -27,7 +28,7 @@ public class VoltaicRailgun() : TheRailgun2Card(3,
     [
         new CalculationBaseVar(0M),
         new CalculationExtraVar(1M),
-        new CalculatedVar("CalculatedChannels").WithMultiplier((Func<CardModel, Creature, Decimal>) ((card, _) => (Decimal) CombatManager.Instance.History.Entries.OfType<OrbChanneledEntry>().Count<OrbChanneledEntry>((Func<OrbChanneledEntry, bool>) (e => e.Actor.Player == card.Owner && e.Orb is LightningOrb))))
+        new CalculatedVar("CalculatedChannels").WithMultiplier((Func<CardModel, Creature, Decimal>) ((card, _) => (Decimal) CombatManager.Instance.History.Entries.OfType<OrbChanneledEntry>().Count<OrbChanneledEntry>((Func<OrbChanneledEntry, bool>) (e => e.Actor.Player == card.Owner && e.Orb is VoltOrb))))
     ];
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
@@ -36,7 +37,7 @@ public class VoltaicRailgun() : TheRailgun2Card(3,
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         HoverTipFactory.Static(StaticHoverTip.Channeling),
-        HoverTipFactory.FromOrb<LightningOrb>()
+        HoverTipFactory.FromOrb<VoltOrb>()
     ];
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
@@ -44,7 +45,7 @@ public class VoltaicRailgun() : TheRailgun2Card(3,
         await CreatureCmd.TriggerAnim(voltaic.Owner.Creature, "Cast", voltaic.Owner.Character.CastAnimDelay);
         int lightningChanneledCount = (int) ((CalculatedVar) voltaic.DynamicVars["CalculatedChannels"]).Calculate(cardPlay.Target);
         for (int i = 0; i < lightningChanneledCount; ++i)
-            await OrbCmd.Channel<LightningOrb>(choiceContext, voltaic.Owner);
+            await OrbCmd.Channel<VoltOrb>(choiceContext, voltaic.Owner);
     }
     protected override void OnUpgrade() => this.RemoveKeyword(CardKeyword.Exhaust);
 }

@@ -33,6 +33,12 @@ public class FakeUnfamiliarDeckbox() : TheRailgun2Relic
 {
     public override RelicRarity Rarity => RelicRarity.Ancient;
     public override bool HasUponPickupEffect => true;
+
+    public override bool IsAllowedAtNeow(Player player)
+    {
+        return base.IsAllowedAtNeow(player) && player.Character is Character.TheRailgun2;
+    }
+
     public static bool DoesCharacterHaveDeck(CharacterModel character)
     {
         return character is Character.TheRailgun2;
@@ -88,6 +94,7 @@ public class FakeUnfamiliarDeckbox() : TheRailgun2Relic
         //await new RewardsSet(Owner).WithCustomRewards(list2).Offer();
     }
     
+    /*
     [HarmonyPatch(typeof(Neow), "CurseOptions", MethodType.Getter)]
 public class AddCursedNeowOptionsPatch
 {
@@ -127,5 +134,5 @@ public class AddCursedNeowOptionsPatch
 
         }
     }
-}
+}*/
 }

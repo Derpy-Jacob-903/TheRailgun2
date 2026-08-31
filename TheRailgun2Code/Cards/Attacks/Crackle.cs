@@ -13,7 +13,7 @@ namespace TheRailgun2.TheRailgun2Code.Cards;
 
 [Pool(typeof(DeprecatedCardPool))]
 public class Crackle() : TheRailgun2Card(1,
-    CardType.Attack, CardRarity.Status,
+    CardType.Attack, CardRarity.Common,
     TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>

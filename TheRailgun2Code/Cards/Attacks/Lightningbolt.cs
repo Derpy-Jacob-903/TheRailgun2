@@ -12,7 +12,6 @@ using TheRailgun2.TheRailgun2Code.Character;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
-[Pool(typeof(DeprecatedCardPool))]
 public class Lightningbolt() : TheRailgun2Card(2,
     CardType.Attack, CardRarity.Rare,
     TargetType.AnyEnemy)
@@ -20,26 +19,25 @@ public class Lightningbolt() : TheRailgun2Card(2,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(19M, ValueProp.Move),
-        new RepeatVar(3)
+        new RepeatVar(4)
     ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         HoverTipFactory.Static(StaticHoverTip.Channeling),
-        HoverTipFactory.FromOrb<LightningOrb>()
+        HoverTipFactory.FromOrb<VoltOrb>()
     ];
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(cardPlay.Card, cardPlay).Targeting(cardPlay.Target)
-            .WithHitFx("vfx/vfx_attack_lightning").Execute(choiceContext);
+        if (cardPlay.Target != null)
+            await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
+                .FromCard(cardPlay.Card, cardPlay).Targeting(cardPlay.Target)
+                .WithHitFx("vfx/vfx_attack_lightning").Execute(choiceContext);
         for (int i = 0; i < DynamicVars.Repeat.BaseValue; i++)
         {
-            await OrbCmd.Channel<LightningOrb>(choiceContext, Owner);
+            await OrbCmd.Channel<VoltOrb>(choiceContext, Owner);
         }
     }
 
     protected override void OnUpgrade() => this.DynamicVars.Repeat.UpgradeValueBy(1M);
-
-    public override CardPoolModel VisualCardPool => ModelDb.CardPool<TheRailgun2CardPool>();
 }

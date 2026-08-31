@@ -46,6 +46,8 @@ public class LockOnPower : TheRailgun2Power
             return;
         await PowerCmd.TickDownDuration(this);
     }
+    
+    
     public override PowerType Type => PowerType.Debuff;
     public override PowerStackType StackType => PowerStackType.Counter;
 }

@@ -15,7 +15,7 @@ public class RailgunNew() : SpendCard(2,
     [
         new DamageVar(30M, ValueProp.Move)
     ]; 
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [Enums.Guardbreak];
+    //public override IEnumerable<CardKeyword> CanonicalKeywords => [Enums.Guardbreak];
     public override int canonicalSpendCost => 2;
 
     protected override async Task MyOnPlay(PlayerChoiceContext choiceContext, CardPlay play)

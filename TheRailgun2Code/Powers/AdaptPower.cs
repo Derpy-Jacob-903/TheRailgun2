@@ -30,7 +30,7 @@ public class AdaptPower : TheRailgun2Power
     {
         if (player != Owner.Player)
             return;
-        if (Owner.Player.PlayerCombatState.OrbQueue.Orbs.Any(c => c is LightningOrb))
+        if (Owner.Player.PlayerCombatState.OrbQueue.Orbs.Any(c => c is VoltOrb))
         {
             await EchoOrb.RemoveFirstOf<LightningOrb>(choiceContext, Owner.Player);
             await CreatureCmd.GainBlock(Owner, new BlockVar(Amount, ValueProp.Unpowered), null);

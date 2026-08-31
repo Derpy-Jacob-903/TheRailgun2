@@ -25,7 +25,7 @@ public class TeleporterTwo() : TheRailgun2Card(0,
     ];
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips => 
-        [HoverTipFactory.FromCard<Needle>(IsUpgraded)];
+        [HoverTipFactory.FromCard<Needle>(false)];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
@@ -39,5 +39,6 @@ public class TeleporterTwo() : TheRailgun2Card(0,
         }
     }
 
-    protected override void OnUpgrade() => this.DynamicVars["MaxUpgrades"].UpgradeValueBy(1M);
+    protected override void OnUpgrade() => DynamicVars["Discards"].UpgradeValueBy(-1M);
+    //this.DynamicVars["MaxUpgrades"].UpgradeValueBy(1M);
 }

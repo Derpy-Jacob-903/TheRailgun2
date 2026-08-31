@@ -21,7 +21,7 @@ public class ElectronBurst() : TheRailgun2Card(0,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new RepeatVar(1)
+        new RepeatVar(2)
     ];
     
     public override IEnumerable<CardKeyword> CanonicalKeywords => [Enums.Discharge];
@@ -40,10 +40,8 @@ public class ElectronBurst() : TheRailgun2Card(0,
                 }
             }
     }
-    
     protected override void OnUpgrade() => this.DynamicVars.Repeat.UpgradeValueBy(1M);
-
-    //protected override void OnUpgrade() => this.DynamicVars.Strength.UpgradeValueBy(1M);
+    protected override bool ShouldGlowRedInternal => Owner.PlayerCombatState != null && Owner.PlayerCombatState.OrbQueue.Orbs.Any(orb => orb is LightningOrb or VoltOrb);
     public CardModel GetTranscendenceTransformedCard()
     {
         return ModelDb.Card<ElectronBurstEx>();

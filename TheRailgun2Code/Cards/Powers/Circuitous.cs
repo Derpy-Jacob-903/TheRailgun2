@@ -5,30 +5,25 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Models.Powers;
+using TheRailgun2.TheRailgun2Code.Powers;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
 
 public class Circuitous() : TheRailgun2Card(2,
     CardType.Power, CardRarity.Uncommon,
-    TargetType.AnyEnemy)
+    TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<DexterityPower>(2)
-    ];
-    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-    [
-        HoverTipFactory.FromPower<DexterityPower>()
+        new PowerVar<CircuitousPower>(3)
     ];
     protected override async Task OnPlay(
         PlayerChoiceContext context,
         CardPlay play)
     {
-        await PowerCmd.Apply<DexterityPower>(context, Owner.Creature, DynamicVars.Dexterity.BaseValue, Owner.Creature, this);
-        if (play.Target != null)
-            await PowerCmd.Apply<DexterityPower>(context, play.Target, -DynamicVars.Dexterity.BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<CircuitousPower>(context, Owner.Creature, DynamicVars["CircuitousPower"].BaseValue, Owner.Creature, this);
     }
 
-    protected override void OnUpgrade() => this.DynamicVars.Dexterity.UpgradeValueBy(1M);
+    protected override void OnUpgrade() => this.DynamicVars["CircuitousPower"].UpgradeValueBy(3M);
 }

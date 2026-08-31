@@ -24,7 +24,7 @@ public class LevelSixNew() : TheRailgun2Card(3,
     ];
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromOrb<LightningOrb>()
+        HoverTipFactory.Static(StaticHoverTip.Channeling)
     ];
     protected override async Task OnPlay(
         PlayerChoiceContext context,

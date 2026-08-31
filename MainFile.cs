@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.Modding;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Cards;
 using TheRailgun2.TheRailgun2Code.Cards;
+using TheRailgun2.TheRailgun2Code.Data;
 
 namespace TheRailgun2;
 
@@ -19,7 +20,8 @@ public partial class MainFile : Node
     public static void Initialize()
     {
         Harmony harmony = new(ModId);
-
+        
+        ModManager.OnMetricsUpload += DownfallMetrics.OnMetricsUpload;
         harmony.PatchAll();
         
         var assembly = Assembly.GetExecutingAssembly();

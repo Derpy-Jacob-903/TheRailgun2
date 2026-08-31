@@ -10,7 +10,7 @@ using MegaCrit.Sts2.Core.Models.Enchantments;
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
 public class Supercharge() : TheRailgun2Card(3,
-    CardType.Power, CardRarity.Rare,
+    CardType.Skill, CardRarity.Rare,
     TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
@@ -18,7 +18,10 @@ public class Supercharge() : TheRailgun2Card(3,
         //new PowerVar<BorrowedTimePower>(1),
         new EnergyVar(0)
     ];
-
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
+        CardKeyword.Exhaust
+    ];
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         var ownerPlayerCombatState = this.Owner.PlayerCombatState;

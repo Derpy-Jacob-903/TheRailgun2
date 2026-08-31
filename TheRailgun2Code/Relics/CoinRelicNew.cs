@@ -30,7 +30,6 @@ public class CoinRelicNew() : TheRailgun2Relic
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         HoverTipFactory.ForEnergy(this),
-        HoverTipFactory.FromPower<FocusPower>(),
         HoverTipFactory.FromOrb<VoltOrb>()
     ];
 

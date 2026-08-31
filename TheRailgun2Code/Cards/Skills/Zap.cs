@@ -9,6 +9,7 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Orbs;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
+using TheRailgun2.TheRailgun2Code.Character;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
@@ -18,14 +19,14 @@ public class ZapRailgun() : TheRailgun2Card(0,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new RepeatVar(1),
+        new RepeatVar(2),
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         for (int i = 0; i < DynamicVars.Repeat.BaseValue; i++)
         {
-            await OrbCmd.Channel<LightningOrb>(choiceContext, Owner);
+            await OrbCmd.Channel<VoltOrb>(choiceContext, Owner);
         }
     }
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
@@ -33,6 +34,7 @@ public class ZapRailgun() : TheRailgun2Card(0,
         CardKeyword.Exhaust
     ];
 
-    protected override void OnUpgrade() => this.DynamicVars.Repeat.UpgradeValueBy(1M);
+    protected override void OnUpgrade() => this.RemoveKeyword(CardKeyword.Exhaust);
+    //this.DynamicVars.Repeat.UpgradeValueBy(1M);
     //public CardModel GetTranscendenceTransformedCard() => ModelDb.Card<Fulminate>();
 }

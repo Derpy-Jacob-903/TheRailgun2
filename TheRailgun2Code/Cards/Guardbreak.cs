@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Hooks;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Orbs;
 using MegaCrit.Sts2.Core.Nodes;
@@ -28,6 +29,8 @@ public static class Enums
     public static CardTag Spend;
     [CustomEnum]
     public static ValueProp Orb;
+    [CustomEnum]
+    public static ValueProp VoltOrb;
     public static bool IsOrbCaller()
     {
 	    return new StackTrace().GetFrames()?.Any(f =>
@@ -127,11 +130,35 @@ public static class OrbDamagePatchSingle
 			    await CardCmd.AutoPlay(choiceContext, card, null, AutoPlayType.SlyDiscard, skipCardPileVisuals: true);
 		    }
 	    }
+	    
+	    protected virtual CardLocation GetResultLocationForCardPlay(CardPlay cardPlay)
+	    {
+		    if (cardPlay.Card.IsDupe || cardPlay.Card.Type == CardType.Power)
+			    return new CardLocation(cardPlay.Card.Owner, PileType.None, CardPilePosition.Bottom);
+		    if (!cardPlay.Card.ExhaustOnNextPlay && !cardPlay.Card.Keywords.Contains(CardKeyword.Exhaust))
+			    return new CardLocation(cardPlay.Card.Owner, PileType.Discard, CardPilePosition.Bottom);
+		    cardPlay.Card.ExhaustOnNextPlay = false;
+		    return new CardLocation(cardPlay.Card.Owner, PileType.Exhaust, CardPilePosition.Bottom);
+	    }
+
+	    public override async Task BeforeCardPlayed(CardPlay cardPlay)
+	    {
+		    var resultLocation = GetResultLocationForCardPlay(cardPlay);
+		    resultLocation = Hook.ModifyCardPlayResultLocation(cardPlay.Card.CombatState, cardPlay.Card, 
+			    cardPlay.IsAutoPlay, cardPlay.Resources, resultLocation, out var modifiers);
+		    if (cardPlay.Card.Keywords.Contains(Enums.Discharge) 
+		        && cardPlay.Card.Affliction is not Shorted &&
+		        resultLocation.pileType == PileType.Exhaust)
+		    {
+			    await CardCmd.Afflict<Shorted>(cardPlay.Card, 1m);
+		    }
+	    }
+
 	    public override async Task AfterCardExhausted(PlayerChoiceContext choiceContext, CardModel card, bool causedByEthereal)
 	    {
 		    if (card.Keywords.Contains(Enums.Discharge) && card.Affliction is not Shorted)
 		    {
-			    await CardCmd.Afflict(ModelDb.Affliction<Shorted>(), card, 1m);
+			    await CardCmd.Afflict<Shorted>(card, 1m);
 			    await CardCmd.AutoPlay(choiceContext, card, null, AutoPlayType.SlyDiscard, skipCardPileVisuals: true);
 			    await CardPileCmd.Add(card, PileType.Exhaust, clonedBy: this, skipVisuals: true); //Exhaust
 		    }

@@ -18,16 +18,16 @@ public class Push() : TheRailgun2Card(1,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new CardsVar(1),
-        new PowerVar<WeakPower>(1)
+        new PowerVar<WeakPower>(2)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        if (cardPlay.Target != null) await CommonActions.Apply<WeakPower>(choiceContext, cardPlay.Target, this);
         CardModel card = (await CardSelectCmd.FromHandForDiscard(choiceContext, Owner, new CardSelectorPrefs(CardSelectorPrefs.DiscardSelectionPrompt, 1), null, this)).FirstOrDefault();
         if (card == null)
             return;
         await CardCmd.Discard(choiceContext, card);
-        if (cardPlay.Target != null) await CommonActions.Apply<WeakPower>(choiceContext, cardPlay.Target, this);
     }
 
     protected override void OnUpgrade() => this.DynamicVars.Weak.UpgradeValueBy(1);

@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Models.Orbs;
 using MegaCrit.Sts2.Core.Models.Powers;
+using TheRailgun2.TheRailgun2Code.Character;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
@@ -16,14 +17,14 @@ public class Fulminate() : TheRailgun2Card(2,
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new RepeatVar(3),
+        new RepeatVar(4),
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         for (int i = 0; i < DynamicVars.Repeat.BaseValue; i++)
         {
-            await OrbCmd.Channel<LightningOrb>(choiceContext, Owner);
+            await OrbCmd.Channel<VoltOrb>(choiceContext, Owner);
         }
     }
 

@@ -1,8 +1,10 @@
 ﻿{
-  "THERAILGUN2-LIGHTNING_POTION.description": "[gold]Channel[/gold] [blue]2[/blue] [gold]Lightning[/gold].",
+  "THERAILGUN2-LIGHTNING_POTION.description": "[gold]Channel[/gold] [blue]2[/blue] [gold]Lightning[/gold]. At the start of the next 5 turns, [gold]Channel[/gold] [blue]1[/blue] [gold]Lightning[/gold].",
   "THERAILGUN2-LIGHTNING_POTION.title": "Lightning Potion",
   "THERAILGUN2-NEEDLE_POTION.description": "Add [blue]{Cards}[/blue] [gold]Upgraded {Cards:plural:Needle|Needles}[/gold] into your [gold]Hand[/gold].",
   "THERAILGUN2-NEEDLE_POTION.title": "Needle Potion",
   "THERAILGUN2-FERROUS_POTION.description": "Choose [blue]1[/blue] of [blue]3[/blue] random cards containing [gold]Iron[/gold] or [gold]Magnetic[/gold] to add into your [gold]Hand[/gold].\nCards containing [gold]Iron[/gold] or [gold]Magnetic[/gold] cost {Energy} {energyPrefix:energyIcons(1)} less for the rest of combat.",
-  "THERAILGUN2-FERROUS_POTION.title": "Ferrous Potion"
+  "THERAILGUN2-FERROUS_POTION.title": "Ferrous Potion",
+  "THERAILGUN2-LOCK_ON_POTION.description": "Apply [blue]3[/blue] [gold]Lock-On[/gold].",
+  "THERAILGUN2-LOCK_ON_POTION.title": "Lock-On Potion"
 }

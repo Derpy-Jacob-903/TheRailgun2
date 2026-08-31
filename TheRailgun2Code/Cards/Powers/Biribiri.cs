@@ -8,10 +8,11 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Models.Orbs;
 using MegaCrit.Sts2.Core.Models.Powers;
+using TheRailgun2.TheRailgun2Code.Character;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
-public class Biribiri() : TheRailgun2Card(2,
+public class Biribiri() : SpendCard(2,
     CardType.Power, CardRarity.Uncommon,
     TargetType.Self)
 {
@@ -24,12 +25,13 @@ public class Biribiri() : TheRailgun2Card(2,
         HoverTipFactory.FromPower<StrengthPower>(),
         HoverTipFactory.FromPower<DexterityPower>()
     ];
-    protected override async Task OnPlay(
-        PlayerChoiceContext context,
-        CardPlay play)
+
+    public override int canonicalSpendCost => 1;
+
+    protected override async Task MyOnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await PowerCmd.Apply<StrengthPower>(context, Owner.Creature, DynamicVars["Power"].BaseValue, Owner.Creature, this);
-        await PowerCmd.Apply<DexterityPower>(context, Owner.Creature, DynamicVars["Power"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<StrengthPower>(choiceContext, Owner.Creature, DynamicVars["Power"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<DexterityPower>(choiceContext, Owner.Creature, DynamicVars["Power"].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade() => this.DynamicVars["Power"].UpgradeValueBy(1M);

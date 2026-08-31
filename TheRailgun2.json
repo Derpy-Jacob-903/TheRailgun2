@@ -1,12 +1,12 @@
 {
   "id": "TheRailgun2",
-  "name": "TheRailgun2 (Canary Build)",
+  "name": "TheRailgun2 Canary",
   "author": "Derpy_Jacob_903",
   "description": "Slay the Spire 2 mod that adds Mikoto Misaka as a playable character.",
   "version": "v0.6.0",
   "has_pck": true,
   "has_dll": true,
-  "dependencies": [{"id": "BaseLib", "min_version": "3.4.0"}],
+  "dependencies": [{"id": "BaseLib", "min_version": "3.4.5"}],
   "min_game_version": "0.109.0",
   "affects_gameplay": true
 }

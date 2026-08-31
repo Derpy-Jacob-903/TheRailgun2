@@ -21,7 +21,7 @@ public class BigPlating() : TheRailgun2Card(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<PlatingPower>(8),
+        new PowerVar<PlatingPower>(7),
         new DynamicVar("Spend", 2).WithTooltip("THERAILGUN2-SPEND")
     ];
     

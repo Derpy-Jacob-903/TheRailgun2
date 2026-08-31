@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Models.Orbs;
 using MegaCrit.Sts2.Core.ValueProps;
+using TheRailgun2.TheRailgun2Code.Character;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
@@ -24,9 +25,9 @@ public class Zip() : TheRailgun2Card(1,
         await CommonActions.CardBlock(this, DynamicVars.Block, cardPlay);
         for (int i = 0; i < DynamicVars.Repeat.BaseValue; i++)
         {
-            await OrbCmd.Channel<LightningOrb>(choiceContext, Owner);
+            await OrbCmd.Channel<VoltOrb>(choiceContext, Owner);
         }
     }
 
-    protected override void OnUpgrade() => this.DynamicVars.Block.UpgradeValueBy(3M);
+    protected override void OnUpgrade() => this.DynamicVars.Repeat.UpgradeValueBy(1M);
 }

@@ -10,7 +10,7 @@ using TheRailgun2.TheRailgun2Code.Cards;
 namespace TheRailgun2.TheRailgun2Code.Cards;
 [Pool(typeof(DeprecatedCardPool))]
 public class Overclock() : TheRailgun2Card(1,
-    CardType.Attack, CardRarity.Status,
+    CardType.Attack, CardRarity.Event,
     TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>

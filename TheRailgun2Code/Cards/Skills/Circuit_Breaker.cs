@@ -4,13 +4,14 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Logging;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using TheRailgun2.TheRailgun2Code.Powers;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
-
-public class CircuitBreaker() : TheRailgun2Card(1,
+[Pool(typeof(DeprecatedCardPool))]
+public class CircuitBreaker() : TheRailgun2Card(0,
     CardType.Skill, CardRarity.Uncommon,
     TargetType.Self)
 {
