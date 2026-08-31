@@ -4,6 +4,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Cards;
+using MegaCrit.Sts2.Core.Models.Characters;
 using MegaCrit.Sts2.Core.Models.Orbs;
 using TheRailgun2.TheRailgun2Code.Cards;
 
@@ -19,9 +20,26 @@ public abstract class SpendCard(int cost, CardType type, CardRarity rarity, Targ
     {
         return true; //orb is LightningOrb or VoltOrb;
     }
-    
-    
-    
+
+    public override bool CanBeGeneratedInCombat => MyCanBeGeneratedByModifiers();
+
+    public override bool CanBeGeneratedByModifiers => MyCanBeGeneratedByModifiers();
+
+    public bool MyCanBeGeneratedInCombat()
+    {
+        if (Owner.PlayerCombatState == null || Owner.Character.BaseOrbSlotCount >= 2)
+            return true;
+        var balls = Math.Max(Math.Max(Owner.PlayerCombatState.OrbQueue.Capacity, Owner.Character.BaseOrbSlotCount), 1);
+        if (Owner.Character is Defect) // is this hardcoded?
+            balls = Math.Max(Owner.PlayerCombatState.OrbQueue.Capacity, Owner.Character.BaseOrbSlotCount);
+        return balls >= canonicalSpendCost;
+    }
+    public bool MyCanBeGeneratedByModifiers()
+    {
+        if (Owner.Character is Defect) // is this hardcoded?
+            return Owner.Character.BaseOrbSlotCount >= canonicalSpendCost;
+        return Math.Max(Owner.Character.BaseOrbSlotCount, 1) >= canonicalSpendCost;
+    }
     public override IEnumerable<CardTag> Tags => [Enums.Spend];
     
     protected override async Task OnPlay(

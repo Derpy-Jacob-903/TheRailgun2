@@ -241,7 +241,7 @@ protected override string PassiveSfx => "event:/sfx/characters/defect/defect_lig
     await this.TriggerPassive(choiceContext, (Creature) null);
   }
 
-  public override async Task Passive(PlayerChoiceContext choiceContext, Creature? target)
+  public override async Task Passive(PlayerChoiceContext choiceContext, Creature target)
   {
     ActivatePassive();
     await ApplyLightningDamage(PassiveVal, target, choiceContext, false);
@@ -264,14 +264,13 @@ protected override string PassiveSfx => "event:/sfx/characters/defect/defect_lig
     bool isEvoke)
   {
     var list = CombatState.GetOpponentsOf(Owner.Creature).Where<Creature>((Func<Creature, bool>) (e => e.IsHittable)).ToList();
-    if (!Owner.Creature.HasPower<Ec>() && list.Any(c => c.HasPower<LockOnPower>()))
+    if (!Owner.Creature.HasPower<ElectrodynamicsPower>() && list.Any(c => c.HasPower<LockOnPower>()))
     {
         list = list.Where(c => c.HasPower<LockOnPower>()).ToList();
     }
     if (list.Count == 0)
       return [];
-    IReadOnlyList<Creature> targets = this.Owner.Creature.HasPower(Electrodynamics) ?  [target ?? Owner.RunState.Rng.CombatTargets.NextItem(list)];
-    if ()
+    IReadOnlyList<Creature> targets = this.Owner.Creature.HasPower<ElectrodynamicsPower>() ? list : [target ?? Owner.RunState.Rng.CombatTargets.NextItem(list)] ;
     if (isEvoke)
       ActivateEvoke(targets.ToArray());
     foreach (Creature target1 in  targets)

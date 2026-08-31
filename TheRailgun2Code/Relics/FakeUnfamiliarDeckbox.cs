@@ -38,11 +38,6 @@ public class FakeUnfamiliarDeckbox() : TheRailgun2Relic
     {
         return base.IsAllowedAtNeow(player) && player.Character is Character.TheRailgun2;
     }
-
-    public static bool DoesCharacterHaveDeck(CharacterModel character)
-    {
-        return character is Character.TheRailgun2;
-    }
     
     public override async Task AfterObtained()
     {
@@ -94,14 +89,13 @@ public class FakeUnfamiliarDeckbox() : TheRailgun2Relic
         //await new RewardsSet(Owner).WithCustomRewards(list2).Offer();
     }
     
-    /*
-    [HarmonyPatch(typeof(Neow), "CurseOptions", MethodType.Getter)]
+    
+[HarmonyPatch(typeof(Neow), "CurseOptions", MethodType.Getter)]
 public class AddCursedNeowOptionsPatch
 {
     public static void Postfix(Neow __instance, ref IEnumerable<EventOption> __result)
     {
-        if (__instance is not Neow neow)
-            return;
+        if (__instance is not Neow neow) return;
         List<EventOption> options = __result.ToList();
         options.Add(RelicOption<FakeUnfamiliarDeckbox>(customDonePage: "NEOW.pages.DONE.POSITIVE.description", neow: neow));
         __result = options;
@@ -134,5 +128,5 @@ public class AddCursedNeowOptionsPatch
 
         }
     }
-}*/
+}
 }
