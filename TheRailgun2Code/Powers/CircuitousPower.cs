@@ -23,7 +23,7 @@ public class CircuitousPower : TheRailgun2Power
 
     public override Decimal ModifyOrbValue(OrbModel orb, Decimal value)
     {
-        if (orb is VoltOrb && _balls) return value;
+        if (orb is VoltOrb && !_balls) return value;
         return this.Owner.Player != orb.Owner ? value : Math.Max(value + (Decimal) this.Amount, 0M);
     }
 

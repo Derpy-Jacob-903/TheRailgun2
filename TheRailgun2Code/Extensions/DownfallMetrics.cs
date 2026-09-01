@@ -34,7 +34,7 @@ public static class DownfallMetrics
                 typeof(CharacterModel).Assembly,
             },
             RejectForeignContent = false,
-            Logger = MainFile.Logger,
+            Logger = RailgunTwoMainFile.Logger,
         },
         buildPayload: GetRunMetrics,
         serialize: m => JsonSerializer.Serialize(m, MetricsSerializerContext.Default.RunMetrics));

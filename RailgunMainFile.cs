@@ -10,7 +10,7 @@ using TheRailgun2.TheRailgun2Code.Data;
 namespace TheRailgun2;
 
 [ModInitializer(nameof(Initialize))]
-public partial class MainFile : Node
+public partial class RailgunTwoMainFile : Node
 {
     public const string ModId = "TheRailgun2"; //At the moment, this is used only for the Logger and harmony names.
 

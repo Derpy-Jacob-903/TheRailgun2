@@ -10,7 +10,7 @@ public abstract class TheRailgun2Potion : CustomPotionModel
 {
     public static string PotionImagePath(string path)
     {
-        return Path.Join(MainFile.ModId, "images", "potion", path);
+        return Path.Join(RailgunTwoMainFile.ModId, "images", "potion", path);
     }
     public override string CustomPackedImagePath => PotionImagePath($"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png");
 }

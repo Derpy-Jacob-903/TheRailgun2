@@ -19,7 +19,7 @@ public class Grounding() : TheRailgun2Card(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new RepeatVar(1),
+        new PowerVar<GroundingPower>(1)
     ];
     protected override async Task OnPlay(
         PlayerChoiceContext context,
@@ -28,5 +28,5 @@ public class Grounding() : TheRailgun2Card(1,
         await CommonActions.ApplySelf<GroundingPower>(context, this);
     }
 
-    protected override void OnUpgrade() => this.DynamicVars.Repeat.UpgradeValueBy(1M);
+    protected override void OnUpgrade() => this.DynamicVars["GroundingPower"].UpgradeValueBy(1M);
 }

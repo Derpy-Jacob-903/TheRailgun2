@@ -21,6 +21,7 @@ public abstract class SpendCard(int cost, CardType type, CardRarity rarity, Targ
         return true; //orb is LightningOrb or VoltOrb;
     }
 
+    /*
     public override bool CanBeGeneratedInCombat => MyCanBeGeneratedByModifiers();
 
     public override bool CanBeGeneratedByModifiers => MyCanBeGeneratedByModifiers();
@@ -39,7 +40,7 @@ public abstract class SpendCard(int cost, CardType type, CardRarity rarity, Targ
         if (Owner.Character is Defect) // is this hardcoded?
             return Owner.Character.BaseOrbSlotCount >= canonicalSpendCost;
         return Math.Max(Owner.Character.BaseOrbSlotCount, 1) >= canonicalSpendCost;
-    }
+    } */
     public override IEnumerable<CardTag> Tags => [Enums.Spend];
     
     protected override async Task OnPlay(

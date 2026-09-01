@@ -223,7 +223,7 @@
   "THERAILGUN2-PROTON_SHOWER.title": "Proton Shower",
   "THERAILGUN2-PROTON_SHOWER.description": "[gold]Spend[/gold] 1 Orb. \nDeal {Damage:diff()} damage to a random enemy.\nDeals {Damage:diff()} damage to a random enemy for ALL of your cards that Spend Orbs.{InCombat: (Hits {CalculatedHits:diff()} {CalculatedHits:plural:time|times}|}",
   "THERAILGUN2-CHARGE_NEW.title": "Charge",
-  "THERAILGUN2-CHARGE_NEW.description": "Channel 2 (3) Volt.\nExhaust 1 card.",
+  "THERAILGUN2-CHARGE_NEW.description": "[gold]Channel[/gold] {Repeat:diff()} [gold]Volt[/gold].\n[gold]Exhaust[/gold] 1 card.",
   "THERAILGUN2-IONIZED_BLADE.title": "The Ionized Blade",
   "THERAILGUN2-IONIZED_BLADE.description": "",
   "THERAILGUN2-CIRCUIT_BREAKER_NEW.title": "Circuit Breaker",
