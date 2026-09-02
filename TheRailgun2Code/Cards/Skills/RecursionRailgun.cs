@@ -11,6 +11,7 @@ using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Orbs;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
+using TheRailgun2.TheRailgun2Code.Character;
 using TheRailgun2.TheRailgun2Code.Powers;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
@@ -29,7 +30,7 @@ public class RecursionRailgun() : TheRailgun2Card(2,
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await OrbCmd.EvokeNext(choiceContext, Owner);
-        await OrbCmd.Channel<LightningOrb>(choiceContext, Owner);
+        await OrbCmd.Channel<VoltOrb>(choiceContext, Owner);
     }
     protected override void OnUpgrade() => this.EnergyCost.UpgradeBy(-1);
 }

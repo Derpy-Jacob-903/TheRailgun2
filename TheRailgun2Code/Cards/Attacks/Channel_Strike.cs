@@ -24,6 +24,7 @@ public class ChannelStrike() : TheRailgun2Card(0,
         new IntVar("PlayMax", 3M),
         new RepeatVar(1)
     ];
+    public override IEnumerable<CardTag> Tags => [CardTag.Strike];
     private bool CanDrawCard
     {
         get

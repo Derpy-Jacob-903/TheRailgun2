@@ -15,7 +15,7 @@ namespace TheRailgun2.TheRailgun2Code.Cards;
 
 public class Thundervolt() : SpendCard(1,
     CardType.Attack, CardRarity.Rare,
-    TargetType.AnyEnemy)
+    TargetType.AllEnemies)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
@@ -26,8 +26,7 @@ public class Thundervolt() : SpendCard(1,
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.Static(StaticHoverTip.Channeling),
-        HoverTipFactory.FromOrb<LightningOrb>()
+        HoverTipFactory.Static(StaticHoverTip.Channeling)
     ];
 
     public override int canonicalSpendCost => 2;
@@ -36,7 +35,7 @@ public class Thundervolt() : SpendCard(1,
     {
         if (CombatState != null)
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-                .WithHitCount(DynamicVars.Repeat.IntValue)
+                //.WithHitCount(DynamicVars.Repeat.IntValue)
                 .FromCard(play.Card, play).TargetingAllOpponents(CombatState)
                 .WithHitFx("vfx/vfx_attack_lightning").Execute(choiceContext);
     }

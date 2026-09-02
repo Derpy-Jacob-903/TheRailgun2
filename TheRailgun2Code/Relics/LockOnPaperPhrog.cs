@@ -38,6 +38,6 @@ public class LockOnPaperPhrog() : TheRailgun2Relic
         Creature dealer,
         CardModel cardSource)
     {
-        return target == this.Owner.Creature || !props.HasFlag(Enums.Orb) ? amount : amount + 0.25M;
+        return dealer == this.Owner.Creature || !props.HasFlag(Enums.Orb) ? amount : amount + 0.25M;
     }
 }

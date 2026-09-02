@@ -13,7 +13,7 @@ using TheRailgun2.TheRailgun2Code.Powers;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
-public class Railgun() : TheRailgun2Card(2,
+public class Railgun() : SpendCard(2,
     CardType.Attack, CardRarity.Rare,
     TargetType.AnyEnemy)
 {
@@ -21,6 +21,7 @@ public class Railgun() : TheRailgun2Card(2,
     [
          Enums.Discharge
     ];
+    public override int canonicalSpendCost => 2;
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(15M, ValueProp.Move),
@@ -33,8 +34,7 @@ public class Railgun() : TheRailgun2Card(2,
         HoverTipFactory.FromPower<WeakPower>(),
         HoverTipFactory.FromPower<VulnerablePower>()
     ];
-
-    protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    protected override async Task MyOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         if (cardPlay.Target != null)
         {

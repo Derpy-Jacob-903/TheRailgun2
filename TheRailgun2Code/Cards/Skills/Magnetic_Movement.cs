@@ -17,7 +17,7 @@ public class MagneticMovementNew() : TheRailgun2Card(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<MagneticMovementPower>(2)
+        new PowerVar<NewMagneticMovementPower>(25)
     ];
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
@@ -30,8 +30,8 @@ public class MagneticMovementNew() : TheRailgun2Card(1,
         PlayerChoiceContext context,
         CardPlay play)
     {
-        await PowerCmd.Apply<MagneticMovementPower>(context, Owner.Creature, DynamicVars["MagneticMovementPower"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<NewMagneticMovementPower>(context, Owner.Creature, DynamicVars["NewMagneticMovementPower"].BaseValue, Owner.Creature, this);
     }
 
-    protected override void OnUpgrade() => this.DynamicVars["MagneticMovementPower"].UpgradeValueBy(1M);
+    protected override void OnUpgrade() => this.DynamicVars["NewMagneticMovementPower"].UpgradeValueBy(25M);
 }

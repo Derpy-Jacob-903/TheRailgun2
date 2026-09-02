@@ -35,6 +35,9 @@ public class LockOnPower : TheRailgun2Power
         var relic = dealer.Player?.GetRelic<LockOnPaperPhrog>();
         if (relic != null)
             amount1 = relic.ModifyLockOnMultiplier(target, amount1, props, dealer, cardSource);
+        var power2 = dealer.GetPower<NewMagneticMovementPower>();
+        if (power2 != null)
+            amount1 = power2.ModifyLockOnMultiplier(target, amount1, props, dealer, cardSource);
         return amount1;
     }
     public override async Task AfterSideTurnEnd(

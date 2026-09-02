@@ -13,6 +13,7 @@ using MegaCrit.Sts2.Core.Models.Orbs;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MegaCrit.Sts2.Core.Nodes.Vfx;
+using TheRailgun2.TheRailgun2Code.Character;
 
 namespace TheRailgun2.TheRailgun2Code.Powers;
 
@@ -29,7 +30,7 @@ public class StormRailgunPower : TheRailgun2Power
             return;
         for (int i = 0; i < Amount; i++)
         {
-            await OrbCmd.Channel<LightningOrb>(choiceContext, Owner.Player);
+            await OrbCmd.Channel<VoltOrb>(choiceContext, Owner.Player);
         }
     }
 }

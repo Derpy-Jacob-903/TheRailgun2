@@ -27,10 +27,12 @@ public class GroundingPower : TheRailgun2Power
         IReadOnlyList<Creature> participants,
         ICombatState combatState)
     {
-        if (!participants.Contains(Owner))
+        
+        if (!participants.Contains(Owner) || Owner.Player == null)
             return;
         Flash();
-        await Cmd.CustomScaledWait(0.2f, 0.4f);
-        await PowerCmd.Apply<LockOnPower>(new ThrowingPlayerChoiceContext(), CombatState.HittableEnemies, Amount, Owner,null);
+        Creature target = Owner.Player.RunState.Rng.CombatTargets.NextItem(CombatState.HittableEnemies);
+        if (target == null) return;
+        await PowerCmd.Apply<LockOnPower>(new ThrowingPlayerChoiceContext(), target, Amount, Owner,null);
     }
 }

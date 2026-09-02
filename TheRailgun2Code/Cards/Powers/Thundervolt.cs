@@ -15,7 +15,7 @@ using TheRailgun2.TheRailgun2Code.Character;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
-public class BigPlating() : TheRailgun2Card(1,
+public class BigPlating() : SpendCard(2,
     CardType.Power, CardRarity.Rare,
     TargetType.Self)
 {
@@ -33,29 +33,12 @@ public class BigPlating() : TheRailgun2Card(1,
         HoverTipFactory.Static(StaticHoverTip.Block)
     ];
 
-    protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    public override int canonicalSpendCost => 2;
+
+    protected override async Task MyOnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        var osty = cardPlay.IsAutoPlay;
-        if (!osty && Owner.PlayerCombatState.OrbQueue.Orbs.Where(c => c is LightningOrb).Count() >= 2)
-        {
-            await EchoOrb.RemoveFirstOf<LightningOrb>(choiceContext, Owner);
-            await EchoOrb.RemoveFirstOf<LightningOrb>(choiceContext, Owner);
-            osty = true;
-        }
-        if (osty && cardPlay.Target != null)
-        {
-            await CommonActions.ApplySelf<PlatingPower>(choiceContext, this);
-        }
+        await CommonActions.ApplySelf<PlatingPower>(choiceContext, this);
     }
-    
-    public override bool ShouldPlay(CardModel card, AutoPlayType autoPlayType)
-    {
-        if (card is BigPlating && autoPlayType == AutoPlayType.None &&
-            card.Owner.PlayerCombatState != null &&
-            !(card.Owner.PlayerCombatState.OrbQueue.Orbs.Count(c => c is LightningOrb) >= 2))
-            return false;
-        return base.ShouldPlay(card, autoPlayType);
-    }
-    
+
     protected override void OnUpgrade() => this.DynamicVars["PlatingPower"].UpgradeValueBy(3M);
 }
