@@ -32,20 +32,20 @@ public class GekotaKeychain() : TheRailgun2Card(1,
         if (Owner.PlayerCombatState.AllCards
             .OrderBy<CardModel, CardRarity>((Func<CardModel, CardRarity>)(c => c.Rarity))
             .ThenBy<CardModel, ModelId>((Func<CardModel, ModelId>)(c => c.Id))
-            .Count(u => u.Type == CardType.Curse) == 0) return;
+            .Count(u => u.Type == CardType.Curse && u.Pile?.Type != PileType.Exhaust) == 0) return;
         CardSelectorPrefs prefs = new CardSelectorPrefs(CardSelectorPrefs.ExhaustSelectionPrompt, DynamicVars.Cards.IntValue);
         var cards = (await CardSelectCmd.FromSimpleGrid(choiceContext,
                 Owner.PlayerCombatState.AllCards
                     .OrderBy<CardModel, CardRarity>((Func<CardModel, CardRarity>)(c => c.Rarity))
                     .ThenBy<CardModel, ModelId>((Func<CardModel, ModelId>)(c => c.Id))
-                    .Where(u => u.Type == CardType.Curse).ToList<CardModel>(), Owner, prefs)
+                    .Where(u => u.Type == CardType.Curse && u.Pile?.Type != PileType.Exhaust).ToList<CardModel>(), Owner, prefs)
             );
         if (cards == null)
             return;
         foreach (var cardModel in cards) await CardCmd.Exhaust(choiceContext, cardModel);
     }
     
-    protected override bool ShouldGlowRedInternal => Owner.PlayerCombatState != null && Owner.PlayerCombatState.AllCards.Any(u => u.Type == CardType.Curse);
+    protected override bool ShouldGlowRedInternal => Owner.PlayerCombatState != null && Owner.PlayerCombatState.AllCards.All(u => u.Type != CardType.Curse);
 
     protected override void OnUpgrade() => this.DynamicVars.Cards.UpgradeValueBy(1M);
 }

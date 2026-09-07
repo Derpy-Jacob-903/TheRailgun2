@@ -22,6 +22,11 @@ public class JudgementOfficer() : TheRailgun2Card(3,
         new DynamicVar("MaxUpgrades", 0)
     ];
     
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
+        Enums.Discharge //lame
+    ];
+    
     protected override IEnumerable<IHoverTip> ExtraHoverTips => 
         [HoverTipFactory.FromCard<Needle>(IsUpgraded)];
 
@@ -29,12 +34,13 @@ public class JudgementOfficer() : TheRailgun2Card(3,
     {
         foreach (CardModel card in await Needle.CreateInHand(Owner, DynamicVars.Cards.IntValue, CombatState))
         {
-            for (int i = 0; i < DynamicVars["MaxUpgrades"].IntValue && card.IsUpgradable; i++)
-            {
-                CardCmd.Upgrade(card);
-            }
+            //for (int i = 0; i < DynamicVars["MaxUpgrades"].IntValue && card.IsUpgradable; i++)
+            //{
+                //CardCmd.Upgrade(card);
+            //}
         }
     }
 
-    protected override void OnUpgrade() => this.DynamicVars["MaxUpgrades"].UpgradeValueBy(1M);
+    protected override void OnUpgrade() =>
+        EnergyCost.UpgradeBy(-1);  //this.DynamicVars["MaxUpgrades"].UpgradeValueBy(1M);
 }

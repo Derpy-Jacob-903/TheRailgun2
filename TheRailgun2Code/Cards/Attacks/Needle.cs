@@ -4,6 +4,7 @@ using BaseLib.Utils;
 using Godot;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Commands.Builders;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
@@ -16,6 +17,7 @@ using MegaCrit.Sts2.Core.Models.Orbs;
 using MegaCrit.Sts2.Core.Nodes.Vfx;
 using MegaCrit.Sts2.Core.ValueProps;
 using TheRailgun2.TheRailgun2Code.Extensions;
+using TheRailgun2.TheRailgun2Code.Powers;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
@@ -24,6 +26,9 @@ public class Needle() : CustomCardModel(0,
     CardType.Attack, CardRarity.Token,
     TargetType.AnyEnemy)
 {
+    public override TargetType TargetType => !this.HasFanOfKnives ? TargetType.AnyEnemy : TargetType.AllEnemies;
+    public bool HasFanOfKnives => (Owner?.Creature?.HasPower<PiercingNeedlesPower>() ?? false);
+
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
         Enums.Discharge,
@@ -37,10 +42,24 @@ public class Needle() : CustomCardModel(0,
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        var attackCommand = DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(cardPlay.Card, cardPlay).Targeting(cardPlay.Target)
-            .WithHitVfxNode((t) => NShivThrowVfx.Create(base.Owner.Creature, t, Colors.DarkCyan));
-        await attackCommand.Execute(choiceContext);
+            var attackCommand = DamageCmd.Attack(DynamicVars.Damage.BaseValue)
+                .FromCard(cardPlay.Card, cardPlay).Targeting(cardPlay.Target)
+                .WithHitVfxNode((t) => NShivThrowVfx.Create(base.Owner.Creature, t, Colors.DarkCyan));
+            AttackCommand attackCommand2 = null;
+            if (HasFanOfKnives)
+            {
+                Creature lastEnemy = CombatState.HittableEnemies.LastOrDefault<Creature>();
+                attackCommand2 = attackCommand.TargetingAllOpponents(CombatState).WithHitVfxNode((Func<Creature, Node2D>) (_ => (Node2D) NShivThrowVfx.Create(Owner.Creature, lastEnemy, Colors.DarkCyan)));
+            }
+            else
+            {
+                ArgumentNullException.ThrowIfNull((object) cardPlay.Target, "cardPlay.Target");
+                attackCommand2 = attackCommand;
+            }
+            if (cardPlay.Target != null || HasFanOfKnives && CombatState != null)
+            {
+                await attackCommand2.Execute(choiceContext);
+            }
     }
     
     public static async Task<IEnumerable<CardModel>> CreateInHand(

@@ -11,13 +11,14 @@ using TheRailgun2.TheRailgun2Code.Powers;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
-public class CircuitBreakerNew() : SpendCard(1,
+public class 
+    CircuitBreakerNew() : SpendCard(1,
     CardType.Skill, CardRarity.Uncommon,
     TargetType.AnyEnemy)
 {
-    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        CardKeyword.Exhaust
+        new PowerVar<LockOnPower>(3),
     ];
 
     public override int canonicalSpendCost => 1;
@@ -25,7 +26,7 @@ public class CircuitBreakerNew() : SpendCard(1,
     protected override async Task MyOnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         if (play.Target != null)
-            await PowerCmd.Apply<DexterityPower>(choiceContext, play.Target, DynamicVars["Lock-On"].BaseValue, null,
+            await PowerCmd.Apply<LockOnPower>(choiceContext, play.Target, DynamicVars["LockOnPower"].BaseValue, null,
                 this);
     }
 

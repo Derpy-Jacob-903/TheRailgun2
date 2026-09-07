@@ -14,6 +14,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 using TheRailgun2.TheRailgun2Code.Powers;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
+[Pool(typeof(DeprecatedCardPool))]
 public class GroundingNew() : TheRailgun2Card(1,
     CardType.Attack, CardRarity.Rare,
     TargetType.AnyEnemy)

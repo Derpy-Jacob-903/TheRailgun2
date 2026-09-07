@@ -9,7 +9,7 @@ using MegaCrit.Sts2.Core.Models.Enchantments;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
-public class Supercharge() : TheRailgun2Card(3,
+public class Supercharge() : TheRailgun2Card(2,
     CardType.Skill, CardRarity.Rare,
     TargetType.Self)
 {

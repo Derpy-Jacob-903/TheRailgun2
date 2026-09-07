@@ -3,12 +3,15 @@ using System.Reflection;
 using BaseLib.Abstracts;
 using BaseLib.Patches.Content;
 using HarmonyLib;
+using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Hooks;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Afflictions;
 using MegaCrit.Sts2.Core.Models.Orbs;
 using MegaCrit.Sts2.Core.Nodes;
 using MegaCrit.Sts2.Core.ValueProps;
@@ -115,6 +118,23 @@ public static class OrbDamagePatchSingle
     public class Shorted() : AfflictionModel, ICustomModel
     {
 	    public override bool HasExtraCardText => true;
+	    public override bool CanAfflictUnplayableCards => false;
+	    public override Task BeforeSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)
+	    {
+		    Player player = Card.Owner;
+		    object obj;
+		    {
+			    PlayerCombatState playerCombatState = player.PlayerCombatState;
+			    obj = playerCombatState != null ? (object) playerCombatState.AllCards : (object) null;
+		    }
+		    obj ??= (object)Array.Empty<CardModel>();
+		    foreach (CardModel card in (IEnumerable<CardModel>) obj)
+		    {
+			    if (card.Affliction is Shorted)
+				    CardCmd.ClearAffliction(card);
+		    }
+		    return Task.CompletedTask;
+	    }
     }
     public class RailgunKeywordSingleton() : CustomSingletonModel(HookType.Combat)
     {
