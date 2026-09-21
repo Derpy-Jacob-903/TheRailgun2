@@ -1,0 +1,8 @@
+[gd_resource type="SpineSkeletonDataResource" load_steps=3 format=3 uid="uid://crut6sabisto6"]
+
+[ext_resource type="SpineAtlasResource" uid="uid://dchfj03gj3wje" path="res://TheRailgun2/images/char/defect_orbs.atlas" id="1_ix7n2"]
+[ext_resource type="SpineSkeletonFileResource" uid="uid://d1j41ooixaj50" path="res://TheRailgun2/images/char/lightning_orb.skel" id="2_p3iyc"]
+
+[resource]
+atlas_res = ExtResource("1_ix7n2")
+skeleton_file_res = ExtResource("2_p3iyc")

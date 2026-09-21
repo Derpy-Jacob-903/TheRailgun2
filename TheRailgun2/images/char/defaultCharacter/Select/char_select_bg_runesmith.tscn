@@ -1,0 +1,75 @@
+[gd_scene load_steps=13 format=3 uid="uid://bg4164ovcdi18"]
+
+[ext_resource type="Texture2D" uid="uid://ckensvnfdqa3s" path="res://TheRailgun2/images/char/defaultCharacter/Select/RailgunBg1.png" id="1_hxpuj"]
+[ext_resource type="Texture2D" uid="uid://ci6cdlq3vkyy4" path="res://TheRailgun2/images/char/defaultCharacter/Select/RailgunBg2.png" id="2_oy84l"]
+[ext_resource type="Texture2D" uid="uid://bljg00nweskho" path="res://TheRailgun2/images/char/defaultCharacter/Select/RailgunBg3.png" id="3_lp0iv"]
+[ext_resource type="Texture2D" uid="uid://d1yi4jrl213x4" path="res://TheRailgun2/images/char/defaultCharacter/Select/RailgunBg4.png" id="4_yifa4"]
+[ext_resource type="Texture2D" uid="uid://ho0ofphcdnhx" path="res://TheRailgun2/images/char/defaultCharacter/Select/RailgunBg5.png" id="5_mfw55"]
+[ext_resource type="Texture2D" uid="uid://c4qec8v3dfdoi" path="res://TheRailgun2/images/char/defaultCharacter/Select/RailgunBg6.png" id="6_urrpw"]
+[ext_resource type="Texture2D" uid="uid://b3tjhuwjf35so" path="res://TheRailgun2/images/char/defaultCharacter/Select/RailgunBg7.png" id="7_w1ylf"]
+[ext_resource type="Texture2D" uid="uid://tsoab3fgkwo7" path="res://TheRailgun2/images/char/defaultCharacter/Select/RailgunBg8.png" id="8_imxsn"]
+[ext_resource type="Texture2D" uid="uid://diejhuxf8owwp" path="res://TheRailgun2/images/char/defaultCharacter/Select/RailgunBg9.png" id="9_05gja"]
+[ext_resource type="Texture2D" uid="uid://b8kd0emmvey6j" path="res://TheRailgun2/images/char/defaultCharacter/Select/RailgunBg010.png" id="10_56w23"]
+[ext_resource type="Texture2D" uid="uid://cgp2uf4w3j4dx" path="res://TheRailgun2/images/char/defaultCharacter/Select/RailgunBg011.png" id="11_37vmw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r2uyx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_hxpuj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_oy84l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_lp0iv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_yifa4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_mfw55")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_urrpw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_w1ylf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_imxsn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_05gja")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_56w23")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_37vmw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="CharSelectBgRunesmith" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 1600.0
+offset_bottom = 660.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(1280, 600)
+
+[node name="TextureRect" type="AnimatedSprite2D" parent="."]
+position = Vector2(1063.4943, 600.35834)
+scale = Vector2(4.2838306, 4.3096747)
+sprite_frames = SubResource("SpriteFrames_r2uyx")
+frame_progress = 0.6307269

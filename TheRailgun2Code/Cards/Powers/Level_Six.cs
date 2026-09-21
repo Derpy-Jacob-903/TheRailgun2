@@ -18,7 +18,7 @@ namespace TheRailgun2.TheRailgun2Code.Cards;
 
 [Pool(typeof(DeprecatedCardPool))]
 public class LevelSix() : TheRailgun2Card(5,
-    CardType.Power, CardRarity.Status,
+    CardType.Power, CardRarity.Ancient,
     TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>

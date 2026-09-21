@@ -36,4 +36,6 @@ public class ElectricalFire() : TheRailgun2Card(2,
     }
 
     protected override void OnUpgrade() => this.DynamicVars.Damage.UpgradeValueBy(5M);
+    
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [ Enums.Discharge ];
 }

@@ -16,11 +16,13 @@ namespace TheRailgun2.TheRailgun2Code.Cards;
 
 public class LightningSpeedNew() : TheRailgun2Card(2,
     CardType.Attack, CardRarity.Rare,
-    TargetType.Self)
+    TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(12M, ValueProp.Move),
+        new CardsVar("Exhaust", 1),
+        new CardsVar(0)
     ];
 
     public override bool CanBeGeneratedInCombat => false; //can copy 
@@ -40,7 +42,7 @@ public class LightningSpeedNew() : TheRailgun2Card(2,
         {
             if (card != null)
             {
-                CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(card.CreateClone(), PileType.Draw, Owner));
+                CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(card.CreateClone(), PileType.Draw, Owner, CardPilePosition.Random));
                 for (int i = 0; i < this.CurrentUpgradeLevel; i++)
                 {
                     CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(card.CreateClone(), PileType.Discard, Owner), 2.2f);
@@ -50,5 +52,5 @@ public class LightningSpeedNew() : TheRailgun2Card(2,
         }
     }
 
-    //protected override void OnUpgrade() => this.DynamicVars.Damage.UpgradeValueBy(3M);
+    protected override void OnUpgrade() => this.DynamicVars.Cards.UpgradeValueBy(1M);
 }

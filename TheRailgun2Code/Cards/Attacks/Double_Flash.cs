@@ -17,7 +17,7 @@ public class DoubleFlash() : TheRailgun2Card(2,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(14M, ValueProp.Move),
+        new DamageVar(7M, ValueProp.Move),
     ];
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [];
     public override IEnumerable<CardKeyword> CanonicalKeywords => [];

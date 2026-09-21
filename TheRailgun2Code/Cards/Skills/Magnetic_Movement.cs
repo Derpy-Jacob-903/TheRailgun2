@@ -12,7 +12,7 @@ using TheRailgun2.TheRailgun2Code.Powers;
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
 public class MagneticMovementNew() : TheRailgun2Card(1,
-    CardType.Power, CardRarity.Uncommon,
+    CardType.Power, CardRarity.Rare,
     TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>

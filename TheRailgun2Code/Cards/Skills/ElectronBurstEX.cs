@@ -19,7 +19,7 @@ public class ElectronBurstEx() : TheRailgun2Card(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new RepeatVar(7)
+        new RepeatVar(5)
     ];
     
     public override IEnumerable<CardKeyword> CanonicalKeywords => [Enums.Discharge];
@@ -36,5 +36,6 @@ public class ElectronBurstEx() : TheRailgun2Card(1,
             }
     }
     
-    protected override void OnUpgrade() => this.DynamicVars.Repeat.UpgradeValueBy(2M);
+    protected override bool ShouldGlowRedInternal => Owner.PlayerCombatState != null && !(Owner.PlayerCombatState.OrbQueue.Orbs.Any());
+    protected override void OnUpgrade() => this.DynamicVars.Repeat.UpgradeValueBy(1M);
 }

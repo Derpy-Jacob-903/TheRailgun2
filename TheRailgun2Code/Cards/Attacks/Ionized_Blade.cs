@@ -28,9 +28,10 @@ public class IonizedBlade() : TheRailgun2Card(1,
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(cardPlay.Card, cardPlay).Targeting(cardPlay.Target)
-            .WithHitFx("vfx/vfx_attack_slash").Execute(choiceContext);
+        if (cardPlay.Target != null)
+            await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
+                .FromCard(cardPlay.Card, cardPlay).Targeting(cardPlay.Target).WithHitCount(DynamicVars.Repeat.IntValue)
+                .WithHitFx("vfx/vfx_attack_slash").Execute(choiceContext);
     }
 
     protected override void OnUpgrade() => this.DynamicVars.Damage.UpgradeValueBy(3M);

@@ -26,7 +26,7 @@ public class NeedleStorm() : TheRailgun2Card(3,
     {
         if (Owner.PlayerCombatState != null)
         {
-            IEnumerable<CardModel> list = Owner.PlayerCombatState.AllCards.Where(c => c is Needle);
+            var list = Owner.PlayerCombatState.AllCards.Where(c => c is Needle).ToList();
             bool flag = true;
             foreach (CardModel card in list)
             {

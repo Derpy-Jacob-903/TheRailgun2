@@ -15,15 +15,15 @@ public class MagneticFlight() : TheRailgun2Card(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<MagneticFlightPower>(2)
+        new PowerVar<NewMagneticFlightPower>(7)
     ];
     protected override HashSet<CardTag> CanonicalTags => [Enums.Ferrous];
     protected override async Task OnPlay(
         PlayerChoiceContext context,
         CardPlay play)
     {
-        await PowerCmd.Apply<MagneticFlightPower>(context, Owner.Creature, DynamicVars["MagneticFlightPower"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<NewMagneticFlightPower>(context, Owner.Creature, DynamicVars["NewMagneticFlightPower"].BaseValue, Owner.Creature, this);
     }
 
-    protected override void OnUpgrade() => this.DynamicVars["MagneticFlightPower"].UpgradeValueBy(2M);
+    protected override void OnUpgrade() => this.DynamicVars["NewMagneticFlightPower"].UpgradeValueBy(2M);
 }

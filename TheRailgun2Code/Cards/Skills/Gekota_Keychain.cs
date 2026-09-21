@@ -45,7 +45,7 @@ public class GekotaKeychain() : TheRailgun2Card(1,
         foreach (var cardModel in cards) await CardCmd.Exhaust(choiceContext, cardModel);
     }
     
-    protected override bool ShouldGlowRedInternal => Owner.PlayerCombatState != null && Owner.PlayerCombatState.AllCards.All(u => u.Type != CardType.Curse);
+    protected override bool ShouldGlowRedInternal => Owner.PlayerCombatState != null && Owner.PlayerCombatState.AllCards.All(u => u.Type != CardType.Curse && u.Pile?.Type != PileType.Exhaust);
 
     protected override void OnUpgrade() => this.DynamicVars.Cards.UpgradeValueBy(1M);
 }

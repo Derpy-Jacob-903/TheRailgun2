@@ -58,6 +58,7 @@ public abstract class SpendCard(int cost, CardType type, CardRarity rarity, Targ
             osty = true;
             if (!play.IsAutoPlay)
             {
+                await RailgunTwoMainFile.AfterOrbSpent(choiceContext, play);
                 await AfterSpend(choiceContext, play);
             }
         }
@@ -73,14 +74,15 @@ public abstract class SpendCard(int cost, CardType type, CardRarity rarity, Targ
         return false;
     }
 
-    protected Task BeforeSpend(
+    private Task BeforeSpend(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
+        
         return Task.CompletedTask;
     }
 
-    protected Task AfterSpend(
+    private Task AfterSpend(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {

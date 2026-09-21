@@ -16,13 +16,12 @@ public class NeedlePotion : TheRailgun2Potion
 {
     public override PotionRarity Rarity => PotionRarity.Uncommon;
     public override PotionUsage Usage => PotionUsage.CombatOnly;
-    public override TargetType TargetType => TargetType.Self;
+    public override TargetType TargetType => TargetType.AnyPlayer;
     public override string CustomPackedOutlinePath => ImageHelper.GetImagePath($"atlases/potion_outline_atlas.sprites/cunning_potion.tres");
     public override string CustomPackedImagePath => ImageHelper.GetImagePath($"atlases/potion_atlas.sprites/cunning_potion.tres");
     protected override IEnumerable<DynamicVar> CanonicalVars => [ new CardsVar(2) ];
     protected override async Task OnUse(PlayerChoiceContext choiceContext, Creature target)
     {
-        foreach (CardModel card in await Needle.CreateInHand(Owner, DynamicVars.Cards.IntValue, Owner.Creature.CombatState))
-            CardCmd.Upgrade(card);
+        await Needle.CreateInHand(Owner, DynamicVars.Cards.IntValue, Owner.Creature.CombatState);
     }
 }

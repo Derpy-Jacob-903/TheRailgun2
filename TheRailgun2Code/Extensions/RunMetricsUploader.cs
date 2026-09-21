@@ -191,11 +191,11 @@ public sealed class RunMetricsUploader<TPayload>
             }
         }
 
-        if (_config.RejectForeignContent && HasForeignContent(run))
+        /*if (_config.RejectForeignContent && HasForeignContent(run))
         {
             log?.Info($"[{mod}] Skipping metrics upload, foreign mod content detected.");
             return false;
-        }
+        }*/
 
         return true;
     }

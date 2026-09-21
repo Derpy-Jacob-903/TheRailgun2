@@ -177,17 +177,16 @@ public class VoltOrb : CustomOrbModel
     [
         HoverTipFactory.FromPower<LockOnPower>()
     ];
-    
-    //how'd I make a character use a recolor of an existing character?
 
+    public override string CustomSpritePath => "res://TheRailgun2/images/char/lightning_orb.tscn";
     public override Node2D CreateCustomSprite()
     {
         var container = new Node2D();
-        string darkPath = SceneHelper.GetScenePath("orbs/orb_visuals/lightning_orb");
+        string darkPath = "res://TheRailgun2/images/char/lightning_orb.tscn"; //SceneHelper.GetScenePath("orbs/orb_visuals/lightning_orb");
         Node2D dark = PreloadManager.Cache.GetScene(darkPath)
             .Instantiate<Node2D>();
         var sprite = new MegaSprite(dark.GetNode("SpineSkeleton"));
-        ApplyTextureSkin(sprite, ImageTexture.CreateFromImage(Image.LoadFromFile("char/railgun_orbs".ImagePath())));
+        //ApplyTextureSkin(sprite, ImageTexture.CreateFromImage(Image.LoadFromFile("char/railgun_orbs".ImagePath())));
         
         sprite.GetAnimationState().SetAnimation("idle_loop");
         //dark.Modulate = new Color(0f, 1f, 4f, 1.0f);

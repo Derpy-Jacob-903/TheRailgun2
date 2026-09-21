@@ -12,7 +12,7 @@ namespace TheRailgun2.TheRailgun2Code.Cards;
 
 [Pool(typeof(DeprecatedCardPool))]
 public class Thundershock() : TheRailgun2Card(2,
-    CardType.Attack, CardRarity.Status,
+    CardType.Attack, CardRarity.Common,
     TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>

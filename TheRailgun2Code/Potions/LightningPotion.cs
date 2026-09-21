@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Orbs;
 using MegaCrit.Sts2.Core.Models.Powers;
+using TheRailgun2.TheRailgun2Code.Character;
 using TheRailgun2.TheRailgun2Code.Extensions;
 
 namespace TheRailgun2.TheRailgun2Code.Potions;
@@ -16,15 +17,21 @@ public class LightningPotion : TheRailgun2Potion
 {
     public override PotionRarity Rarity => PotionRarity.Rare;
     public override PotionUsage Usage => PotionUsage.CombatOnly;
-    public override TargetType TargetType => TargetType.Self;
+    public override TargetType TargetType => TargetType.AnyPlayer;
     public override string CustomPackedOutlinePath => ImageHelper.GetImagePath($"atlases/potion_outline_atlas.sprites/kings_courage.tres");
     public override string CustomPackedImagePath => ImageHelper.GetImagePath($"atlases/potion_atlas.sprites/kings_courage.tres");
-    protected override IEnumerable<DynamicVar> CanonicalVars => [ new RepeatVar(2), new PowerVar<LightningRodPower>(6) ];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [ new RepeatVar(4), new PowerVar<StormPower>(1) ];
     protected override async Task OnUse(PlayerChoiceContext choiceContext, Creature target)
     {
-        for (int i = 0; i < DynamicVars.Repeat.BaseValue; i++)
+        if (target != null)
         {
-            await OrbCmd.Channel<LightningOrb>(choiceContext, Owner);
+            for (int i = 0; i < DynamicVars.Repeat.BaseValue; i++)
+            {
+                await OrbCmd.Channel<VoltOrb>(choiceContext, Owner);
+            }
+            await PowerCmd.Apply<StormPower>(choiceContext, target, DynamicVars["LockOnPower"].IntValue,
+                Owner.Creature,
+                null);
         }
     }
 }

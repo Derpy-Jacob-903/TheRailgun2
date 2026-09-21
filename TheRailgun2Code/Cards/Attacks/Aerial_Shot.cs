@@ -19,7 +19,7 @@ public class AerialShot() : TheRailgun2Card(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(9M, ValueProp.Move)
+        new DamageVar(10M, ValueProp.Move)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

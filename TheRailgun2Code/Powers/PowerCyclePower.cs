@@ -23,6 +23,9 @@ public class PowerCyclePower : TheRailgun2Power
         if (creator == null || creator.Creature != Owner)
             return;
         Flash();
-        await OrbCmd.Channel<VoltOrb>(new ThrowingPlayerChoiceContext(), creator);
+        for (int i = 0; i < Amount; i++)
+        {
+            await OrbCmd.Channel<VoltOrb>(new ThrowingPlayerChoiceContext(), creator);
+        }
     }
 }

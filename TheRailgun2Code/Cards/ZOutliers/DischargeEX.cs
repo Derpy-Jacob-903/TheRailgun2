@@ -26,7 +26,7 @@ public class DischargeEx() : TheRailgun2Card(1,
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await OrbCmd.EvokeNext(choiceContext, Owner);
-        await PowerCmd.Apply<DischargePower>(choiceContext, Owner.Creature, DynamicVars["DexterityPower"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<DexterityPower>(choiceContext, Owner.Creature, DynamicVars["DexterityPower"].BaseValue, Owner.Creature, this);
         await PowerCmd.Apply<DischargePower>(choiceContext, Owner.Creature, DynamicVars["DischargePower"].BaseValue, Owner.Creature, this);
     }
 

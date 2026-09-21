@@ -1,8 +1,10 @@
-﻿using MegaCrit.Sts2.Core.Commands;
+﻿using BaseLib.Utils;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Models.Orbs;
 using MegaCrit.Sts2.Core.ValueProps;
@@ -10,6 +12,7 @@ using TheRailgun2.TheRailgun2Code.Character;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
+[Pool(typeof(DeprecatedCardPool))]
 public class Thunderbolt() : TheRailgun2Card(3,
     CardType.Attack, CardRarity.Common,
     TargetType.AnyEnemy)

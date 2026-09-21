@@ -17,7 +17,7 @@ public class LockOnPotion : TheRailgun2Potion
 {
     public override PotionRarity Rarity => PotionRarity.Common;
     public override PotionUsage Usage => PotionUsage.CombatOnly;
-    public override TargetType TargetType => TargetType.Self;
+    public override TargetType TargetType => TargetType.AnyEnemy;
     public override string CustomPackedOutlinePath => ImageHelper.GetImagePath($"atlases/potion_outline_atlas.sprites/bone_brew.tres");
     public override string CustomPackedImagePath => ImageHelper.GetImagePath($"atlases/potion_atlas.sprites/bone_brew.tres");
     protected override IEnumerable<DynamicVar> CanonicalVars => [ new PowerVar<LockOnPower>(3) ];

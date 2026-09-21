@@ -24,6 +24,6 @@ public class NewMagneticMovementPower : TheRailgun2Power
         Creature dealer,
         CardModel cardSource) 
     {
-        return target == this.Owner || !props.HasFlag(Enums.Orb) ? amount : amount + 0.01M * Amount;
+        return dealer == this.Owner || !props.HasFlag(Enums.Orb) ? amount : amount + 0.01M * Amount;
     }
 }

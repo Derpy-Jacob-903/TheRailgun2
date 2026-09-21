@@ -15,7 +15,7 @@ namespace TheRailgun2.TheRailgun2Code.Cards;
 
 [Pool(typeof(DeprecatedCardPool))]
 public class PositiveField() : TheRailgun2Card(1,
-    CardType.Skill, CardRarity.Status,
+    CardType.Skill, CardRarity.Common,
     TargetType.Self)
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
