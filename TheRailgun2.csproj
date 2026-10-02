@@ -122,6 +122,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <Folder Include="TheRailgun2Code\Cards\Outliers\" />
         <Folder Include="TheRailgun2\images\card_portraits\big\"/>
         <Folder Include="TheRailgun2\images\powers\big\"/>
         <Folder Include="TheRailgun2\images\relics\big\"/>

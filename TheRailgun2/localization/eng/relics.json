@@ -11,7 +11,7 @@
   "THERAILGUN2-SPARE_CORE.title": "Spare Core",
   "THERAILGUN2-SPARE_CORE.description": "At the start of each combat, [gold]Channel[/gold] [blue]{Repeat}[/blue] [gold]Lightning[/gold].",
   "THERAILGUN2-SPARE_CORE.flavor": "The mysterious life force which powers the Automatons within the Spire. It appears to be cracked.",
-  "THERAILGUN2-LOCK_ON_PAPER_PHROG.title": "Lock-On Paper Phrog",
+  "THERAILGUN2-LOCK_ON_PAPER_PHROG.title": "Lock-On Paper Phrog (Old)",
   "THERAILGUN2-LOCK_ON_PAPER_PHROG.description": "Enemies with [gold]Lock-On[/gold] take [blue]75%[/blue] more damage rather than [blue]50%[/blue].",
   "THERAILGUN2-LOCK_ON_PAPER_PHROG.flavor": "The paper continually folds and unfolds itself into the shape of frog!",
   "THERAILGUN2-LOCK_ON_MARBLES.title": "Lock-On Marbles",
@@ -23,8 +23,11 @@
   "THERAILGUN2-FAKE_UNFAMILIAR_DECKBOX.flavor": "",
   "THERAILGUN2-COIN_RELIC_NEW_PRO.title": "Collector's Coin Pro",
   "THERAILGUN2-COIN_RELIC_NEW_PRO.description": "At the end of your turn, [gold]Channel[/gold] [blue]{Repeat}[/blue] [gold]Volt[/gold]\nEvery other turn, increase the [gold]Volt[/gold] [gold]Channeled[/gold] by this relic by [blue]1[/blue] this combat.",
-  "THERAILGUN2-COIN_RELIC_NEW_PRO.flavor": "",
+  "THERAILGUN2-COIN_RELIC_NEW_PRO.flavor": "A coin from an arcade.",
   "THERAILGUN2-COIN_RELIC_NEW.title": "Collector's Coin",
   "THERAILGUN2-COIN_RELIC_NEW.description": "At the end of your turn, [gold]Channel[/gold] [blue]{Repeat}[/blue] [gold]Volt[/gold].\nAt the start of your 3rd and 5th turns, increase the [gold]Volt[/gold] [gold]Channeled[/gold] by this relic by [blue]1[/blue] this combat.",
-  "THERAILGUN2-COIN_RELIC_NEW.flavor": ""
+  "THERAILGUN2-COIN_RELIC_NEW.flavor": "A coin from an arcade.",
+  "THERAILGUN2-LOCK_ON_PAPER_PHROG_NEW.title": "Lock-On Paper Phrog",
+  "THERAILGUN2-LOCK_ON_PAPER_PHROG_NEW.description": "Enemies with [gold]Lock-On[/gold] take [blue]75%[/blue] more damage from orbs rather than [blue]50%[/blue].",
+  "THERAILGUN2-LOCK_ON_PAPER_PHROG_NEW.flavor": "Placeholder, will be updated later."
 }

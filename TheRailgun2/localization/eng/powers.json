@@ -76,5 +76,8 @@
   "THERAILGUN2-SHORT_CIRCUIT_POWER.smartDescription": "You receive [blue]50%[/blue] less damage from enemy attacks. Lasts for [blue]{Amount}[/blue] {Amount:plural:turn|turns}.",
   "THERAILGUN2-CONSERVE_POWER_POWER.title": "ConservePowerPower",
   "THERAILGUN2-CONSERVE_POWER_POWER.description": "The first [blue]2[/blue] times you Spend each turn, [gold]Channel[/gold] [blue]1[/blue] [gold]Volt[/gold].",
-  "THERAILGUN2-CONSERVE_POWER_POWER.smartDescription": "The first [blue]{Amount}[/blue] times you Spend each turn, [gold]Channel[/gold] [blue]1[/blue] [gold]Volt[/gold]."
+  "THERAILGUN2-CONSERVE_POWER_POWER.smartDescription": "The first [blue]{Amount}[/blue] times you Spend each turn, [gold]Channel[/gold] [blue]1[/blue] [gold]Volt[/gold].",
+  "THERAILGUN2-ION_DELUGE_POWER.title": "Ion Deluge",
+  "THERAILGUN2-ION_DELUGE_POWER.description": "Whenever you [gold]Channel[/gold] [gold]Volt[/gold] during your turn, the target ally [gold]Channels[/gold] 1 [gold]Volt[/gold].",
+  "THERAILGUN2-ION_DELUGE_POWER.smartDescription": "Whenever [gold]{Applier}[/gold] [gold]Channels[/gold] [gold]Volt[/gold] during their turn, [gold]{OwnerName}[/gold] [gold]Channels[/gold] 1 [gold]Volt[/gold]."
 }

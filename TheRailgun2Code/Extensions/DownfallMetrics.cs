@@ -17,7 +17,7 @@ public static class DownfallMetrics
 {
     private static string um()
     {
-        return "Canary";
+        return "2.0.0-Beta";
     }
     
     private static readonly RunMetricsUploader<RunMetrics> Uploader = new(

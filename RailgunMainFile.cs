@@ -10,6 +10,7 @@ using MegaCrit.Sts2.Core.Modding;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Cards;
 using TheRailgun2.TheRailgun2Code.Cards;
+using TheRailgun2.TheRailgun2Code.Compat;
 using TheRailgun2.TheRailgun2Code.Data;
 using TheRailgun2.TheRailgun2Code.Extensions;
 
@@ -32,6 +33,8 @@ public partial class RailgunTwoMainFile : Node
         
         var assembly = Assembly.GetExecutingAssembly();
         Godot.Bridge.ScriptManagerBridge.LookupScriptsInAssembly(assembly);
+        
+        TheHeroExpansionCompat.RegisterAllForCoco();
         
         /*var deckboxType = AccessTools.TypeByName("MoreNeow.MoreNeowCode.Relics.Complex.UnfamiliarDeckbox");
         if (deckboxType != null)

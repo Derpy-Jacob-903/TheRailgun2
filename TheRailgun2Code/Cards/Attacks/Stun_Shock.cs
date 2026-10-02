@@ -19,7 +19,7 @@ public class StunShock() : SpendCard(0,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DynamicVar("Spend", 2).WithTooltip("THERAILGUN2-SPEND"),
+        new DynamicVar("Spend", 1).WithTooltip("THERAILGUN2-SPEND"),
         new DamageVar(8M, ValueProp.Move),
         new PowerVar<VulnerablePower>(1M),
         new PowerVar<WeakPower>(1M)

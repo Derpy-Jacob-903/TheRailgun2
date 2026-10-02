@@ -2,6 +2,7 @@
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
@@ -11,6 +12,7 @@ using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Models.Orbs;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
+using TheRailgun2.TheRailgun2Code.Character;
 using TheRailgun2.TheRailgun2Code.Powers;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
@@ -28,10 +30,17 @@ public class IonizedBlade() : TheRailgun2Card(1,
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        if (cardPlay.Target != null)
-            await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-                .FromCard(cardPlay.Card, cardPlay).Targeting(cardPlay.Target).WithHitCount(DynamicVars.Repeat.IntValue)
-                .WithHitFx("vfx/vfx_attack_slash").Execute(choiceContext);
+        decimal am =
+            (Decimal)(await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this, cardPlay)
+                .Targeting(cardPlay.Target).WithHitFx("vfx/vfx_attack_slash").Execute(choiceContext)).Results
+            .SelectMany<List<DamageResult>, DamageResult>(
+                (Func<List<DamageResult>, IEnumerable<DamageResult>>)(r => (IEnumerable<DamageResult>)r))
+            .Sum<DamageResult>((Func<DamageResult, int>)(r => r.TotalDamage));
+        for (int i = 0; i < am; i++)
+        {
+            await OrbCmd.Channel<VoltOrb>(choiceContext, Owner);
+        }
+        var doomPower2 = await PowerCmd.Apply<LockOnPower>(choiceContext, cardPlay.Target, am, Owner.Creature, this);
     }
 
     protected override void OnUpgrade() => this.DynamicVars.Damage.UpgradeValueBy(3M);

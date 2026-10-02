@@ -28,6 +28,7 @@ using TheRailgun2.TheRailgun2Code.Relics;
 
 namespace TheRailgun2.TheRailgun2Code.Relics;
 
+/*
 [Pool(typeof(EventRelicPool))]
 public class FakeUnfamiliarDeckbox() : TheRailgun2Relic
 {
@@ -129,4 +130,4 @@ public class AddCursedNeowOptionsPatch
         }
     }
 }
-}
+}*/

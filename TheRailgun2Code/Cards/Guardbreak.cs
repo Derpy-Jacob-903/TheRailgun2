@@ -24,6 +24,8 @@ public static class Enums
     public static CardKeyword Conduit;
     [CustomEnum] [KeywordProperties(AutoKeywordPosition.Before)]
     public static CardKeyword Discharge;
+    [CustomEnum] [KeywordProperties(AutoKeywordPosition.Before)]
+    public static CardKeyword Shorted;
     [CustomEnum] [KeywordProperties(AutoKeywordPosition.Before)] [Obsolete]
     public static CardKeyword Guardbreak;
     [CustomEnum]
@@ -115,6 +117,7 @@ public static class OrbDamagePatchSingle
         }
     }*/
 
+	[Obsolete]
     public class Shorted() : AfflictionModel, ICustomModel
     {
 	    public override bool HasExtraCardText => true;
@@ -148,6 +151,26 @@ public static class OrbDamagePatchSingle
 		    if (card.Keywords.Contains(Enums.Discharge))
 		    {
 			    await CardCmd.AutoPlay(choiceContext, card, null, AutoPlayType.SlyDiscard, skipCardPileVisuals: true);
+		    }
+	    }
+	    
+	    public override Task BeforeSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)
+	    {
+		    foreach (var creature in participants)
+		    {
+			    if (creature.Player != null) continue;
+			    object obj;
+			    {
+				    PlayerCombatState playerCombatState = creature.Player!.PlayerCombatState;
+				    obj = playerCombatState?.AllCards;
+			    }
+			    obj ??= Array.Empty<CardModel>();
+			    foreach (CardModel card in (IEnumerable<CardModel>) obj)
+			    {
+				    if (card.Keywords.Contains(Enums.Shorted))
+					    CardCmd.RemoveKeyword(card, Enums.Shorted);
+			    }
+			    return Task.CompletedTask;
 		    }
 	    }
 	    

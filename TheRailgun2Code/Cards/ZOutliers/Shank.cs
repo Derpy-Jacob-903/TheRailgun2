@@ -14,7 +14,7 @@ public class ShankRailgun() : TheRailgun2Card(0,
 {
     protected override HashSet<CardTag> CanonicalTags => [CardTag.Strike];
 
-    public override Material CreateCustomBannerMaterial => ShaderUtils.GenerateHsv(195.2f / 360f, .373f, 0.75f);
+    public override Material CreateCustomBannerMaterial => ShaderUtils.GenerateHsv(195.2f / 360f, .0f, 1f);
     
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [

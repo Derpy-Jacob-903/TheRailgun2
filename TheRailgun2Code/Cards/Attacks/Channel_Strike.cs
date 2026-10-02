@@ -24,6 +24,11 @@ public class ChannelStrike() : TheRailgun2Card(0,
         new IntVar("PlayMax", 3M),
         new RepeatVar(1)
     ];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        HoverTipFactory.Static(StaticHoverTip.Channeling),
+        HoverTipFactory.FromOrb<VoltOrb>()
+    ];
     public override IEnumerable<CardTag> Tags => [CardTag.Strike];
     private bool CanDrawCard
     {
@@ -33,8 +38,6 @@ public class ChannelStrike() : TheRailgun2Card(0,
         }
     }
     protected override bool ShouldGlowGoldInternal => CanDrawCard;
-    
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [];
     public override IEnumerable<CardKeyword> CanonicalKeywords => [];
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {

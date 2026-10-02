@@ -26,7 +26,7 @@ public class LevelSix() : TheRailgun2Card(5,
         new HpLossVar(2),
         new EnergyVar(6),
         new PowerVar<StrengthPower>(6),
-        new PowerVar<FocusPower>(6),
+        new PowerVar<DexterityPower>(6),
     ];
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [

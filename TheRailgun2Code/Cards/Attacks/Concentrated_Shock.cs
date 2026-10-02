@@ -19,7 +19,7 @@ public class ConcentratedShock() : TheRailgun2Card(2,
         ..MakeCalculatedDamage(14, (model, creature) => creature?.GetPowerAmount<LockOnPower>() ?? 0)
     ];
     
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<LockOnPower>()];
     public override IEnumerable<CardKeyword> CanonicalKeywords => [];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
