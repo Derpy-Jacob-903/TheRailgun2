@@ -15,7 +15,7 @@ using TheRailgun2.TheRailgun2Code.Character;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
-public class Steelspike() : TheRailgun2Card(-1,
+public class Steelspike() : TheRailgun2Card(0,
     CardType.Power, CardRarity.Uncommon,
     TargetType.AllAllies)
 {
@@ -24,7 +24,7 @@ public class Steelspike() : TheRailgun2Card(-1,
     public override bool TryModifyEnergyCostInCombat(CardModel card, decimal originalCost, out decimal modifiedCost)
     {
         
-        if (CombatState != null && card == this && card.EnergyCost._base != 0)
+        if (CombatState != null && card == this)
         {
             modifiedCost = CombatState.PlayerCreatures.Count(c => c.IsAlive && c != card.Owner.Creature) + originalCost;
             return true;

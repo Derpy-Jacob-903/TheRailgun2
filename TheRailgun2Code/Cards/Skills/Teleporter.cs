@@ -11,7 +11,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
 public class SistersProject() : TheRailgun2Card(2,
-    CardType.Skill, CardRarity.Common,
+    CardType.Skill, CardRarity.Uncommon,
     TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>

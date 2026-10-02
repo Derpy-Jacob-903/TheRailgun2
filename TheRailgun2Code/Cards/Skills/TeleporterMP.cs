@@ -11,7 +11,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
 public class Teleporter() : TheRailgun2Card(1,
-    CardType.Skill, CardRarity.Uncommon,
+    CardType.Skill, CardRarity.Common,
     TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>

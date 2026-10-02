@@ -23,7 +23,9 @@ public class IonDeluge() : TheRailgun2Card(3,
         PlayerChoiceContext context,
         CardPlay play)
     {
-        await PowerCmd.Apply<IonDelugePower>(context, Owner.Creature, DynamicVars["IonDelugePower"].BaseValue, Owner.Creature, this);
+        if (play.Target != null)
+            await PowerCmd.Apply<IonDelugePower>(context, play.Target, DynamicVars["IonDelugePower"].BaseValue,
+                Owner.Creature, this);
     }
 
     protected override void OnUpgrade() => EnergyCost.UpgradeBy(-1);

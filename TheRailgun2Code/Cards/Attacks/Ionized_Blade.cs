@@ -18,15 +18,16 @@ using TheRailgun2.TheRailgun2Code.Powers;
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
 [Pool(typeof(EventCardPool))]
-public class IonizedBlade() : TheRailgun2Card(1,
+public class IonizedBlade() : TheRailgun2Card(3,
     CardType.Attack, CardRarity.Event,
     TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(9M, ValueProp.Move),
-        new RepeatVar(3)
+        new DamageVar(8M, ValueProp.Move)
     ];
+
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<TheRailgun2CardPool>();
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
@@ -40,8 +41,8 @@ public class IonizedBlade() : TheRailgun2Card(1,
         {
             await OrbCmd.Channel<VoltOrb>(choiceContext, Owner);
         }
-        var doomPower2 = await PowerCmd.Apply<LockOnPower>(choiceContext, cardPlay.Target, am, Owner.Creature, this);
+        await PowerCmd.Apply<LockOnPower>(choiceContext, cardPlay.Target, am, Owner.Creature, this);
     }
 
-    protected override void OnUpgrade() => this.DynamicVars.Damage.UpgradeValueBy(3M);
+    protected override void OnUpgrade() => this.DynamicVars.Damage.UpgradeValueBy(2M);
 }

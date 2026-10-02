@@ -170,8 +170,8 @@ public static class OrbDamagePatchSingle
 				    if (card.Keywords.Contains(Enums.Shorted))
 					    CardCmd.RemoveKeyword(card, Enums.Shorted);
 			    }
-			    return Task.CompletedTask;
 		    }
+		    return Task.CompletedTask;
 	    }
 	    
 	    protected virtual CardLocation GetResultLocationForCardPlay(CardPlay cardPlay)
@@ -184,24 +184,26 @@ public static class OrbDamagePatchSingle
 		    return new CardLocation(cardPlay.Card.Owner, PileType.Exhaust, CardPilePosition.Bottom);
 	    }
 
-	    public override async Task BeforeCardPlayed(CardPlay cardPlay)
+	    public override Task BeforeCardPlayed(CardPlay cardPlay)
 	    {
 		    var resultLocation = GetResultLocationForCardPlay(cardPlay);
 		    resultLocation = Hook.ModifyCardPlayResultLocation(cardPlay.Card.CombatState, cardPlay.Card, 
 			    cardPlay.IsAutoPlay, cardPlay.Resources, resultLocation, out var modifiers);
 		    if (cardPlay.Card.Keywords.Contains(Enums.Discharge) 
-		        && cardPlay.Card.Affliction is not Shorted &&
+		        && (cardPlay.Card.Affliction is not Shorted || cardPlay.Card.Keywords.Contains(Enums.Shorted)) &&
 		        resultLocation.pileType == PileType.Exhaust)
 		    {
-			    await CardCmd.Afflict<Shorted>(cardPlay.Card, 1m);
+			    CardCmd.ApplyKeyword(cardPlay.Card, Enums.Shorted);
 		    }
+		    return Task.CompletedTask;
 	    }
 
 	    public override async Task AfterCardExhausted(PlayerChoiceContext choiceContext, CardModel card, bool causedByEthereal)
 	    {
-		    if (card.Keywords.Contains(Enums.Discharge) && card.Affliction is not Shorted)
+		    if (card.Keywords.Contains(Enums.Discharge) && (card.Affliction is not Shorted || card.Keywords.Contains(Enums.Shorted)))
 		    {
-			    await CardCmd.Afflict<Shorted>(card, 1m);
+			    //await CardCmd.Afflict<Shorted>(card, 1m);
+			    CardCmd.ApplyKeyword(card, Enums.Shorted);
 			    await CardCmd.AutoPlay(choiceContext, card, null, AutoPlayType.SlyDiscard, skipCardPileVisuals: true);
 			    await CardPileCmd.Add(card, PileType.Exhaust, clonedBy: this, skipVisuals: true); //Exhaust
 		    }
