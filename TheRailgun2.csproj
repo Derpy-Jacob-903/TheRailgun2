@@ -112,9 +112,21 @@
         <Compile Remove="TheRailgun2Code\Cards\Dusty_Tome_Card.cs" />
         <Compile Remove="TheRailgun2Code\Cards\Skills\Burning_Pact_Ahh_Card.cs" />
         <Compile Remove="TheRailgun2Code\Relics\DataDisk.cs" />
+        <None Include="TheRailgun2Code\Cards\ZOutliers\Killed\Magnetic_Movement.cs" />
         <None Include="TheRailgun2Code\Relics\DataDisk.cs" />
         <Compile Remove="TheRailgun2Code\Character\HadesTiers.cs" />
         <Compile Remove="TheRailgun2Code\Cards\Skills\TestCard.cs" />
+        <Compile Remove="TheRailgun2Code\Cards\ZOutliers\Shank.cs" />
+        <None Include="TheRailgun2Code\Cards\ZOutliers\Shank.cs" />
+        <Compile Remove="TheRailgun2Code\Cards\ZOutliers\Jolt.cs" />
+        <None Include="TheRailgun2Code\Cards\ZOutliers\Jolt.cs" />
+        <Compile Remove="TheRailgun2Code\Cards\ZOutliers\Absorb_Basic.cs" />
+        <None Include="TheRailgun2Code\Cards\ZOutliers\Absorb_Basic.cs" />
+        <Compile Remove="TheRailgun2Code\Cards\ZOutliers\Zup.cs" />
+        <None Include="TheRailgun2Code\Cards\ZOutliers\Zup.cs" />
+        <Compile Remove="TheRailgun2Code\Cards\Powers\Magnetic_Movement.cs" />
+        <Compile Remove="TheRailgun2Code\Cards\Skills\Charge.cs" />
+        <None Include="TheRailgun2Code\Cards\Skills\Charge.cs" />
     </ItemGroup>
 
     <ItemGroup>

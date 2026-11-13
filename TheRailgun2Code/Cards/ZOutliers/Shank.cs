@@ -18,8 +18,7 @@ public class ShankRailgun() : TheRailgun2Card(0,
     
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(3M, ValueProp.Move),
-        new HitCountVar(1)
+        new DamageVar(3M, ValueProp.Move)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -29,5 +28,5 @@ public class ShankRailgun() : TheRailgun2Card(0,
             .WithHitFx("vfx/vfx_attack_slash").Execute(choiceContext);
     }
 
-    protected override void OnUpgrade() => this.DynamicVars.Repeat.UpgradeValueBy(1M);
+    protected override void OnUpgrade() => this.DynamicVars.Damage.UpgradeValueBy(3M);
 }

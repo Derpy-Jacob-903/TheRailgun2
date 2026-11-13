@@ -71,7 +71,7 @@ internal static class TheHeroExpansionCompat
         bool registered = RegisterCharacterCardReplacement(
             CustomMysteriousFlashlightExtensionTypeName,
             CustomFlashlightCardsFieldName,
-            ModelDb.GetId<MagneticMovement>(),
+            ModelDb.GetId<Backtrack>(),
             "Flashlight"
         );
 

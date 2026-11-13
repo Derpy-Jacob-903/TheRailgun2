@@ -162,10 +162,20 @@ public sealed class RunMetricsUploader<TPayload>
             return false;
         }
         
-        if (_config.RequireStandardGameMode && run.GameMode != GameMode.Standard)
+        if (_config.RequireStandardGameMode && run.GameMode != GameMode.Standard || run.GameMode != GameMode.Dread)
         {
             log?.Info($"[{mod}] Skipping metrics upload, custom mode detected.");
             return false;
+        }
+        if (run.Ascension > 10)
+        {
+            log?.Info($"[{mod}] Skipping metrics upload, modded Ascension detected.");
+            return false;
+        }
+        if (run.GameMode == GameMode.Dread)
+        {
+            log?.Info($"[{mod}] Editing metrics upload, marking Dread run as Ascension 11.");
+            run.Ascension = 11;
         }
 
         if (run.MapPointHistory.SelectMany(logs => logs).Count() < _config.MinFloors)
