@@ -27,7 +27,7 @@ public abstract class TheRailgun2Card(int cost, CardType type, CardRarity rarity
     //Smaller variant of normalart: 250x190
 
     //Uses card_portraits/card_name.png as image path. These should be smaller images.
-    public override string PortraitPath => this.HasPortrait ? $"{Id.Entry.ToLowerInvariant().RemovePrefix()}.png".CardImagePath() : BetaPortraitPath;
+    public override string PortraitPath => this.HasPortrait2 ? $"{Id.Entry.ToLowerInvariant().RemovePrefix()}_p.png".CardImagePath() : BetaPortraitPath;
     public override string BetaPortraitPath => $"card_p.png".CardImagePath();
 
     public static async Task DischargeCmd(PlayerChoiceContext choiceContext, CardPlay cardPlay)

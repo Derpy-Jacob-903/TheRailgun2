@@ -1,4 +1,5 @@
 using System.Reflection;
+using BaseLib.Config;
 using BaseLib.Utils;
 using Godot;
 using HarmonyLib;
@@ -28,6 +29,7 @@ public partial class RailgunTwoMainFile : Node
     {
         Harmony harmony = new(ModId);
         
+        ModConfigRegistry.Register(ModId, new RailgunModConfig());
         ModManager.OnMetricsUpload += DownfallMetrics.OnMetricsUpload;
         harmony.PatchAll();
         
@@ -47,5 +49,15 @@ public partial class RailgunTwoMainFile : Node
     public static Task AfterOrbSpent(PlayerChoiceContext ctx, CardPlay play)
     {
         return HookUtils.Dispatch<IAfterOrbSpent>(play.Card.Owner.Creature.CombatState, ctx, m => m.AfterOrbSpent(ctx, play));
+    }
+
+    [ConfigHoverTipsByDefault]
+    public class RailgunModConfig : SimpleModConfig
+    {
+        public static bool UploadMetrics { get; set; } = true;
+
+        [ConfigHideInUI]
+        [ConfigIgnoreRestoreDefaults]
+        public static bool UploadMetricsFtueSeen { get; set; } = false;
     }
 }

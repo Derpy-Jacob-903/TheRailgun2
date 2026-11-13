@@ -19,7 +19,7 @@ public class Zup() : TheRailgun2Card(1,
         new RepeatVar(1)
     ];
 
-    public override Material CreateCustomBannerMaterial => ShaderUtils.GenerateHsv(195.2f / 360f, .0f, 1f);
+    public override Material CreateCustomBannerMaterial => ShaderUtils.GenerateHsv(195.2f / 360f, .0f, 1.2f);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {

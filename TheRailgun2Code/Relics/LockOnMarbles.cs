@@ -20,7 +20,7 @@ namespace TheRailgun2.TheRailgun2Code.Relics;
 public class LockOnMarbles() : TheRailgun2Relic
 {
     protected override string BigIconPath => PackedIconPath;
-    protected override string PackedIconOutlinePath => ImageHelper.GetImagePath($"atlases/relic_outline_atlas.sprites/bag_of_marbles.tres");
+    //protected override string PackedIconOutlinePath => ImageHelper.GetImagePath($"atlases/relic_outline_atlas.sprites/bag_of_marbles.tres");
     public override RelicRarity Rarity =>
         RelicRarity.Common;
 
@@ -40,9 +40,9 @@ public class LockOnMarbles() : TheRailgun2Relic
         ICombatState combatState)
     {
         var bagOfMarbles = this;
-        if (!participants.Contains<Creature>(bagOfMarbles.Owner.Creature) || bagOfMarbles.Owner.PlayerCombatState.TurnNumber > 1)
+        if (!participants.Contains(bagOfMarbles.Owner.Creature) || bagOfMarbles.Owner.PlayerCombatState.TurnNumber > 1)
             return;
         bagOfMarbles.Flash();
-        IReadOnlyList<LockOnPower> vulnerablePowerList = await PowerCmd.Apply<LockOnPower>(choiceContext, (IEnumerable<Creature>) combatState.HittableEnemies, bagOfMarbles.DynamicVars["LockOnPower"].BaseValue, bagOfMarbles.Owner.Creature, (CardModel) null);
+        await PowerCmd.Apply<LockOnPower>(choiceContext, combatState.HittableEnemies, bagOfMarbles.DynamicVars["LockOnPower"].BaseValue, bagOfMarbles.Owner.Creature,null);
     }
 }

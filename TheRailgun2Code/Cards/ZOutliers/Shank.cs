@@ -14,12 +14,12 @@ public class ShankRailgun() : TheRailgun2Card(0,
 {
     protected override HashSet<CardTag> CanonicalTags => [CardTag.Strike];
 
-    public override Material CreateCustomBannerMaterial => ShaderUtils.GenerateHsv(195.2f / 360f, .0f, 1f);
+    public override Material CreateCustomBannerMaterial => ShaderUtils.GenerateHsv(195.2f / 360f, .0f, 1.2f);
     
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(3M, ValueProp.Move),
-        new RepeatVar(1)
+        new HitCountVar(1)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

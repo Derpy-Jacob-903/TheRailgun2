@@ -158,7 +158,7 @@ public static class OrbDamagePatchSingle
 	    {
 		    foreach (var creature in participants)
 		    {
-			    if (creature.Player != null) continue;
+			    if (creature.Player == null) continue;
 			    object obj;
 			    {
 				    PlayerCombatState playerCombatState = creature.Player!.PlayerCombatState;
@@ -187,10 +187,10 @@ public static class OrbDamagePatchSingle
 	    public override Task BeforeCardPlayed(CardPlay cardPlay)
 	    {
 		    var resultLocation = GetResultLocationForCardPlay(cardPlay);
-		    resultLocation = Hook.ModifyCardPlayResultLocation(cardPlay.Card.CombatState, cardPlay.Card, 
+		    resultLocation = Hook.ModifyCardPlayResultLocation(cardPlay.Card.CombatState /*?? throw new InvalidOperationException("BeforeCardPlayed ran for a CardPlay with a null CombatState!") */, cardPlay.Card, 
 			    cardPlay.IsAutoPlay, cardPlay.Resources, resultLocation, out var modifiers);
 		    if (cardPlay.Card.Keywords.Contains(Enums.Discharge) 
-		        && (cardPlay.Card.Affliction is not Shorted || cardPlay.Card.Keywords.Contains(Enums.Shorted)) &&
+		        && !(cardPlay.Card.Affliction is Shorted || cardPlay.Card.Keywords.Contains(Enums.Shorted)) &&
 		        resultLocation.pileType == PileType.Exhaust)
 		    {
 			    CardCmd.ApplyKeyword(cardPlay.Card, Enums.Shorted);
@@ -200,12 +200,13 @@ public static class OrbDamagePatchSingle
 
 	    public override async Task AfterCardExhausted(PlayerChoiceContext choiceContext, CardModel card, bool causedByEthereal)
 	    {
-		    if (card.Keywords.Contains(Enums.Discharge) && (card.Affliction is not Shorted || card.Keywords.Contains(Enums.Shorted)))
+		    if (card.Keywords.Contains(Enums.Discharge) && !(card.Affliction is Shorted || card.Keywords.Contains(Enums.Shorted)))
 		    {
 			    //await CardCmd.Afflict<Shorted>(card, 1m);
 			    CardCmd.ApplyKeyword(card, Enums.Shorted);
+			    card.ExhaustOnNextPlay = true;
 			    await CardCmd.AutoPlay(choiceContext, card, null, AutoPlayType.SlyDiscard, skipCardPileVisuals: true);
-			    await CardPileCmd.Add(card, PileType.Exhaust, clonedBy: this, skipVisuals: true); //Exhaust
+			    //await CardPileCmd.Add(card, PileType.Exhaust, clonedBy: this, skipVisuals: true); //Exhaust
 		    }
 	    }
 

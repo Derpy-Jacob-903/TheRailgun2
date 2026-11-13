@@ -12,6 +12,7 @@ using MegaCrit.Sts2.Core.Models.Orbs;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Models.Relics;
 using MegaCrit.Sts2.Core.Rooms;
+using TheRailgun2.TheRailgun2Code.Character;
 using TheRailgun2.TheRailgun2Code.Powers;
 using TheRailgun2.TheRailgun2Code.Relics;
 
@@ -32,7 +33,7 @@ public class SpareCore() : TheRailgun2Relic
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromOrb<LightningOrb>()
+        HoverTipFactory.FromOrb<VoltOrb>()
     ];
     
     public override async Task BeforeSideTurnStart(
@@ -45,6 +46,6 @@ public class SpareCore() : TheRailgun2Relic
         if (crackedCore.Owner.PlayerCombatState != null && (!participants.Contains<Creature>(crackedCore.Owner.Creature) || crackedCore.Owner.PlayerCombatState.TurnNumber > 1))
             return;
         for (var i = 0; (Decimal) i < crackedCore.DynamicVars.Repeat.BaseValue; ++i)
-            await OrbCmd.Channel<LightningOrb>((PlayerChoiceContext) new BlockingPlayerChoiceContext(), crackedCore.Owner);
+            await OrbCmd.Channel<VoltOrb>((PlayerChoiceContext) new BlockingPlayerChoiceContext(), crackedCore.Owner);
     }
 }

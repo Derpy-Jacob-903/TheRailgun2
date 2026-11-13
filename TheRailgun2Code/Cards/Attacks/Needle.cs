@@ -26,8 +26,8 @@ public class Needle() : CustomCardModel(0,
     CardType.Attack, CardRarity.Token,
     TargetType.AnyEnemy)
 {
-    public override TargetType TargetType => !this.HasFanOfKnives ? TargetType.AnyEnemy : TargetType.AllEnemies;
-    public bool HasFanOfKnives => (Owner?.Creature?.HasPower<PiercingNeedlesPower>() ?? false);
+    public override TargetType TargetType => !HasFanOfKnives ? TargetType.AnyEnemy : TargetType.AllEnemies;
+    public bool HasFanOfKnives => IsMutable && Owner.Creature.HasPower<PiercingNeedlesPower>();
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [

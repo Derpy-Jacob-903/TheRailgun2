@@ -21,7 +21,7 @@ public class Discharge() : TheRailgun2Card(1,
          new PowerVar<DischargePower>(2)
     ];
     
-    public override Material CreateCustomBannerMaterial => ShaderUtils.GenerateHsv(195.2f / 360f, .0f, 1f);
+    public override Material CreateCustomBannerMaterial => ShaderUtils.GenerateHsv(195.2f / 360f, .0f, 1.2f);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {

@@ -21,6 +21,11 @@ public class GekotaKeychain() : TheRailgun2Card(1,
         new CardsVar(1)
     ];
     
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
+        CardKeyword.Exhaust
+    ];
+    
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         //Todo: Curse Tooltip like hermit
@@ -29,20 +34,21 @@ public class GekotaKeychain() : TheRailgun2Card(1,
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        if (Owner.PlayerCombatState.AllCards
-            .OrderBy<CardModel, CardRarity>((Func<CardModel, CardRarity>)(c => c.Rarity))
-            .ThenBy<CardModel, ModelId>((Func<CardModel, ModelId>)(c => c.Id))
-            .Count(u => u.Type == CardType.Curse && u.Pile?.Type != PileType.Exhaust) == 0) return;
+        if (Owner.PlayerCombatState != null && Owner.PlayerCombatState.AllCards
+                .OrderBy<CardModel, CardRarity>((Func<CardModel, CardRarity>)(c => c.Rarity))
+                .ThenBy<CardModel, ModelId>((Func<CardModel, ModelId>)(c => c.Id))
+                .Count(u => u.Type == CardType.Curse && u.Pile?.Type != PileType.Exhaust) == 0) return;
         CardSelectorPrefs prefs = new CardSelectorPrefs(CardSelectorPrefs.ExhaustSelectionPrompt, DynamicVars.Cards.IntValue);
-        var cards = (await CardSelectCmd.FromSimpleGrid(choiceContext,
-                Owner.PlayerCombatState.AllCards
-                    .OrderBy<CardModel, CardRarity>((Func<CardModel, CardRarity>)(c => c.Rarity))
-                    .ThenBy<CardModel, ModelId>((Func<CardModel, ModelId>)(c => c.Id))
-                    .Where(u => u.Type == CardType.Curse && u.Pile?.Type != PileType.Exhaust).ToList<CardModel>(), Owner, prefs)
-            );
-        if (cards == null)
-            return;
-        foreach (var cardModel in cards) await CardCmd.Exhaust(choiceContext, cardModel);
+        if (Owner.PlayerCombatState != null)
+        {
+            var cards = (await CardSelectCmd.FromSimpleGrid(choiceContext,
+                    Owner.PlayerCombatState.AllCards
+                        .OrderBy<CardModel, CardRarity>((Func<CardModel, CardRarity>)(c => c.Rarity))
+                        .ThenBy<CardModel, ModelId>((Func<CardModel, ModelId>)(c => c.Id))
+                        .Where(u => u.Type == CardType.Curse && u.Pile?.Type != PileType.Exhaust).ToList<CardModel>(), Owner, prefs)
+                );
+            foreach (var cardModel in cards) await CardCmd.Exhaust(choiceContext, cardModel);
+        }
     }
     
     protected override bool ShouldGlowRedInternal => Owner.PlayerCombatState != null && Owner.PlayerCombatState.AllCards.All(u => u.Type != CardType.Curse && u.Pile?.Type != PileType.Exhaust);

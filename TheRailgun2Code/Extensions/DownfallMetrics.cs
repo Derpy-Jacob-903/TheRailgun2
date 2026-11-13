@@ -103,7 +103,8 @@ public static class DownfallMetrics
             TotalWinRate = progress.Wins / (float)progress.NumberOfRuns,
             NumReloads = run.NumReloads,
             BuildId = ReleaseInfoManager.Instance.ReleaseInfo?.Version ?? "NON-RELEASE-VERSION",
-            BuildType = PlatformUtil.GetPlatformBranch().ToName(),
+            BuildType = PlatformUtil.GetPlatformBranch()
+                .ToName(),
             PlayerId = progress.UniqueId,
             Character = localPlayer.CharacterId ?? ModelId.none,
             NumPlayers = run.Players.Count,
@@ -111,13 +112,17 @@ public static class DownfallMetrics
                 ? run.Players
                     .Select<SerializablePlayer, ModelId>(p => p.CharacterId ?? ModelId.none)
                     .ToList()
-                : [],
+                :
+                [
+                ],
             Win = isVictory,
             FloorReached = list1.Count,
             KilledByEncounter = modelId ?? ModelId.none,
             Deck = localPlayer.Deck.Select<SerializableCard, ModelId>(c => c.Id ?? ModelId.none),
             Relics = localPlayer.Relics.Select<SerializableRelic, ModelId>(r => r.Id ?? ModelId.none),
-            RunPlaytime = run.WinTime > 0L ? run.WinTime : run.RunTime,
+            RunPlaytime = run.WinTime > 0L
+                ? run.WinTime
+                : run.RunTime,
             Encounters = encounters,
             CardChoices = cardChoices,
             EventChoices = eventChoiceMetricList,
@@ -127,24 +132,35 @@ public static class DownfallMetrics
                 .Where(
                     (e => e.MapPointType == MapPointType.RestSite))
                 .SelectMany(e =>
-                    e.GetEntry(localPlayerId).UpgradedCards)
-                .Select<ModelId, string>(c => c.Entry).ToList(),
+                    e.GetEntry(localPlayerId)
+                        .UpgradedCards)
+                .Select<ModelId, string>(c => c.Entry)
+                .ToList(),
             RelicBuys = list1
                 .SelectMany(e =>
-                    e.GetEntry(localPlayerId).BoughtRelics)
-                .Select<ModelId, string>(r => r.Entry).ToList(),
+                    e.GetEntry(localPlayerId)
+                        .BoughtRelics)
+                .Select<ModelId, string>(r => r.Entry)
+                .ToList(),
             PotionBuys = list1
                 .SelectMany(e =>
-                    e.GetEntry(localPlayerId).BoughtPotions)
-                .Select<ModelId, string>(p => p.Entry).ToList(),
+                    e.GetEntry(localPlayerId)
+                        .BoughtPotions)
+                .Select<ModelId, string>(p => p.Entry)
+                .ToList(),
             ColorlessBuys = list1
                 .SelectMany(e =>
-                    e.GetEntry(localPlayerId).BoughtColorless)
-                .Select<ModelId, string>(c => c.Entry).ToList(),
+                    e.GetEntry(localPlayerId)
+                        .BoughtColorless)
+                .Select<ModelId, string>(c => c.Entry)
+                .ToList(),
             PotionDiscards = list1
                 .SelectMany(e =>
-                    e.GetEntry(localPlayerId).PotionDiscarded)
-                .Select<ModelId, string>(p => p.Entry).ToList()
+                    e.GetEntry(localPlayerId)
+                        .PotionDiscarded)
+                .Select<ModelId, string>(p => p.Entry)
+                .ToList(),
+            GameMode = run.GameMode.ToString()
         };
     }
 }

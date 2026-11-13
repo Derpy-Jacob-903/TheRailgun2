@@ -255,7 +255,7 @@ protected override string PassiveSfx => "event:/sfx/characters/defect/defect_lig
   {
       return orb == this && CombatState.GetOpponentsOf(Owner.Creature).Where<Creature>((Func<Creature, bool>) (e => e.IsHittable)).ToList().Any(c => c.HasPower<LockOnPower>()) ? value + 1 : value;
   }
-
+  
   private async Task<IEnumerable<Creature>> ApplyLightningDamage(
     Decimal value,
     Creature? target,

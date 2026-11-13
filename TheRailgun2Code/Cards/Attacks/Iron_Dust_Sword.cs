@@ -15,7 +15,7 @@ public class IronDustSword() : TheRailgun2Card(2,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(3M, ValueProp.Move),
-        new RepeatVar(5)
+        new HitCountVar(5)
     ];
     
     protected override HashSet<CardTag> CanonicalTags => [Enums.Ferrous];

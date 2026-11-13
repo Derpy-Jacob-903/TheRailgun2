@@ -12,7 +12,7 @@
   "THERAILGUN2-ELECTRICAL_STORM.title": "Electrical Storm",
   "THERAILGUN2-ELECTRICAL_STORM.description": "Deal X+{Damage:diff()} damage and apply X{IfUpgraded:show:+{LockOnPower:diff()}|} [gold]Lock-On[/gold] to ALL enemies.",
   "THERAILGUN2-IRON_DUST_SWORD.title": "Iron-Dust Sword",
-  "THERAILGUN2-IRON_DUST_SWORD.description": "Deal {Damage:diff()} damage {Repeat:diff()} {Repeat:plural:time|times}.",
+  "THERAILGUN2-IRON_DUST_SWORD.description": "Deal {Damage:diff()} damage {HitCount:diff()} {HitCount:plural:time|times}.",
   "THERAILGUN2-LIGHTNINGBOLT.title": "Lightningbolt",
   "THERAILGUN2-LIGHTNINGBOLT.description": "Deal {Damage:diff()} damage.\n[gold]Channel[/gold] {Repeat:diff()} [gold]Volt[/gold].",
   "THERAILGUN2-NEEDLE.title": "Needle",
@@ -201,7 +201,7 @@
   "THERAILGUN2-ELECTRON_BURST_EX.title": "Electron Cascade",
   "THERAILGUN2-ELECTRON_BURST_EX.description": "Trigger all Orbs {Repeat:diff()} {Repeat:plural:time|times}.",
   "THERAILGUN2-SHANK_RAILGUN.title": "Shank",
-  "THERAILGUN2-SHANK_RAILGUN.description": "Deal {Damage:diff()} damage {Repeat:diff()} times.",
+  "THERAILGUN2-SHANK_RAILGUN.description": "Deal {Damage:diff()} damage {HitCount:diff()} {HitCount:plural:time|times}.",
   "THERAILGUN2-DOUBLE_FLASH.title": "Double Flash",
   "THERAILGUN2-DOUBLE_FLASH.description": "Deal {Damage:diff()} damage twice.\nPlay a random Attack from your [gold]Draw Pile[/gold].",
   "THERAILGUN2-FUSION_BOLT.title": "Fusion Bolt",
@@ -225,7 +225,7 @@
   "THERAILGUN2-CHARGE_NEW.title": "Charge",
   "THERAILGUN2-CHARGE_NEW.description": "[gold]Channel[/gold] {Repeat:diff()} [gold]Volt[/gold].\n[gold]Exhaust[/gold] 1 card.",
   "THERAILGUN2-IONIZED_BLADE.title": "The Ionized Blade",
-  "THERAILGUN2-IONIZED_BLADE.description": "Deal {Damage:diff()} damage {Repeat:diff()} {Repeat:plural:time|times}.\n[blue](Placeholder)[/blue]",
+  "THERAILGUN2-IONIZED_BLADE.description": "Deal {Damage:diff()} damage.\nChannel [gold]Volt[/gold] equal to damage dealt.\nApply [gold]Lock-On[/gold] equal to damage dealt.",
   "THERAILGUN2-CIRCUIT_BREAKER_NEW.title": "Circuit Breaker",
   "THERAILGUN2-CIRCUIT_BREAKER_NEW.description": "[gold]Spend[/gold] 1 Orb.\nApply 3 [gold]Lock-On[/gold].",
   "THERAILGUN2-MAGNETIC_MOVEMENT_NEW.title": "Magnetic Movement",
@@ -261,5 +261,9 @@
   "THERAILGUN2-ION_DELUGE.title": "Ion Deluge",
   "THERAILGUN2-ION_DELUGE.description": "Choose another player.\nWhenever you [gold]Channel[/gold] [gold]Volt[/gold] during your turn, they [gold]Channel[/gold] 1 [gold]Volt[/gold].",
   "THERAILGUN2-STRIKE_RAILGUN_PERFECT.title": "Ionized Strike",
-  "THERAILGUN2-STRIKE_RAILGUN_PERFECT.description": "Deal {Damage:diff()} damage.\nApply {LockOnPower:diff()} [gold]Lock-On[/gold]."
+  "THERAILGUN2-STRIKE_RAILGUN_PERFECT.description": "Deal {Damage:diff()} damage.\nApply {LockOnPower:diff()} [gold]Lock-On[/gold].",
+  "THERAILGUN2-BACKTRACK.title": "Backtrack",
+  "THERAILGUN2-BACKTRACK.description": "Gain 50% of the [gold]Block[/gold] you've gained this and last turn.{InCombat:\n(Gain {CalculatedBlock:diff()} [gold]Block[/gold])|}",
+  "THERAILGUN2-ABSORB_BASIC.title": "Absorb",
+  "THERAILGUN2-ABSORB_BASIC.description": "[gold]Evoke[/gold] your rightmost Orb.\n{IfUpgraded:show:G|If an Orb was [gold]Evoked[/gold], g}ain {StrengthPower:diff()} [gold]Strength[/gold]."
 }

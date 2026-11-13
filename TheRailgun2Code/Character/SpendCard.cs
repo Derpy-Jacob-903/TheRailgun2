@@ -78,7 +78,6 @@ public abstract class SpendCard(int cost, CardType type, CardRarity rarity, Targ
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        
         return Task.CompletedTask;
     }
 

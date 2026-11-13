@@ -1,0 +1,6 @@
+﻿{
+  "THERAILGUN2-RAILGUN_MOD_METRICS_FTUE_MESSAGE.body": "Data collection is now [gold]{Enabled:On|Off}[/gold].\n\nThis setting can be toggled at any time in the mod config menu.",
+  "THERAILGUN2-RAILGUN_MOD_METRICS_FTUE_MESSAGE.header": "{Enabled:Thank You!|Alright}",
+  "THERAILGUN2-RAILGUN_MOD_METRICS_FTUE_PROMPT.body": "Thank you for downloading The Railgun 2 mod!\nThis mod uses anonymized data collection to help with balancing.\n\nThe current setting is:\nData collection is [gold]{Enabled:On|Off}[/gold]\n\n{Enabled:Would you like keep this On?|Would you consent to turning this On?}",
+  "THERAILGUN2-RAILGUN_MOD_METRICS_FTUE_PROMPT.header": "The Railgun 2 Data Collection"
+}

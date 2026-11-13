@@ -14,7 +14,7 @@ using TheRailgun2.TheRailgun2Code.Powers;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
-[Pool(typeof(EventCardPool))]
+[Pool(typeof(DeprecatedCardPool))]
 public class MagneticMovement() : TheRailgun2Card(1,
     CardType.Skill, CardRarity.Event,
     TargetType.Self)
@@ -28,7 +28,7 @@ public class MagneticMovement() : TheRailgun2Card(1,
     [
         HoverTipFactory.Static(StaticHoverTip.Block)
     ];
-    public override CardPoolModel VisualCardPool => ModelDb.CardPool<TheRailgun2CardPool>();
+    //public override CardPoolModel VisualCardPool => ModelDb.CardPool<TheRailgun2CardPool>();
     protected override HashSet<CardTag> CanonicalTags => [Enums.Ferrous];
     protected override async Task OnPlay(
         PlayerChoiceContext context,
