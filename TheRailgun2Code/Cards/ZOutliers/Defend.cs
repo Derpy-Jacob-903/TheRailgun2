@@ -34,7 +34,7 @@ public class DefendRailgunPerfect : TheRailgun2Card
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(9m, ValueProp.Move),
+        new BlockVar(8m, ValueProp.Move),
         new RepeatVar(2)
     ];
 

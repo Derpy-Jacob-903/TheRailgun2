@@ -27,7 +27,9 @@ public class Needle() : CustomCardModel(0,
     TargetType.AnyEnemy)
 {
     public override TargetType TargetType => !HasFanOfKnives ? TargetType.AnyEnemy : TargetType.AllEnemies;
-    public bool HasFanOfKnives => IsMutable && Owner.Creature.HasPower<PiercingNeedlesPower>();
+    // ReSharper disable once ConstantConditionalAccessQualifier
+    // ReSharper disable once ConstantNullCoalescingCondition
+    public bool HasFanOfKnives => IsMutable && (Owner?.Creature?.HasPower<PiercingNeedlesPower>() ?? false);
     
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
