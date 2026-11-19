@@ -28,7 +28,7 @@ public class Needle() : CustomCardModel(0,
 {
     public override TargetType TargetType => !HasFanOfKnives ? TargetType.AnyEnemy : TargetType.AllEnemies;
     public bool HasFanOfKnives => IsMutable && Owner.Creature.HasPower<PiercingNeedlesPower>();
-
+    
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
         Enums.Discharge,
@@ -37,7 +37,8 @@ public class Needle() : CustomCardModel(0,
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(6M, ValueProp.Move)
+        new DamageVar(6M, ValueProp.Move),
+        ..MakeCalculatedVar("FanOfKnives", 0, (model, creature) => model.Owner.Creature.HasPower<PiercingNeedlesPower>() ? 1 : 0)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -55,7 +56,7 @@ public class Needle() : CustomCardModel(0,
                 {
                     var attackCommand = DamageCmd.Attack(DynamicVars.Damage.BaseValue)
                         .FromCard(cardPlay.Card, cardPlay).Targeting(cardPlay.Target)
-                        .WithHitVfxNode((t) => NShivThrowVfx.Create(base.Owner.Creature, t, Colors.DarkCyan));
+                        .WithHitVfxNode((t) => NShivThrowVfx.Create(base.Owner.Creature, t, Colors.Cyan));
                     await attackCommand.Execute(choiceContext);
                 }
             }

@@ -1,9 +1,12 @@
-﻿using BaseLib.Utils;
+﻿using BaseLib.Patches.Content;
+using BaseLib.Utils;
 using Godot;
+using HarmonyLib;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 using TheRailgun2.TheRailgun2Code.Character;
 using TheRailgun2.TheRailgun2Code.Compat;
@@ -16,10 +19,16 @@ public class DefendRailgunPerfect : TheRailgun2Card
         CardType.Skill, CardRarity.Token,
         TargetType.Self)
     {
-        AncientsAwakenedCompat.RegisterPerfectedDefendForCoco(this);
+        var ancientsAwakenedType =
+            AccessTools.TypeByName("AncientsAwakened.AncientsAwakenedCode.Pools.Mithrix.PerfectedPool");
+        if (ancientsAwakenedType == null) return;
+        CustomContentDictionary.AddModel(GetType());
+        this.AddPerfectedCardForCustomCharacters(ModelDb.Card<DefendRailgun>());
     }
     
-    public override Material CreateCustomBannerMaterial => ShaderUtils.GenerateHsv(355f / 360f, 1f, 1f);
+    public override CardPoolModel VisualCardPool => AncientsAwakenedInterop.PerfectedCardPool(Pool);
+    
+    public override Material CreateCustomBannerMaterial => ShaderUtils.GenerateHsv(0.5f, 1f, 1f);
 
     protected override HashSet<CardTag> CanonicalTags => [CardTag.Defend];
 

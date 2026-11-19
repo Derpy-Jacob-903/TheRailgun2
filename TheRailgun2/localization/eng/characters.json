@@ -12,5 +12,8 @@
   "THERAILGUN2-THE_RAILGUN2.cardsModifierDescription": "Railgun cards will now appear in rewards and shops.",
   "THERAILGUN2-THE_RAILGUN2.aromaPrinciple": "[sine][blue]このキャラクターは知りません…すみません…[/blue][/sine]",
   "THERAILGUN2-THE_RAILGUN2.banter.alive.endTurnPing": "C'mon, before lightning strikes twice...",
-  "THERAILGUN2-THE_RAILGUN2.banter.dead.endTurnPing": "..."
+  "THERAILGUN2-THE_RAILGUN2.banter.dead.endTurnPing": "...",
+  "THERAILGUN2-THE_RAILGUN2.shortTitle": "Railgun",
+  "THERAILGUN2-THE_RAILGUN2.vampireTitle": "sister",
+  "THERAILGUN2-THE_RAILGUN2.heartAttack": "You electrify the heart..."
 }

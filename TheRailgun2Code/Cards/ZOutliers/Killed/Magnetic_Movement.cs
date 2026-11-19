@@ -16,7 +16,7 @@ namespace TheRailgun2.TheRailgun2Code.Cards;
 
 [Pool(typeof(DeprecatedCardPool))]
 public class MagneticMovement() : TheRailgun2Card(1,
-    CardType.Skill, CardRarity.Event,
+    CardType.Skill, CardRarity.Rare,
     TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>

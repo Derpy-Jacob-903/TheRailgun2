@@ -1,5 +1,7 @@
 ﻿using BaseLib.Extensions;
+using BaseLib.Patches.Content;
 using BaseLib.Utils;
+using HarmonyLib;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -14,15 +16,30 @@ using MegaCrit.Sts2.Core.Models.Orbs;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using TheRailgun2.TheRailgun2Code.Character;
+using TheRailgun2.TheRailgun2Code.Compat;
 using TheRailgun2.TheRailgun2Code.Powers;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
 [Pool(typeof(EventCardPool))]
-public class IonizedBlade() : TheRailgun2Card(3,
-    CardType.Attack, CardRarity.Event,
-    TargetType.AnyEnemy)
+public class IonizedBlade : TheRailgun2Card
 {
+    public IonizedBlade() : base(3,
+        CardType.Attack, CardRarity.Event,
+        TargetType.AnyEnemy)
+    {
+        var mysteriousFlashlightType =
+            AccessTools.TypeByName("TheHeroExpansion.TheHeroExpansionCode.Extensions.CustomMysteriousFlashlightExtension");
+        if (mysteriousFlashlightType != null)
+            CustomContentDictionary.AddModel(GetType());
+        var brokenBladeType =
+            AccessTools.TypeByName("TheHeroExpansion.TheHeroExpansionCode.Extensions.CustomBrokenBladeExtension");
+        if (brokenBladeType != null)
+        {
+            var addMethod = AccessTools.DeclaredMethod(brokenBladeType, "AddBladeCardForCustomCharacter");
+            addMethod.Invoke(null, [this, ModelDb.Character<Character.TheRailgun2>()]);
+        }
+    }
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(8M, ValueProp.Move)

@@ -2,26 +2,20 @@
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Logging;
-using MegaCrit.Sts2.Core.Models.Orbs;
 using MegaCrit.Sts2.Core.Models.Powers;
-using BaseLib.Abstracts;
 using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Models.CardPools;
-using MegaCrit.Sts2.Core.Models.Cards;
-using MegaCrit.Sts2.Core.Saves.Migrations.SerializableRuns;
-using MegaCrit.Sts2.Core.ValueProps;
+using MegaCrit.Sts2.Core.Models;
 using TheRailgun2.TheRailgun2Code.Compat;
 
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
 public class AbsorbEx : TheRailgun2Card
 {
-    public AbsorbEx() : base(1,
+    public AbsorbEx() : base(2,
         CardType.Skill, CardRarity.Ancient,
         TargetType.Self)
     {
-        AncientsAwakenedCompat.RegisterExperimentalSerumCardForCoco(this);
+        this.AddExperimentalCardForCustomCharacters(ModelDb.Character<Character.TheRailgun2>());
     }
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>

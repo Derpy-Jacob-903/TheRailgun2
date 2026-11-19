@@ -127,6 +127,10 @@
         <Compile Remove="TheRailgun2Code\Cards\Powers\Magnetic_Movement.cs" />
         <Compile Remove="TheRailgun2Code\Cards\Skills\Charge.cs" />
         <None Include="TheRailgun2Code\Cards\Skills\Charge.cs" />
+        <Compile Remove="TheRailgun2Code\Cards\ZOutliers\DischargeEX.cs" />
+        <None Include="TheRailgun2Code\Cards\ZOutliers\DischargeEX.cs" />
+        <Compile Remove="TheRailgun2Code\Cards\ZOutliers\Discharge.cs" />
+        <None Include="TheRailgun2Code\Cards\ZOutliers\Discharge.cs" />
     </ItemGroup>
 
     <ItemGroup>

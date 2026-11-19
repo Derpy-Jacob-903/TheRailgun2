@@ -24,7 +24,7 @@ public class ShankRailgun() : TheRailgun2Card(0,
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue).WithHitCount(DynamicVars.Repeat.IntValue)
-            .FromCard(cardPlay.Card, cardPlay).Targeting(cardPlay.Target)
+            .FromCard(cardPlay.Card, cardPlay).TargetingAllOpponents(combat)
             .WithHitFx("vfx/vfx_attack_slash").Execute(choiceContext);
     }
 

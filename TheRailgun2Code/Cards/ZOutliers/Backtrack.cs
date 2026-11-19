@@ -1,4 +1,6 @@
-﻿using BaseLib.Utils;
+﻿using BaseLib.Patches.Content;
+using BaseLib.Utils;
+using HarmonyLib;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Combat.History.Entries;
 using MegaCrit.Sts2.Core.Commands;
@@ -17,10 +19,20 @@ using TheRailgun2.TheRailgun2Code.Powers;
 namespace TheRailgun2.TheRailgun2Code.Cards;
 
 [Pool(typeof(EventCardPool))]
-public class Backtrack() : TheRailgun2Card(1,
+public class Backtrack : TheRailgun2Card
+{
+    public Backtrack() : base (1,
     CardType.Skill, CardRarity.Event,
     TargetType.Self)
-{
+    {
+        var mysteriousFlashlightType =
+            AccessTools.TypeByName("TheHeroExpansion.TheHeroExpansionCode.Extensions.CustomMysteriousFlashlightExtension");
+        if (mysteriousFlashlightType == null) return;
+        CustomContentDictionary.AddModel(GetType());
+        var addMethod = AccessTools.DeclaredMethod(mysteriousFlashlightType, "AddFlashlightCardForCustomCharacter");
+        addMethod.Invoke(null, [this, ModelDb.Character<Character.TheRailgun2>()]);
+    }
+    
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         ..MakeCalculatedBlock(0, (card, creature) => 
