@@ -162,7 +162,7 @@ public sealed class RunMetricsUploader<TPayload>
             return false;
         }
         
-        if (_config.RequireStandardGameMode && run.GameMode != GameMode.Standard)
+        if (_config.RequireStandardGameMode && run.GameMode != GameMode.Standard || run.GameMode != GameMode.Dread)
         {
             log?.Info($"[{mod}] Skipping metrics upload, custom mode detected.");
             return false;
@@ -172,7 +172,7 @@ public sealed class RunMetricsUploader<TPayload>
             log?.Info($"[{mod}] Skipping metrics upload, modded Ascension detected.");
             return false;
         }
-        if (false)
+        if (run.GameMode == GameMode.Dread)
         {
             log?.Info($"[{mod}] Editing metrics upload, marking Dread run as Ascension 11.");
             run.Ascension = 11;
