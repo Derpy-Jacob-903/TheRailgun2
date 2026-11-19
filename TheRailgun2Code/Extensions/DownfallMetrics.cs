@@ -160,7 +160,7 @@ public static class DownfallMetrics
                         .PotionDiscarded)
                 .Select<ModelId, string>(p => p.Entry)
                 .ToList(),
-            GameMode = run.GameMode.ToString()
+            //GameMode = run.GameMode.ToString()
         };
     }
 }
